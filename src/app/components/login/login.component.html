@@ -1,0 +1,88 @@
+<div class="col-md-6 ml-auto mr-auto">
+  <div class="card card-login">
+    <form class="form" method="" action="">
+      <div class="card-header card-header-primary text-center">
+        <h4 class="card-title">Login with:</h4>
+        <div class="social-line">
+          <a href="#" class="btn btn-just-icon btn-link" (click)="loginFB()">
+            <i class="fa fa-facebook-square"></i>
+          </a>
+          <a href="#" class="btn btn-just-icon btn-link" (click)="loginTW()">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a href="#" class="btn btn-just-icon btn-link" (click)="loginG()">
+            <i class="fa fa-google"></i>
+          </a>
+        </div>
+      </div>
+      <div class="card-body" *ngIf="!isCreating">
+        <p class="description text-center">Or use email / password</p>
+        <!--       <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="material-icons">face</i>
+            </span>
+          </div>
+          <input type="text" class="form-control" placeholder="First Name...">
+        </div> -->
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="material-icons">mail</i>
+            </span>
+          </div>
+          <input type="email" class="form-control" placeholder="Email..." name="emailInput" [(ngModel)]="emailInput">
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="material-icons">lock_outline</i>
+            </span>
+          </div>
+          <input type="password" class="form-control" placeholder="Password..." name="pwdInput" [(ngModel)]="pwdInput">
+        </div>
+        <p class="description text-center text-danger"> {{errorSignIn}}</p>
+        <div class="footer text-center">
+          <a href="#" class="btn btn-primary btn-round btn-wd btn-lg" (click)="login()">Get Started</a> <br>
+          <a href="#" class="btn btn-primary btn-link btn-wd btn-lg" (click)="recoverPwd()">Forgot Password?</a>
+        </div>
+        <p class="description text-center">If you dont have an account, create one:</p>
+        <div class="footer text-center">
+          <a href="#" class="btn btn-primary btn-link btn-wd btn-lg" (click)="isCreating=!isCreating">Create Account</a>
+          <br>
+        </div>
+      </div>
+      <div class="card-body" *ngIf="isCreating">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="material-icons">mail</i>
+            </span>
+          </div>
+          <input type="email" class="form-control" placeholder="Email..." name="emailInputCreate" [(ngModel)]="emailInputCreate">
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="material-icons">lock_outline</i>
+            </span>
+          </div>
+          <input type="password" class="form-control" placeholder="Password..." name="pwdInputCreate" [(ngModel)]="pwdInputCreate" (keyup)="checkPwd()">
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="material-icons">lock_outline</i>
+            </span>
+          </div>
+          <input type="password" class="form-control" placeholder="Repeat password..." name="repPwdInputCreate" [(ngModel)]="repPwdInputCreate" (keyup)="checkPwd()">
+        </div>
+        <p class="description text-center text-danger"> {{errorSignUp}}</p>
+        <div class="footer text-center">
+          <a href="#" class="btn btn-primary btn-round btn-wd btn-lg" (click)="signUp()">Get Started</a> <br>
+          <a href="#" class="btn btn-primary btn-link btn-wd btn-lg" (click)="isCreating=!isCreating">Back to log in</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
