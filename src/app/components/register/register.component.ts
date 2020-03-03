@@ -5,6 +5,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import 'firebase/firestore';
 import { auth, User } from 'firebase/app';
+import { AngularFireStorage } from '@angular/fire/storage';
+import 'firebase/storage';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +16,10 @@ import { auth, User } from 'firebase/app';
 export class RegisterComponent implements OnInit {
   user: User = null;
   public model: Speaker;
+
+  userIdToDelete = '';
+
+  // fileToUpload: File = null;
 
   public otherAreaAdd = '';
   public otherAppAdd = '';
@@ -187,14 +193,18 @@ export class RegisterComponent implements OnInit {
     'Europe - UK/ Ireland ',
   ];
 
-  constructor(public fAuth: AngularFireAuth, public fFire: AngularFirestore) {
+  constructor(public fAuth: AngularFireAuth, public fFire: AngularFirestore, private fStorage: AngularFireStorage) {
     this.model = new Speaker();
+    this.userIdToDelete = '';
     this.fAuth.auth.onAuthStateChanged(u => {
-      if (u) {
+      if (u && u.uid !== this.userIdToDelete) {
         this.user = u;
         this.fFire.collection('speakers').doc<Speaker>(this.user.uid).valueChanges().subscribe(s => {
           if (s) {
             this.model = s;
+            if (this.model.picture === '') {
+              this.model.picture = '../assets/img/profile.jpg';
+            }
           } else {
             this.model.email = this.user.email;
             this.fFire.collection('speakers').doc<Speaker>(this.user.uid).set(Object.assign({}, this.model));
@@ -214,6 +224,20 @@ export class RegisterComponent implements OnInit {
       this.errorGDPR = 'Yo need to accept our GDPR statement and Terms and Conditions.';
       this.savedTxt = '';
     }
+  }
+
+  removeData() {
+    this.userIdToDelete = this.user.uid;
+
+    this.fFire.collection('speakers').doc<Speaker>(this.user.uid).delete();
+    this.fAuth.auth.currentUser.delete().catch(error => {
+      if (error) {
+        this.errorGDPR = 'This operation is sensitive and requires recent authentication. Log in again before retrying to delete your data.';
+      }
+    }).then(() => {
+      this.fFire.collection('speakers').doc<Speaker>(this.userIdToDelete).delete();
+      this.fAuth.auth.signOut();
+    });
   }
 
   ngOnInit(): void {
@@ -241,6 +265,28 @@ export class RegisterComponent implements OnInit {
       this.model.otherAreas.push(this.otherAreaAdd);
       this.otherAreaAdd = '';
     }
+  }
+  handleFileInput(files) {
+    console.log(files[0]);
+    let filePath = '';
+    if (files[0].type === 'image/png') {
+      filePath = 'profile' + this.user.uid + '.png';
+    } else if (files[0].type === 'image/jpeg') {
+      filePath = 'profile' + this.user.uid + '.jpg';
+    }
+    if (filePath !== '') {
+      this.fStorage.upload(filePath, files[0]).then(snap => {
+        snap.ref.getDownloadURL().then(url => {
+          this.model.picture = url;
+        });
+      });
+    } else {
+      this.errorGDPR = 'Upload a valid png or jpg image';
+    }
+  }
+
+  removeFile() {
+    this.model.picture = '../assets/img/profile.jpg';
   }
 
 }

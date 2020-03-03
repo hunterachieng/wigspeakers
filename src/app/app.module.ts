@@ -16,6 +16,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import 'firebase/storage';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,10 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
-   // AngularFireAnalyticsModule,
+    // AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     NgSelectModule,
     FormsModule
   ],
