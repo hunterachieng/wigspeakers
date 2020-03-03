@@ -2,6 +2,8 @@
     <a href="#" class="btn btn-primary btn-round btn-wd btn-lg" (click)="logOut()">Log out</a>
 </div> -->
 <h2 class="title">Registration Form</h2>
+<p class="description text-center text-danger"> {{errorGDPR}}</p>
+<p class="description text-center text-success"> {{savedTxt}}</p>
 <form>
     <div class="form-group">
         <label for="name">Name</label>
@@ -26,7 +28,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row form-group">
         <div class="col-md-8">
             <label for="sector">Sector</label>
             <div class="form-check form-check-radio">
@@ -138,31 +140,15 @@
 
     <div class="form-group">
         <label for="bio">Bio</label>
-        <textarea class="form-control" id="bio" rows="3" name="bio" [(ngModel)]="model.bio"></textarea>
+        <textarea class="form-control"
+            placeholder="Be short, precise and try to explain your professional experience in one to two sentences."
+            id="bio" rows="3" name="bio" [(ngModel)]="model.bio"></textarea>
     </div>
 
     <div class="form-group">
         <label for="exampleFormControlSelect1">Region</label>
-        <select class="form-control selectpicker" data-style="btn btn-link" id="region" name="region"
-            [(ngModel)]="model.region">
-            <option> Africa - West</option>
-            <option> Africa - East</option>
-            <option> Africa - Other</option>
-            <option> Asia - China</option>
-            <option> Asia - India</option>
-            <option> Asia - Other</option>
-            <option> Australia / New Zealand</option>
-            <option> Canada</option>
-            <option> Central America</option>
-            <option> US - East Coast</option>
-            <option> US - West Coast</option>
-            <option> US - South</option>
-            <option> US - Midwest</option>
-            <option> Latin America</option>
-            <option> Middle East</option>
-            <option> Europe - Other</option>
-            <option> Europe - UK/ Ireland </option>
-        </select>
+        <ng-select [items]="region" [multiple]="false" appendTo="body" name="region" placeholder="Select region..."
+            [(ngModel)]="model.region"></ng-select>
     </div>
 
     <div class="row">
@@ -182,18 +168,52 @@
 
     <div class="form-group">
         <label for="areas">Areas of expertise</label>
-        <ng-select [items]="areas" [multiple]="true" appendTo="body" name="areas" placeholder="Select areas..."
-            [(ngModel)]="model.areas"></ng-select>
+        <ng-select [items]="areas" [multiple]="true" appendTo="body" bindLabel="full" groupBy="group" name="areas"
+            placeholder="Select areas..." [(ngModel)]="model.areas"></ng-select>
+    </div>
+    <div style="display: inline" *ngFor="let a of model.otherAreas">
+        <button class="btn btn-other btn-primary"><span aria-hidden="true" class="ng-value-icon left x"
+                style="z-index: 199">×</span>{{a}}</button>
     </div>
     <div class="form-group">
-        <label for="otherArea">Add your area here if is not in the list</label>
-        <input type="text" class="form-control" id="otherArea" name="otherArea" [(ngModel)]="otherArea">
+        <label for="otherArea">Add your area here if it is not in the list above</label>
+        <div class="input-group">
+            <input type="text" style="max-width: 90%;" class="form-control" id="otherArea" name="otherArea"
+                [(ngModel)]="otherAreaAdd">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-fab btn-round btn-primary" (click)="addOtherArea()">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="applications">Domain-specific geospatial applications</label>
+        <ng-select [items]="applications" [multiple]="true" appendTo="body" bindLabel="name" name="applications"
+            placeholder="Select domain-specific geospatial applications..." [(ngModel)]="model.applications">
+        </ng-select>
+    </div>
+    <div style="display: inline" *ngFor="let a of model.otherApplications">
+        <button class="btn btn-other btn-primary"><span aria-hidden="true" class="ng-value-icon left x"
+                style="z-index: 199">×</span>{{a}}</button>
+    </div>
+    <div class="form-group">
+        <label for="otherApp">Add your application here if it is not in the list above</label>
+        <div class="input-group">
+            <input type="text" style="max-width: 90%;" class="form-control" id="otherApp" name="otherApp"
+                [(ngModel)]="otherAppAdd">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-fab btn-round btn-primary" (click)="addOtherApp()">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </span>
+        </div>
     </div>
 
     <div class="form-group">
-        <label for="languages">Languages I feel confident presenting</label>
-        <ng-select [items]="languages" [multiple]="true" appendTo="body" name="languages" placeholder="Select languages..."
-            [(ngModel)]="model.languages"></ng-select>
+        <label for="languages">Langauges I feel confident presenting in</label>
+        <ng-select [items]="languages" [multiple]="true" appendTo="body" name="languages"
+            placeholder="Select languages..." [(ngModel)]="model.languages"></ng-select>
     </div>
 
     <div class="form-group">
@@ -201,98 +221,142 @@
         <input type="text" class="form-control" id="position" name="position" [(ngModel)]="model.position">
     </div>
 
-    <label for="contact">I would like to be contacted via:</label>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="btn btn-social btn-just-icon btn-round btn-linkedin"
-                (click)="model.contactLinkedIn = !model.contactLinkedIn">
-                <i class="fa fa-linkedin"></i>
+    <div class="form-group">
+        <label for="contact">I would like to be contacted via:</label>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="btn btn-social btn-just-icon btn-round btn-linkedin"
+                    (click)="model.contactLinkedIn = !model.contactLinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+            <div class="col-md-2 pt-3">
+                <div class="togglebutton">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="contactLinkedIn" id="contactLinkedIn" type="checkbox"
+                        [checked]="model.contactLinkedIn" (change)="model.contactLinkedIn = !model.contactLinkedIn">
+                        <span class="toggle">
+                            <span class="check"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div [hidden]="!model.contactLinkedIn" class="form-group">
+                    <label for="linkedin">LinkedIn profile</label>
+                    <input type="text" class="form-control" id="linkedin" name="linkedIn" [(ngModel)]="model.linkedIn">
+                </div>
             </div>
         </div>
-        <div class="col-md-2 pt-3">
-            <div class="togglebutton">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="contactLinkedIn" id="contactLinkedIn" type="checkbox"
-                        (checked)="model.contactLinkedIn" [(ngModel)]="model.contactLinkedIn" >
-                    <span class="toggle">
-                        <span class="check"></span>
-                    </span>
-                </label>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="btn btn-social btn-just-icon btn-round btn-twitter"
+                    (click)="model.contactTwitter = !model.contactTwitter">
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+            <div class="col-md-2 pt-3">
+                <div class="togglebutton">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="contactTwitter" id="contactTwitter" type="checkbox"
+                        [checked]="model.contactTwitter" (change)="model.contactTwitter = !model.contactTwitter">
+                        <span class="toggle">
+                            <span class="check"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div [hidden]="!model.contactTwitter" class="form-group">
+                    <label for="twitter">Twitter profile</label>
+                    <input type="text" class="form-control" id="twitter" name="twitter" [(ngModel)]="model.twitter">
+                </div>
             </div>
         </div>
-        <div class="col-md-8">
-            <div [hidden]="!model.contactLinkedIn" class="form-group">
-                <label for="linkedin">LinkedIn user</label>
-                <input type="text" class="form-control" id="linkedin" name="linkedIn" [(ngModel)]="model.linkedIn">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="btn btn-social btn-just-icon btn-round btn-envelope"
+                    (click)="model.contactEmail = !model.contactEmail">
+                    <i class="fa fa-envelope"></i>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="btn btn-social btn-just-icon btn-round btn-twitter"
-                (click)="model.contactTwitter = !model.contactTwitter">
-                <i class="fa fa-twitter"></i>
+            <div class="col-md-2 pt-3">
+                <div class="togglebutton">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="contactEmail" id="contactEmail" type="checkbox"
+                            [checked]="model.contactEmail" (change)="model.contactEmail = !model.contactEmail">
+                        <span class="toggle">
+                            <span class="check"></span>
+                        </span>
+                    </label>
+                </div>
             </div>
-        </div>
-        <div class="col-md-2 pt-3">
-            <div class="togglebutton">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="contactTwitter" id="contactTwitter" type="checkbox"
-                        (checked)="model.contactTwitter" [(ngModel)]="model.contactTwitter">
-                    <span class="toggle">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div [hidden]="!model.contactTwitter" class="form-group">
-                <label for="twitter">Twitter user</label>
-                <input type="text" class="form-control" id="twitter" name="twitter" [(ngModel)]="model.twitter">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="btn btn-social btn-just-icon btn-round btn-envelope"
-                (click)="model.contactEmail = !model.contactEmail">
-                <i class="fa fa-envelope"></i>
-            </div>
-        </div>
-        <div class="col-md-2 pt-3">
-            <div class="togglebutton">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="contactEmail" id="contactEmail" type="checkbox"
-                        (checked)="model.contactEmail" [(ngModel)]="model.contactEmail">
-                    <span class="toggle">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div [hidden]="!model.contactEmail"  class="form-group">
-                <label for="email"> Contact email
-                </label>
-                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="model.email">
+            <div class="col-md-8">
+                <div [hidden]="!model.contactEmail" class="form-group">
+                    <label for="email"> Contact email
+                    </label>
+                    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="model.email">
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="form-group form-file-upload form-file-multiple">
-        <input type="file" multiple="" class="inputFileHidden">
-        <div class="input-group">
-            <input type="text" class="form-control inputFileVisible" placeholder="Profile picture">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-fab btn-round btn-primary">
-                    <i class="material-icons">attach_file</i>
-                </button>
+    <div class="form-group">
+
+        <div class="row">
+            <div class="col-md-4">
+                <img src="model.picture" alt="Profile Picture">
+            </div>
+
+            <div class="col-md-8">
+                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+
+                    <div>
+                        <div class="input-group">
+                            <input type="file" class="form-control inputFileVisible" placeholder="Profile picture">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-fab btn-round btn-primary">
+                                    <i class="material-icons">attach_file</i>
+                                    <input type="file" name="..." ([ngModel])="model.picture" />
+                                </button>
+                                <button type="button" class="btn btn-fab btn-round btn-danger">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </span>
+                        </div>
+
+                        <!-- 
+                        <span class="btn btn-raised btn-round btn-default btn-file">
+                            <span class="fileinput-new">Select image</span>
+                            <span class="fileinput-exists">Change</span>
+                            <input type="file" name="..." ([ngModel])="model.picture" />
+                        </span>
+                        <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i
+                                class="fa fa-times"></i> Remove</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+        <div class="fileinput-new thumbnail img-raised">
+            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">
+        </div>
+        <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+        <div>
+            <span class="btn btn-raised btn-round btn-default btn-file">
+                <span class="fileinput-new">Select image</span>
+                <span class="fileinput-exists">Change</span>
+                <input type="file" name="..." />
             </span>
+            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i
+                    class="fa fa-times"></i> Remove</a>
         </div>
-    </div>
+    </div> 
 
 
-<!-- 
+    <!-- 
     <div class="fileinput fileinput-new text-center" data-provides="fileinput">
         <div class="fileinput-new thumbnail img-raised">
             <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="...">
@@ -311,13 +375,16 @@
 
     <div class="form-check">
         <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" value="">
+            <input class="form-check-input" type="checkbox" value="acceptedGDPR" [checked]="acceptedGDPR"
+                (change)="acceptedGDPR= !acceptedGDPR">
             I accept GDPR statement and Terms and Conditions
             <span class="form-check-sign">
                 <span class="check"></span>
             </span>
         </label>
     </div>
+    <p class="description text-center text-danger"> {{errorGDPR}}</p>
+    <p class="description text-center text-success"> {{savedTxt}}</p>
     <div class="footer text-center">
         <a href="#" class="btn btn-primary btn-round btn-wd btn-lg" (click)="saveData()">Save your data</a>
     </div>

@@ -1,3 +1,23 @@
 form {
     text-align: left !important;
 }
+
+.form-group {
+    padding-bottom: 4%;
+}
+
+.btn-other {
+    background-color: #86339A;
+    border-radius: 2px;
+    color: #fff;
+    padding: 2px 5px;
+    margin: 0 0.4375em 0.4375em 0;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline;
+}
+
+.x {
+    font-weight: 300;
+    padding-right: 5px;
+}
