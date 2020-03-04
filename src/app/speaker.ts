@@ -24,6 +24,7 @@ export class Speaker {
         public contactTwitter: boolean = false,
         public twitter: string = '',
         public picture: string = '',
+        public webpage: string = '',
 
     ) { }
 

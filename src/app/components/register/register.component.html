@@ -2,6 +2,7 @@
     <a href="#" class="btn btn-primary btn-round btn-wd btn-lg" (click)="logOut()">Log out</a>
 </div> -->
 <h2 class="title">Registration Form</h2>
+<p class="description text-center"> The following data will be used to create your speakers profile. The data you provide (your email address excluded) will be accessible and searchable for everyone.</p>
 <p class="description text-center text-danger"> {{errorGDPR}}</p>
 <p class="description text-center text-success"> {{savedTxt}}</p>
 <form>
@@ -20,13 +21,6 @@
         <label for="position">Position</label>
         <input type="text" class="form-control" id="position" name="position" [(ngModel)]="model.position">
     </div>
-
-    <div class="form-group">
-        <label for="qualifications">Qualifications</label>
-        <textarea class="form-control" id="qualifications" rows="3" name="qualifications"
-            [(ngModel)]="model.qualifications"></textarea>
-    </div>
-
 
     <div class="row form-group">
         <div class="col-md-8">
@@ -94,7 +88,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <label for="experience">Experience</label>
+            <label for="experience">Years of experience</label>
             <div class="form-check form-check-radio">
                 <label class="form-check-label">
                     <input class="form-check-input" name="experience" id="experience1" type="radio" value="0 - 5 years"
@@ -146,7 +140,12 @@
     </div>
 
     <div class="form-group">
-        <label for="exampleFormControlSelect1">Region</label>
+        <label for="webpage">Webpage</label>
+        <input type="text" class="form-control" id="webpage" name="webpage" [(ngModel)]="model.webpage">
+    </div>
+
+    <div class="form-group">
+        <label for="region">Region</label>
         <ng-select [items]="region" [multiple]="false" appendTo="body" name="region" placeholder="Select region..."
             [(ngModel)]="model.region"></ng-select>
     </div>
@@ -211,14 +210,20 @@
     </div>
 
     <div class="form-group">
+        <label for="qualifications">Qualifications</label>
+        <textarea class="form-control" id="qualifications" rows="3" name="qualifications"
+            [(ngModel)]="model.qualifications"></textarea>
+    </div>
+
+    <div class="form-group">
         <label for="languages">Langauges I feel confident presenting in</label>
         <ng-select [items]="languages" [multiple]="true" appendTo="body" name="languages"
             placeholder="Select languages..." [(ngModel)]="model.languages"></ng-select>
     </div>
 
     <div class="form-group">
-        <label for="position">Speaking Experience</label>
-        <input type="text" class="form-control" id="position" name="position" [(ngModel)]="model.position">
+        <label for="speakingExperience">Speaking Experience</label>
+        <input type="text" class="form-control" id="speakingExperience" name="speakingExperience" [(ngModel)]="model.speakingExperience">
     </div>
 
     <div class="form-group">

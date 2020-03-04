@@ -45,12 +45,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  logout() {
-    // this.auth.signOut();
-  }
-
   recoverPwd() {
-    // this.auth.signOut();
+    this.errorSignIn = '';
+    this.fAuth.auth.sendPasswordResetEmail(this.emailInput).catch(error => {
+      if (error) {
+        this.errorSignIn = error.message;
+      }
+    }).then(() => {
+      if (this.errorSignIn === '') {
+        this.errorSignIn = 'Check your email. We have sent a password reset link.';
+      }
+    });
   }
 
   checkPwd() {
@@ -62,6 +67,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.errorSignIn = '';
   }
 
 }
