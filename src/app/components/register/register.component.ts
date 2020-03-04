@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
 
   public otherAreaAdd = '';
   public otherAppAdd = '';
+  public otherSector = '';
 
   public errorGDPR = '';
   public savedTxt = '';
@@ -205,6 +206,19 @@ export class RegisterComponent implements OnInit {
             if (this.model.picture === '') {
               this.model.picture = '../assets/img/profile.jpg';
             }
+            if (!this.model.sector) {
+              this.model.sector = {
+                private: false,
+                public: false,
+                ngo: false,
+                self: false,
+                university: false,
+                international: false,
+                other: false,
+              };
+            }
+            console.log("Model");
+            console.log(this.model);
           } else {
             this.model.email = this.user.email;
             this.fFire.collection('speakers').doc<Speaker>(this.user.uid).set(Object.assign({}, this.model));

@@ -5,7 +5,24 @@ export class Speaker {
         public name: string = '',
         public position: string = '',
         public qualifications: string[] = [],
-        public sector: string = '',
+        public sector: {
+            private: boolean,
+            public: boolean,
+            ngo: boolean,
+            self: boolean,
+            university: boolean,
+            international: boolean,
+            other: boolean,
+        } = {
+                private: false,
+                public: false,
+                ngo: false,
+                self: false,
+                university: false,
+                international: false,
+                other: false,
+            },
+        public otherSector: string = '',
         public bio: string = '',
         public region: string = '',
         public country: string = '',
@@ -24,8 +41,7 @@ export class Speaker {
         public contactTwitter: boolean = false,
         public twitter: string = '',
         public picture: string = '',
-        public webpage: string = '',
-
+        public webpage: string = ''
     ) { }
 
 }

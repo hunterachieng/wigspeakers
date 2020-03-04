@@ -2,7 +2,8 @@
     <a href="#" class="btn btn-primary btn-round btn-wd btn-lg" (click)="logOut()">Log out</a>
 </div> -->
 <h2 class="title">Registration Form</h2>
-<p class="description text-center"> The following data will be used to create your speakers profile. The data you provide (your email address excluded) will be accessible and searchable for everyone.</p>
+<p class="description text-center"> The following data will be used to create your speakers profile. The data you
+    provide (your email address excluded) will be accessible and searchable for everyone.</p>
 <p class="description text-center text-danger"> {{errorGDPR}}</p>
 <p class="description text-center text-success"> {{savedTxt}}</p>
 <form>
@@ -24,67 +25,85 @@
 
     <div class="row form-group">
         <div class="col-md-8">
-            <label for="sector">Sector</label>
-            <div class="form-check form-check-radio">
+            <label for="sector">What work sector do you work in?</label>
+            <div class="form-check ">
                 <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector1" type="radio" value="Private Company"
-                        [(ngModel)]="model.sector">
+                    <input class="form-check-input" name="sector" id="sector1" type="checkbox" value="Private Company"
+                        [checked]="model.sector.private" (change)="model.sector.private = !model.sector.private">
                     Private Company
-                    <span class="circle">
+                    <span class="form-check-sign">
                         <span class="check"></span>
                     </span>
                 </label>
             </div>
-            <div class="form-check form-check-radio">
+            <div class="form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector2" type="radio"
-                        value="Public sector / Government" [(ngModel)]="model.sector">
+                    <input class="form-check-input" name="sector" id="sector2" type="checkbox"
+                        value="Public sector / Government" [checked]="model.sector.public" (change)="model.sector.public = !model.sector.public">
                     Public sector / Government
-                    <span class="circle">
+                    <span class="form-check-sign">
                         <span class="check"></span>
                     </span>
                 </label>
             </div>
-            <div class="form-check form-check-radio">
+            <div class="form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector3" type="radio"
+                    <input class="form-check-input" name="sector" id="sector3" type="checkbox"
                         value="Non-governmental organisation (NGO) / Not-For-Profit organisation"
-                        [(ngModel)]="model.sector">
+                        [checked]="model.sector.ngo" (change)="model.sector.ngo = !model.sector.ngo">
                     Non-governmental organisation (NGO) / Not-For-Profit organisation
-                    <span class="circle">
+                    <span class="form-check-sign">
                         <span class="check"></span>
                     </span>
                 </label>
             </div>
-            <div class="form-check form-check-radio">
+            <div class="form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector4" type="radio"
-                        value="Self-employed / Consulting" [(ngModel)]="model.sector">
+                    <input class="form-check-input" name="sector" id="sector4" type="checkbox"
+                        value="Self-employed / Consulting" [checked]="model.sector.self" (change)="model.sector.self = !model.sector.self">
                     Self-employed / Consulting
-                    <span class="circle">
+                    <span class="form-check-sign">
                         <span class="check"></span>
                     </span>
                 </label>
             </div>
             <div class="form-check form-check-radio">
                 <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector5" type="radio"
-                        value="University / Academia" [(ngModel)]="model.sector">
+                    <input class="form-check-input" name="sector" id="sector5" type="checkbox"
+                        value="University / Academia" [checked]="model.sector.university" (change)="model.sector.university = !model.sector.university">
                     University / Academia
-                    <span class="circle">
+                    <span class="form-check-sign">
                         <span class="check"></span>
                     </span>
                 </label>
             </div>
-            <div class="form-check form-check-radio">
+            <div class="form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector6" type="radio"
-                        value="International organisation" [(ngModel)]="model.sector">
+                    <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+                        value="International organisation" [checked]="model.sector.international" (change)="model.sector.international = !model.sector.international">
                     International organisation
-                    <span class="circle">
+                    <span class="form-check-sign">
                         <span class="check"></span>
                     </span>
                 </label>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+                                value="International organisation" [checked]="model.sector.other" (change)="model.sector.other = !model.sector.other">
+                            Other (specify)
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" id="otherSector" name="otherSector"
+                        [(ngModel)]="model.otherSector" [hidden]="!model.sector.other">
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -135,7 +154,7 @@
     <div class="form-group">
         <label for="bio">Bio</label>
         <textarea class="form-control"
-            placeholder="Be short, precise and try to explain your professional experience in one to two sentences."
+            placeholder="Hint: an outstanding bio is short and precise. Try to explain your professional experiences two sentences or less."
             id="bio" rows="3" name="bio" [(ngModel)]="model.bio"></textarea>
     </div>
 
@@ -145,7 +164,7 @@
     </div>
 
     <div class="form-group">
-        <label for="region">Region</label>
+        <label for="region">Choose the world region you are coming from</label>
         <ng-select [items]="region" [multiple]="false" appendTo="body" name="region" placeholder="Select region..."
             [(ngModel)]="model.region"></ng-select>
     </div>
@@ -153,13 +172,13 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <label for="country">Country</label>
+                <label for="country">What country do you currently reside?</label>
                 <input type="text" class="form-control" id="country" name="country" [(ngModel)]="model.country">
             </div>
         </div>
         <div class="col">
             <div class="form-group">
-                <label for="city">City</label>
+                <label for="city">What city do you currently reside?</label>
                 <input type="text" class="form-control" id="city" name="city" [(ngModel)]="model.city">
             </div>
         </div>
@@ -175,7 +194,7 @@
                 style="z-index: 199">×</span>{{a}}</button>
     </div>
     <div class="form-group">
-        <label for="otherArea">Add your area here if it is not in the list above</label>
+        <label for="otherArea">Add any additional areas of expertise</label>
         <div class="input-group">
             <input type="text" style="max-width: 90%;" class="form-control" id="otherArea" name="otherArea"
                 [(ngModel)]="otherAreaAdd">
@@ -187,9 +206,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="applications">Domain-specific geospatial applications</label>
+        <label for="applications">Domain expertise</label>
         <ng-select [items]="applications" [multiple]="true" appendTo="body" bindLabel="name" name="applications"
-            placeholder="Select domain-specific geospatial applications..." [(ngModel)]="model.applications">
+            placeholder="What domain(s) do you work in?" [(ngModel)]="model.applications">
         </ng-select>
     </div>
     <div style="display: inline" *ngFor="let a of model.otherApplications">
@@ -197,7 +216,7 @@
                 style="z-index: 199">×</span>{{a}}</button>
     </div>
     <div class="form-group">
-        <label for="otherApp">Add your application here if it is not in the list above</label>
+        <label for="otherApp">List any other domain(s) you work in</label>
         <div class="input-group">
             <input type="text" style="max-width: 90%;" class="form-control" id="otherApp" name="otherApp"
                 [(ngModel)]="otherAppAdd">
@@ -216,14 +235,15 @@
     </div>
 
     <div class="form-group">
-        <label for="languages">Langauges I feel confident presenting in</label>
+        <label for="languages">Languages I feel confident presenting in</label>
         <ng-select [items]="languages" [multiple]="true" appendTo="body" name="languages"
             placeholder="Select languages..." [(ngModel)]="model.languages"></ng-select>
     </div>
 
     <div class="form-group">
-        <label for="speakingExperience">Speaking Experience</label>
-        <input type="text" class="form-control" id="speakingExperience" name="speakingExperience" [(ngModel)]="model.speakingExperience">
+        <label for="speakingExperience">List here any relevant speaking experience here…</label>
+        <textarea type="text" class="form-control" id="speakingExperience" name="speakingExperience"
+            [(ngModel)]="model.speakingExperience" rows="3"></textarea>
     </div>
 
     <div class="form-group">
