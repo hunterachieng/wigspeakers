@@ -18,12 +18,16 @@ import { FormsModule } from '@angular/forms';
 
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import 'firebase/storage';
+import { GdprComponent } from './components/gdpr/gdpr.component';
+import { TermsComponent } from './components/terms/terms.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    GdprComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,

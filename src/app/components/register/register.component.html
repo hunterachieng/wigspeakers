@@ -39,7 +39,8 @@
             <div class="form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" name="sector" id="sector2" type="checkbox"
-                        value="Public sector / Government" [checked]="model.sector.public" (change)="model.sector.public = !model.sector.public">
+                        value="Public sector / Government" [checked]="model.sector.public"
+                        (change)="model.sector.public = !model.sector.public">
                     Public sector / Government
                     <span class="form-check-sign">
                         <span class="check"></span>
@@ -60,7 +61,8 @@
             <div class="form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" name="sector" id="sector4" type="checkbox"
-                        value="Self-employed / Consulting" [checked]="model.sector.self" (change)="model.sector.self = !model.sector.self">
+                        value="Self-employed / Consulting" [checked]="model.sector.self"
+                        (change)="model.sector.self = !model.sector.self">
                     Self-employed / Consulting
                     <span class="form-check-sign">
                         <span class="check"></span>
@@ -70,7 +72,8 @@
             <div class="form-check form-check-radio">
                 <label class="form-check-label">
                     <input class="form-check-input" name="sector" id="sector5" type="checkbox"
-                        value="University / Academia" [checked]="model.sector.university" (change)="model.sector.university = !model.sector.university">
+                        value="University / Academia" [checked]="model.sector.university"
+                        (change)="model.sector.university = !model.sector.university">
                     University / Academia
                     <span class="form-check-sign">
                         <span class="check"></span>
@@ -80,7 +83,8 @@
             <div class="form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                        value="International organisation" [checked]="model.sector.international" (change)="model.sector.international = !model.sector.international">
+                        value="International organisation" [checked]="model.sector.international"
+                        (change)="model.sector.international = !model.sector.international">
                     International organisation
                     <span class="form-check-sign">
                         <span class="check"></span>
@@ -92,7 +96,8 @@
                     <div class="form-check">
                         <label class="form-check-label">
                             <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                value="International organisation" [checked]="model.sector.other" (change)="model.sector.other = !model.sector.other">
+                                value="International organisation" [checked]="model.sector.other"
+                                (change)="model.sector.other = !model.sector.other">
                             Other (specify)
                             <span class="form-check-sign">
                                 <span class="check"></span>
@@ -348,7 +353,7 @@
             <label class="form-check-label">
                 <input class="form-check-input" type="checkbox" value="acceptedGDPR" [checked]="acceptedGDPR"
                     (change)="acceptedGDPR= !acceptedGDPR">
-                I accept GDPR statement and Terms and Conditions
+                I accept the Data privacy statement and Terms and conditions
                 <span class="form-check-sign">
                     <span class="check"></span>
                 </span>
@@ -360,12 +365,12 @@
     <div class="footer text-center">
         <a href="#" class="btn btn-primary btn-round btn-wd btn-lg" (click)="saveData()">Save your data</a>
     </div>
-
-    <p class="description text-center"> You can delete your account and your data. Careful! This action will log you out
-        and you will lose your registration form.</p>
+    <div class="form-group"></div>
+    <p class="description text-center"> You can delete your account and speakers profile. We will delete all your data
+        you provided. Be careful! This action will log you out and all the data you have entered will be lost.</p>
 
     <div class="footer text-center">
-        <a href="#" class="btn btn-danger btn-round btn-wd btn-sm" (click)="removeData()">Delete all your data</a>
+        <a href="#" class="btn btn-danger btn-round btn-wd btn-sm" (click)="removeData()">Delete your account</a>
     </div>
 
 </form>
