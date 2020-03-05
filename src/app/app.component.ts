@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'wigspeakers';
   user: User = null;
   why = false;
+  terms = false;
   isUser = false;
   constructor(public fAuth: AngularFireAuth) {
     this.fAuth.auth.onAuthStateChanged(u => {
@@ -23,7 +24,7 @@ export class AppComponent {
     });
   }
 
-  logOut(){
+  logOut() {
     this.fAuth.auth.signOut();
   }
 }
