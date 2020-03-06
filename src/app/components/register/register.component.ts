@@ -217,7 +217,15 @@ export class RegisterComponent implements OnInit {
                 other: false,
               };
             }
-            console.log("Model");
+            if (!this.model.signin) {
+              this.model.signin = {
+                yes: false,
+                slack: false,
+                mailing: false,
+                no: false,
+                already: false
+              };
+            }
             console.log(this.model);
           } else {
             this.model.email = this.user.email;
@@ -262,7 +270,7 @@ export class RegisterComponent implements OnInit {
   }
 
   addOtherApp() {
-    if (this.otherAppAdd != '') {
+    if (this.otherAppAdd !== '') {
       if (!this.model.otherApplications) {
         this.model.otherApplications = [];
       }

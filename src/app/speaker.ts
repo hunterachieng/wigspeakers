@@ -41,7 +41,20 @@ export class Speaker {
         public contactTwitter: boolean = false,
         public twitter: string = '',
         public picture: string = '',
-        public webpage: string = ''
+        public webpage: string = '',
+        public signin: {
+            yes: boolean,
+            slack: boolean,
+            mailing: boolean,
+            no: boolean,
+            already: boolean
+        } = {
+                yes: false,
+                slack: false,
+                mailing: false,
+                no: false,
+                already: false
+            },
     ) { }
 
 }

@@ -26,3 +26,8 @@ form {
     font-family: Oswald;
     font-weight: 200;
  }
+
+ label,
+ .bmd-form-group .bmd-label-static {
+    font-size: 1rem;
+ }

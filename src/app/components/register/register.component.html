@@ -361,6 +361,72 @@
         </div>
     </div>
     <p class="description text-center text-danger"> {{errorGDPR}}</p>
+
+<!-- 
+    <div class="form-group">
+        <label for="contact">
+            Do you want to sign-up for the Women in Geospatial+ slack channel and/or mailing list? <br>
+            (If yes, we will use your email address and name and add it to the network’s Slack channel and/or mailing
+            list) <br>
+        </label>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" name="signin" id="signin1" type="checkbox" value="Yes" [checked]="model.signin.yes"
+                    (change)="model.signin.yes= !model.signin.yes">
+                Yes
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" name="signin" id="signin2"  type="checkbox" value="slack"
+                    [checked]="model.signin.slack" (change)="model.signin.slack= !model.signin.slack">
+                I want to be added to the Women in Geospatial+ slack channel <br>
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" name="signin" id="signin3" type="checkbox" value="mailing"
+                    [checked]="model.signin.mailing" (change)="model.signin.mailing= !model.signin.mailing">
+                I want to be added to the Women in Geospatial+ mailing list <br>
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" name="signin" id="signin4" type="checkbox" value="no" [checked]="model.signin.no"
+                    (change)="model.signin.no= !model.signin.no">
+                No, I am not interested <br>
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" name="signin" id="signin5" type="checkbox" value="already"
+                    [checked]="model.signin.already" (change)="model.signin.already= !model.signin.already">
+                I am already part of Women in Geospatial+ <br>
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+    </div>
+
+ -->
     <p class="description text-center text-success"> {{savedTxt}}</p>
     <div class="footer text-center">
         <a href="#" class="btn btn-primary btn-round btn-wd btn-lg" (click)="saveData()">Save your data</a>
