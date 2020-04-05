@@ -1,442 +1,1319 @@
-<!-- <div class="footer text-right">
-    <a href="#" class="btn btn-primary btn-round btn-wd btn-lg" (click)="logOut()">Log out</a>
-</div> -->
-<h2 class="title">Registration Form</h2>
-<p class="description text-center"> The following data will be used to create your speakers profile. The data you
-    provide (your email address excluded) will be accessible and searchable for everyone.</p>
-<p class="description text-center text-danger"> {{errorGDPR}}</p>
-<p class="description text-center text-success"> {{savedTxt}}</p>
-<form>
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name">
-    </div>
+<div class="section text-justify">
 
-    <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email"
-            [(ngModel)]="model.email">
-    </div>
+    <div class="row">
+        <div class="col-md-8 col-sm-12 ml-auto mr-auto">
 
-    <div class="form-group">
-        <label for="position">Position</label>
-        <input type="text" class="form-control" id="position" name="position" [(ngModel)]="model.position">
-    </div>
+            <h2 class="title">Registration Form</h2>
+            <p class="description text-center"> The following data will be used to create your speakers profile. The
+                data you
+                provide (your email address excluded) will be accessible and searchable for everyone.</p>
+            <p class="description text-center text-danger"> {{ errorGDPR }}</p>
+            <p class="description text-center text-success"> {{ savedTxt }}</p>
+            <form>
+                <div class="form-group">
+                    <label class="heading" for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name">
+                </div>
 
-    <div class="row form-group">
-        <div class="col-md-8">
-            <label for="sector">What work sector do you work in?</label>
-            <div class="form-check ">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector1" type="checkbox" value="Private Company"
-                        [checked]="model.sector.private" (change)="model.sector.private = !model.sector.private">
-                    Private Company
-                    <span class="form-check-sign">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector2" type="checkbox"
-                        value="Public sector / Government" [checked]="model.sector.public"
-                        (change)="model.sector.public = !model.sector.public">
-                    Public sector / Government
-                    <span class="form-check-sign">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector3" type="checkbox"
-                        value="Non-governmental organisation (NGO) / Not-For-Profit organisation"
-                        [checked]="model.sector.ngo" (change)="model.sector.ngo = !model.sector.ngo">
-                    Non-governmental organisation (NGO) / Not-For-Profit organisation
-                    <span class="form-check-sign">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector4" type="checkbox"
-                        value="Self-employed / Consulting" [checked]="model.sector.self"
-                        (change)="model.sector.self = !model.sector.self">
-                    Self-employed / Consulting
-                    <span class="form-check-sign">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-            <div class="form-check form-check-radio">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector5" type="checkbox"
-                        value="University / Academia" [checked]="model.sector.university"
-                        (change)="model.sector.university = !model.sector.university">
-                    University / Academia
-                    <span class="form-check-sign">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                        value="International organisation" [checked]="model.sector.international"
-                        (change)="model.sector.international = !model.sector.international">
-                    International organisation
-                    <span class="form-check-sign">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-check">
+                <div class="form-group">
+                    <label class="heading" for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email"
+                        [(ngModel)]="model.email">
+                </div>
+
+                <div class="form-group">
+                    <label class="heading" for="position">Position</label>
+                    <input type="text" class="form-control" id="position" name="position" [(ngModel)]="model.position">
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-8">
+                        <label class="heading" for="sector">What sector do you work in?</label>
+                        <div class="form-check ">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector1" type="checkbox"
+                                    value="Private Company" [checked]="model.sector.private"
+                                    (change)="model.sector.private = !model.sector.private">
+                                Private Company
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector2" type="checkbox"
+                                    value="Public sector / Government" [checked]="model.sector.public"
+                                    (change)="model.sector.public = !model.sector.public">
+                                Public sector / Government
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector3" type="checkbox"
+                                    value="Non-governmental organisation (NGO) / Not-For-Profit organisation"
+                                    [checked]="model.sector.ngo" (change)="model.sector.ngo = !model.sector.ngo">
+                                Non-governmental organisation (NGO) / Not-For-Profit organisation
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector4" type="checkbox"
+                                    value="Self-employed / Consulting" [checked]="model.sector.self"
+                                    (change)="model.sector.self = !model.sector.self">
+                                Self-employed / Consulting
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector5" type="checkbox"
+                                    value="University / Academia" [checked]="model.sector.university"
+                                    (change)="model.sector.university = !model.sector.university">
+                                University / Academia
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+                                    value="International organisation" [checked]="model.sector.international"
+                                    (change)="model.sector.international = !model.sector.international">
+                                International organisation
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+                                            value="International organisation" [checked]="model.sector.other"
+                                            (change)="model.sector.other = !model.sector.other">
+                                        Other (please specify)
+                                        <span class="form-check-sign">
+                                            <span class="check"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="otherSector" name="otherSector"
+                                    [(ngModel)]="model.otherSector" [hidden]="!model.sector.other">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="heading" for="experience">Years of work experience</label>
+                        <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="experience" id="experience1" type="radio"
+                                    value="0 - 5 years" [(ngModel)]="model.years">
+                                0 - 5 years
+                                <span class="circle">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="experience" id="experience2" type="radio"
+                                    value="5 - 10 years" [(ngModel)]="model.years">
+                                5 - 10 years
+                                <span class="circle">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="experience" id="experience3" type="radio"
+                                    value="10 - 20 years" [(ngModel)]="model.years">
+                                10 - 20 years
+                                <span class="circle">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="experience" id="experience4" type="radio"
+                                    value="20 + years " [(ngModel)]="model.years">
+                                20 + years
+                                <span class="circle">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <label class="heading" for="level">What career level are you at the moment?</label>
+                        <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="level" id="level1" type="radio"
+                                    value="Early-career" [(ngModel)]="model.level">
+                                Early-career
+                                <span class="circle">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="level" id="level2" type="radio" value="Mid-level"
+                                    [(ngModel)]="model.level">
+                                Mid-level
+                                <span class="circle">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="level" id="level3" type="radio"
+                                    value="Senior-level" [(ngModel)]="model.level">
+                                Senior-level
+                                <span class="circle">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="heading" for="bio">Bio</label>
+                    <textarea class="form-control"
+                        placeholder="Hint: an outstanding bio is short and precise. Try to explain your professional experiences two sentences or less."
+                        id="bio" rows="3" name="bio" [(ngModel)]="model.bio"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="heading" for="webpage">Webpage</label>
+                    <input type="text" class="form-control" id="webpage" name="webpage" [(ngModel)]="model.webpage">
+                </div>
+
+                <div class="form-group">
+                    <label class="heading" for="region">Choose the world region you are coming from</label>
+                    <ng-select [items]="region" [multiple]="false" appendTo="body" name="region"
+                        placeholder="Select region..." [(ngModel)]="model.region"></ng-select>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="heading" for="country">What country do you currently reside?</label>
+                            <input type="text" class="form-control" id="country" name="country"
+                                [(ngModel)]="model.country">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="heading" for="city">What city do you come from?</label>
+                            <input type="text" class="form-control" id="city" name="city" [(ngModel)]="model.city">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="heading" for="areas">Areas of expertise</label>
+
+                    <div class="form-check form-check-radio">
                         <label class="form-check-label">
-                            <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                value="International organisation" [checked]="model.sector.other"
-                                (change)="model.sector.other = !model.sector.other">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.research"
+                                (change)="model.newareas.research= !model.newareas.research">
+                            Research / Science
+                            Please specify ...
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="geoSoft"
+                                [checked]="model.newareas.geosoft"
+                                (change)="model.newareas.geosoft= !model.newareas.geosoft">
+                            Geospatial Software
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geosoft">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geosoftsub.foss4g"
+                                (change)="model.newareas.geosoftsub.foss4g= !model.newareas.geosoftsub.foss4g">
+                            FOSS4G (e.g. QGIS, gdal)
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geosoft">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geosoftsub.arcgis"
+                                (change)="model.newareas.geosoftsub.arcgis= !model.newareas.geosoftsub.arcgis">
+                            ArcGIS Suite
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geosoft">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geosoftsub.mapinfo"
+                                (change)="model.newareas.geosoftsub.mapinfo= !model.newareas.geosoftsub.mapinfo">
+                            Mapinfo Suite
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geosoft">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geosoftsub.cadcorp"
+                                (change)="model.newareas.geosoftsub.cadcorp= !model.newareas.geosoftsub.cadcorp">
+                            Cadcorp Suite
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geosoft">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geosoftsub.fme"
+                                (change)="model.newareas.geosoftsub.fme= !model.newareas.geosoftsub.fme">
+                            FME
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geosoft">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geosoftsub.other"
+                                (change)="model.newareas.geosoftsub.other= !model.newareas.geosoftsub.other">
                             Other (specify)
                             <span class="form-check-sign">
                                 <span class="check"></span>
                             </span>
                         </label>
                     </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="webmapping"
+                                [checked]="model.newareas.webmapping"
+                                (change)="model.newareas.webmapping= !model.newareas.webmapping">
+                            Webmapping
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.webmapping">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.webmappingsub.openlayers"
+                                (change)="model.newareas.webmappingsub.openlayers = !model.newareas.webmappingsub.openlayers">
+                            Open Layers
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.webmapping">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.webmappingsub.leaflet"
+                                (change)="model.newareas.webmappingsub.leaflet = !model.newareas.webmappingsub.leaflet">
+                            Leaflet
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.webmapping">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.webmappingsub.arcgis"
+                                (change)="model.newareas.webmappingsub.arcgis = !model.newareas.webmappingsub.arcgis">
+                            ArcGIS Suite
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.webmapping">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.webmappingsub.d3"
+                                (change)="model.newareas.webmappingsub.d3 = !model.newareas.webmappingsub.d3">
+                            D3
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.webmapping">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.webmappingsub.mapbox"
+                                (change)="model.newareas.webmappingsub.mapbox = !model.newareas.webmappingsub.mapbox">
+                            Mapbox Studio and Mapbox GL
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.webmapping">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.webmappingsub.other"
+                                (change)="model.newareas.webmappingsub.other = !model.newareas.webmappingsub.other">
+                            Other (Specify)
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="geoopendata"
+                                [checked]="model.newareas.geoopendata"
+                                (change)="model.newareas.geoopendata= !model.newareas.geoopendata">
+                            Geospatial Open Data platforms
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoopendata">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geoopendatasub.geonode"
+                                (change)="model.newareas.geoopendatasub.geonode = !model.newareas.geoopendatasub.geonode">
+                            Geonode /Carto
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoopendata">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geoopendatasub.arcgis"
+                                (change)="model.newareas.geoopendatasub.arcgis = !model.newareas.geoopendatasub.arcgis">
+                            ArcGIS Open Data Platform
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoopendata">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geoopendatasub.copernicus"
+                                (change)="model.newareas.geoopendatasub.copernicus = !model.newareas.geoopendatasub.copernicus">
+                            Copernicus Open Data
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoopendata">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geoopendatasub.earth"
+                                (change)="model.newareas.geoopendatasub.earth = !model.newareas.geoopendatasub.earth">
+                            Earth on AWS
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoopendata">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geoopendatasub.google"
+                                (change)="model.newareas.geoopendatasub.google = !model.newareas.geoopendatasub.google">
+                            Google Open Data initiative
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="remote"
+                                [checked]="model.newareas.remote"
+                                (change)="model.newareas.remote= !model.newareas.remote">
+                            Remote Sensing & Earth Observations
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="gis"
+                                [checked]="model.newareas.gis" (change)="model.newareas.gis= !model.newareas.gis">
+                            Geographic Information Systems
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="ethical"
+                                [checked]="model.newareas.ethical"
+                                (change)="model.newareas.ethical= !model.newareas.ethical">
+                            Ethical Geography
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="geocloud"
+                                [checked]="model.newareas.geocloud"
+                                (change)="model.newareas.geocloud= !model.newareas.geocloud">
+                            Geospatial cloud platforms
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geocloud">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geocloudsub.google"
+                                (change)="model.newareas.geocloudsub.google = !model.newareas.geocloudsub.google">
+                            Google Earth Engine
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geocloud">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geocloudsub.amazon"
+                                (change)="model.newareas.geocloudsub.amazon = !model.newareas.geocloudsub.amazon">
+                            Amazon Web Services
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geocloud">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geocloudsub.other"
+                                (change)="model.newareas.geocloudsub.other = !model.newareas.geocloudsub.other">
+                            Other (Specify)
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox"
+                                value="geoprogramming" [checked]="model.newareas.geoprogramming"
+                                (change)="model.newareas.geoprogramming= !model.newareas.geoprogramming">
+                            (Geospatial) programming / Data Science
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoprogramming">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geoprogrammingsub.python"
+                                (change)="model.newareas.geoprogrammingsub.python = !model.newareas.geoprogrammingsub.python">
+                            Python
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoprogramming">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geoprogrammingsub.r"
+                                (change)="model.newareas.geoprogrammingsub.r = !model.newareas.geoprogrammingsub.r">
+                            R
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoprogramming">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geoprogrammingsub.jupyter"
+                                (change)="model.newareas.geoprogrammingsub.jupyter = !model.newareas.geoprogrammingsub.jupyter">
+                            Jupyter Notebooks
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoprogramming">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geoprogrammingsub.javascript"
+                                (change)="model.newareas.geoprogrammingsub.javascript = !model.newareas.geoprogrammingsub.javascript">
+                            Javascript
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoprogramming">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geoprogrammingsub.other"
+                                (change)="model.newareas.geoprogrammingsub.other = !model.newareas.geoprogrammingsub.other">
+                            Other (Specify)
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="datavis"
+                                [checked]="model.newareas.datavis"
+                                (change)="model.newareas.datavis= !model.newareas.datavis">
+                            Data Visualisation
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.datavis">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.datavissub.cartography"
+                                (change)="model.newareas.datavissub.cartography = !model.newareas.datavissub.cartography">
+                            Cartography
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.datavis">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.datavissub.dashboards"
+                                (change)="model.newareas.datavissub.dashboards = !model.newareas.datavissub.dashboards">
+                            Dashboards
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.datavis">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.datavissub.graphic"
+                                (change)="model.newareas.datavissub.graphic = !model.newareas.datavissub.graphic">
+                            Graphic design
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox"
+                                value="dataJournalism" [checked]="model.newareas.dataJournalism"
+                                (change)="model.newareas.dataJournalism= !model.newareas.dataJournalism">
+                            (Geospatial) Data Journalism
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="strategic"
+                                [checked]="model.newareas.strategic"
+                                (change)="model.newareas.strategic= !model.newareas.strategic">
+                            Strategic Skills
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.strategic">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.strategicsub.geospatial"
+                                (change)="model.newareas.strategicsub.geospatial = !model.newareas.strategicsub.geospatial">
+                            Geospatial leadership
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.strategic">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.strategicsub.policy"
+                                (change)="model.newareas.strategicsub.policy = !model.newareas.strategicsub.policy">
+                            Policy
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.strategic">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.strategicsub.gi"
+                                (change)="model.newareas.strategicsub.gi = !model.newareas.strategicsub.gi">
+                            GI Implementation / Strategy
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.strategic">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.strategicsub.growth"
+                                (change)="model.newareas.strategicsub.growth = !model.newareas.strategicsub.growth">
+                            Growth in the geospatial / space Industry
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="geodata"
+                                [checked]="model.newareas.geodata"
+                                (change)="model.newareas.geodata= !model.newareas.geodata">
+                            Geospatial Data
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geodata">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geodatasub.spatial"
+                                (change)="model.newareas.geodatasub.spatial = !model.newareas.geodatasub.spatial">
+                            Spatial Data Analysis & Insight
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geodata">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geodatasub.location"
+                                (change)="model.newareas.geodatasub.location = !model.newareas.geodatasub.location">
+                            Location Intelligence
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geodata">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geodatasub.bigdata"
+                                (change)="model.newareas.geodatasub.bigdata = !model.newareas.geodatasub.bigdata">
+                            Big Data / Geospatial Data
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geodata">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.geodatasub.opendata"
+                                (change)="model.newareas.geodatasub.opendata = !model.newareas.geodatasub.opendata">
+                            Open Data
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox"
+                                value="entrepreneurship" [checked]="model.newareas.entrepreneurship"
+                                (change)="model.newareas.entrepreneurship= !model.newareas.entrepreneurship">
+                            Entrepreneurship
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="innovation"
+                                [checked]="model.newareas.innovation"
+                                (change)="model.newareas.innovation= !model.newareas.innovation">
+                            Innovation / New Uses of GIS data
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.innovation">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.innovationsub.ar"
+                                (change)="model.newareas.innovationsub.ar = !model.newareas.innovationsub.ar">
+                            Augmented Reality (AR)
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.innovation">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.innovationsub.vr"
+                                (change)="model.newareas.innovationsub.vr = !model.newareas.innovationsub.vr">
+                            Virtual Reality (VR)
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.innovation">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.innovationsub.ml"
+                                (change)="model.newareas.innovationsub.ml = !model.newareas.innovationsub.ml">
+                            Machine Learning / Artificial Intelligence
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.innovation">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.innovationsub.blockchain"
+                                (change)="model.newareas.innovationsub.blockchain = !model.newareas.innovationsub.blockchain">
+                            Blockchain
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.innovation">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.innovationsub.fiveg"
+                                (change)="model.newareas.innovationsub.fiveg = !model.newareas.innovationsub.fiveg">
+                                5G
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.innovation">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.innovationsub.iot"
+                                (change)="model.newareas.innovationsub.iot = !model.newareas.innovationsub.iot">
+                                Internet-of-Things (IoT)
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.innovation">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
+                                [checked]="model.newareas.innovationsub.geotrans"
+                                (change)="model.newareas.innovationsub.geotrans = !model.newareas.innovationsub.geotrans">
+                                Geospatial and digital transformation
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="other"
+                                [checked]="model.newareas.other"
+                                (change)="model.newareas.other= !model.newareas.other">
+                                Other
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+
                 </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" id="otherSector" name="otherSector"
-                        [(ngModel)]="model.otherSector" [hidden]="!model.sector.other">
+                <div style="display: inline" *ngFor="let a of model.otherAreas">
+                    <button class="btn btn-other btn-primary"><span aria-hidden="true" class="ng-value-icon left x"
+                            style="z-index: 199">×</span>{{a}}</button>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <label for="experience">Years of experience</label>
-            <div class="form-check form-check-radio">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="experience" id="experience1" type="radio" value="0 - 5 years"
-                        [(ngModel)]="model.years">
-                    0 - 5 years
-                    <span class="circle">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-            <div class="form-check form-check-radio">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="experience" id="experience2" type="radio" value="5 - 10 years"
-                        [(ngModel)]="model.years">
-                    5 - 10 years
-                    <span class="circle">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-            <div class="form-check form-check-radio">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="experience" id="experience3" type="radio"
-                        value="10 - 20 years" [(ngModel)]="model.years">
-                    10 - 20 years
-                    <span class="circle">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-            <div class="form-check form-check-radio">
-                <label class="form-check-label">
-                    <input class="form-check-input" name="experience" id="experience4" type="radio" value="20 + years "
-                        [(ngModel)]="model.years">
-                    20 + years
-                    <span class="circle">
-                        <span class="check"></span>
-                    </span>
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="bio">Bio</label>
-        <textarea class="form-control"
-            placeholder="Hint: an outstanding bio is short and precise. Try to explain your professional experiences two sentences or less."
-            id="bio" rows="3" name="bio" [(ngModel)]="model.bio"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="webpage">Webpage</label>
-        <input type="text" class="form-control" id="webpage" name="webpage" [(ngModel)]="model.webpage">
-    </div>
-
-    <div class="form-group">
-        <label for="region">Choose the world region you are coming from</label>
-        <ng-select [items]="region" [multiple]="false" appendTo="body" name="region" placeholder="Select region..."
-            [(ngModel)]="model.region"></ng-select>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
-                <label for="country">What country do you currently reside?</label>
-                <input type="text" class="form-control" id="country" name="country" [(ngModel)]="model.country">
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                <label for="city">What city do you come from?</label>
-                <input type="text" class="form-control" id="city" name="city" [(ngModel)]="model.city">
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="areas">Areas of expertise</label>
-        <ng-select [items]="areas" [multiple]="true" appendTo="body" bindLabel="full" groupBy="group" name="areas"
-            placeholder="Select areas..." [(ngModel)]="model.areas"></ng-select>
-    </div>
-    <div style="display: inline" *ngFor="let a of model.otherAreas">
-        <button class="btn btn-other btn-primary"><span aria-hidden="true" class="ng-value-icon left x"
-                style="z-index: 199">×</span>{{a}}</button>
-    </div>
-    <div class="form-group">
-        <label for="otherArea">Add any additional areas of expertise</label>
-        <div class="input-group">
-            <input type="text" style="max-width: 90%;" class="form-control" id="otherArea" name="otherArea"
-                [(ngModel)]="otherAreaAdd">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-fab btn-round btn-primary" (click)="addOtherArea()">
-                    <i class="fa fa-plus"></i>
-                </button>
-            </span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="applications">Domain expertise</label>
-        <ng-select [items]="applications" [multiple]="true" appendTo="body" bindLabel="name" name="applications"
-            placeholder="What domain(s) do you work in?" [(ngModel)]="model.applications">
-        </ng-select>
-    </div>
-    <div style="display: inline" *ngFor="let a of model.otherApplications">
-        <button class="btn btn-other btn-primary"><span aria-hidden="true" class="ng-value-icon left x"
-                style="z-index: 199">×</span>{{a}}</button>
-    </div>
-    <div class="form-group">
-        <label for="otherApp">List any other domain(s) you work in</label>
-        <div class="input-group">
-            <input type="text" style="max-width: 90%;" class="form-control" id="otherApp" name="otherApp"
-                [(ngModel)]="otherAppAdd">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-fab btn-round btn-primary" (click)="addOtherApp()">
-                    <i class="fa fa-plus"></i>
-                </button>
-            </span>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="qualifications">Qualifications</label>
-        <textarea class="form-control" id="qualifications" rows="3" name="qualifications"
-            [(ngModel)]="model.qualifications"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="languages">Languages I feel confident presenting in</label>
-        <ng-select [items]="languages" [multiple]="true" appendTo="body" name="languages"
-            placeholder="Select languages..." [(ngModel)]="model.languages"></ng-select>
-    </div>
-
-    <div class="form-group">
-        <label for="speakingExperience">List here any relevant speaking experience here…</label>
-        <textarea type="text" class="form-control" id="speakingExperience" name="speakingExperience"
-            [(ngModel)]="model.speakingExperience" rows="3"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="contact">I would like to be contacted via:</label>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="btn btn-social btn-just-icon btn-round btn-linkedin"
-                    (click)="model.contactLinkedIn = !model.contactLinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </div>
-            </div>
-            <div class="col-md-2 pt-3">
-                <div class="togglebutton">
-                    <label class="form-check-label">
-                        <input class="form-check-input" name="contactLinkedIn" id="contactLinkedIn" type="checkbox"
-                            [checked]="model.contactLinkedIn" (change)="model.contactLinkedIn = !model.contactLinkedIn">
-                        <span class="toggle">
-                            <span class="check"></span>
+                <div class="form-group">
+                    <label class="heading" for="otherArea">Add any additional areas of expertise</label>
+                    <div class="input-group">
+                        <input type="text" style="max-width: 90%;" class="form-control" id="otherArea" name="otherArea"
+                            [(ngModel)]="otherAreaAdd">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-fab btn-round btn-primary" (click)="addOtherArea()">
+                                <i class="fa fa-plus"></i>
+                            </button>
                         </span>
-                    </label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-8">
-                <div [hidden]="!model.contactLinkedIn" class="form-group">
-                    <label for="linkedin">LinkedIn profile</label>
-                    <input type="text" class="form-control" id="linkedin" name="linkedIn" [(ngModel)]="model.linkedIn">
+
+                <!--      <div class="form-group">
+                    <label class="heading" for="areas">Areas of expertise</label>
+                    <ng-select [items]="areas" [multiple]="true" appendTo="body" bindLabel="full" groupBy="group"
+                        name="areas" placeholder="Select areas..." [(ngModel)]="model.areas"></ng-select>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="btn btn-social btn-just-icon btn-round btn-twitter"
-                    (click)="model.contactTwitter = !model.contactTwitter">
-                    <i class="fab fa-twitter"></i>
+                <div style="display: inline" *ngFor="let a of model.otherAreas">
+                    <button class="btn btn-other btn-primary"><span aria-hidden="true" class="ng-value-icon left x"
+                            style="z-index: 199">×</span>{{a}}</button>
                 </div>
-            </div>
-            <div class="col-md-2 pt-3">
-                <div class="togglebutton">
-                    <label class="form-check-label">
-                        <input class="form-check-input" name="contactTwitter" id="contactTwitter" type="checkbox"
-                            [checked]="model.contactTwitter" (change)="model.contactTwitter = !model.contactTwitter">
-                        <span class="toggle">
-                            <span class="check"></span>
+                <div class="form-group">
+                    <label class="heading" for="otherArea">Add any additional areas of expertise</label>
+                    <div class="input-group">
+                        <input type="text" style="max-width: 90%;" class="form-control" id="otherArea" name="otherArea"
+                            [(ngModel)]="otherAreaAdd">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-fab btn-round btn-primary" (click)="addOtherArea()">
+                                <i class="fa fa-plus"></i>
+                            </button>
                         </span>
+                    </div>
+                </div> -->
+
+                <div class="form-group">
+                    <label class="heading" for="applications">Domain expertise - What domain(s) do you work in?</label>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain1" type="checkbox"
+                                        value="Public Health" [checked]="model.domain.public"
+                                        (change)="model.domain.public = !model.domain.public">
+                                    Public Health
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain2" type="checkbox"
+                                        value="Defence and Security" [checked]="model.domain.defence"
+                                        (change)="model.domain.defence = !model.domain.defence">
+                                    Defence and Security
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain3" type="checkbox"
+                                        value="Emergency Service / Public Safety" [checked]="model.domain.emergency"
+                                        (change)="model.domain.emergency = !model.domain.emergency">
+                                    Emergency Service / Public Safety
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain4" type="checkbox"
+                                        value="Climate" [checked]="model.domain.climate"
+                                        (change)="model.domain.climate = !model.domain.climate">
+                                    Climate
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain5" type="checkbox"
+                                        value="Smart Cities" [checked]="model.domain.smart"
+                                        (change)="model.domain.smart = !model.domain.smart">
+                                    Smart Cities
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain6" type="checkbox"
+                                        value="Citizen Science" [checked]="model.domain.citizen"
+                                        (change)="model.domain.citizen = !model.domain.citizen">
+                                    Citizen Science
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain7" type="checkbox"
+                                        value="Transportation" [checked]="model.domain.transportation"
+                                        (change)="model.domain.transportation = !model.domain.transportation">
+                                    Transportation
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain8" type="checkbox"
+                                        value="Energy" [checked]="model.domain.energy"
+                                        (change)="model.domain.energy = !model.domain.energy">
+                                    Energy
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain9" type="checkbox"
+                                        value="Manufacturing" [checked]="model.domain.manufacturing"
+                                        (change)="model.domain.manufacturing = !model.domain.manufacturing">
+                                    Manufacturing
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain10" type="checkbox"
+                                        value="Environment" [checked]="model.domain.environment"
+                                        (change)="model.domain.environment = !model.domain.environment">
+                                    Environment
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain11" type="checkbox"
+                                        value="Food, Forestry, Agriculture" [checked]="model.domain.food"
+                                        (change)="model.domain.food = !model.domain.food">
+                                    Food, Forestry, Agriculture
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain12" type="checkbox"
+                                        value="Sustainable Development" [checked]="model.domain.sustainable"
+                                        (change)="model.domain.sustainable = !model.domain.sustainable">
+                                    Sustainable Development
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain13" type="checkbox"
+                                        value="Policy" [checked]="model.domain.policy"
+                                        (change)="model.domain.policy = !model.domain.policy">
+                                    Policy
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="heading" for="otherApp">List any other domain(s) you work in</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="otherApp" name="otherApp"
+                            [(ngModel)]="model.otherApplications">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="heading" for="qualifications">List here any other qualifications you would like to
+                        share, e.g. MSc,
+                        PhD</label>
+                    <textarea class="form-control" id="qualifications" rows="3" name="qualifications"
+                        [(ngModel)]="model.qualifications"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="heading" for="languages">Languages I feel confident presenting in</label>
+                    <ng-select [items]="languages" [multiple]="true" appendTo="body" name="languages"
+                        placeholder="Select languages..." [(ngModel)]="model.languages"></ng-select>
+                </div>
+
+                <div class="form-group">
+                    <label class="heading" for="speakingExperience">List here any relevant speaking experience
+                        here…</label>
+                    <textarea type="text" class="form-control" id="speakingExperience" name="speakingExperience"
+                        [(ngModel)]="model.speakingExperience" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="heading" for="contact">I would like to be contacted via:</label>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="btn btn-social btn-just-icon btn-round btn-linkedin"
+                                (click)="model.contactLinkedIn = !model.contactLinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                            <div class="togglebutton">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="contactLinkedIn" id="contactLinkedIn"
+                                        type="checkbox" [checked]="model.contactLinkedIn"
+                                        (change)="model.contactLinkedIn = !model.contactLinkedIn">
+                                    <span class="toggle">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div [hidden]="!model.contactLinkedIn" class="form-group">
+                                <label for="linkedin">LinkedIn profile</label>
+                                <input type="text" class="form-control" id="linkedin" name="linkedIn"
+                                    [(ngModel)]="model.linkedIn">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="btn btn-social btn-just-icon btn-round btn-twitter"
+                                (click)="model.contactTwitter = !model.contactTwitter">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                            <div class="togglebutton">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="contactTwitter" id="contactTwitter"
+                                        type="checkbox" [checked]="model.contactTwitter"
+                                        (change)="model.contactTwitter = !model.contactTwitter">
+                                    <span class="toggle">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div [hidden]="!model.contactTwitter" class="form-group">
+                                <label for="twitter">Twitter profile</label>
+                                <input type="text" class="form-control" id="twitter" name="twitter"
+                                    [(ngModel)]="model.twitter">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="btn btn-social btn-just-icon btn-round btn-envelope"
+                                (click)="model.contactEmail = !model.contactEmail">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                            <div class="togglebutton">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="contactEmail" id="contactEmail"
+                                        type="checkbox" [checked]="model.contactEmail"
+                                        (change)="model.contactEmail = !model.contactEmail">
+                                    <span class="toggle">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div [hidden]="!model.contactEmail" class="form-group">
+                                <label for="email"> Contact email
+                                </label>
+                                <input type="text" class="form-control" id="email" name="email"
+                                    [(ngModel)]="model.email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="heading" for="picture">Profile Picture</label>
+                </div>
+
+                <div class="row" style="padding-bottom: 4%;">
+                    <div class="col-md-2">
+                        <img src="{{model.picture}}" alt="Profile Picture" class="img-raised rounded-circle img-fluid">
+                    </div>
+                    <div class="col-md-10">
+                        <input id="file-upload" type="file" class="btn btn-raised btn-round btn-primary btn-file"
+                            (change)="handleFileInput($event.target.files)" />
+                        <button type="button" class="btn btn-fab btn-round btn-danger" (click)="removeFile()">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="acceptedGDPR"
+                                [checked]="acceptedGDPR" (change)="acceptedGDPR= !acceptedGDPR">
+                            I accept the
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                            <a routerLink="/gdpr"> Data privacy statement</a>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signin">
+                        Do you want to sign-up for the Women in Geospatial+ slack channel and/or mailing list? <br>
+                        (If yes, we will use your email address and name and add it to the network’s Slack channel
+                        and/or mailing
+                        list)
                     </label>
                 </div>
-            </div>
-            <div class="col-md-8">
-                <div [hidden]="!model.contactTwitter" class="form-group">
-                    <label for="twitter">Twitter profile</label>
-                    <input type="text" class="form-control" id="twitter" name="twitter" [(ngModel)]="model.twitter">
+                <div class="form-group">
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="signin" id="signin1" type="radio" value="yes"
+                                [(ngModel)]="model.signin.option">
+                            Yes
+                            <span class="circle">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="model.signin.option != 'yes'">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="signin" id="signin2" type="checkbox" value="slack"
+                                [checked]="model.signin.slack" (change)="model.signin.slack= !model.signin.slack">
+                            I want to be added to the Women in Geospatial+ slack channel
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pl-5 form-check form-check-radio" [hidden]="model.signin.option != 'yes'">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="signin" id="signin3" type="checkbox" value="mailing"
+                                [checked]="model.signin.mailing" (change)="model.signin.mailing= !model.signin.mailing">
+                            I want to be added to the Women in Geospatial+ mailing list
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="signin" id="signin4" type="radio" value="no"
+                                [(ngModel)]="model.signin.option">
+                            No, I am not interested
+                            <span class="circle">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check form-check-radio">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="signin" id="signin5" type="radio" value="already"
+                                [(ngModel)]="model.signin.option">
+                            I am already part of Women in Geospatial+
+                            <span class="circle">
+                                <span class="check"></span>
+                            </span>
+                        </label>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="btn btn-social btn-just-icon btn-round btn-envelope"
-                    (click)="model.contactEmail = !model.contactEmail">
-                    <i class="fa fa-envelope"></i>
+
+                <p class="description text-center text-success"> {{savedTxt}}</p>
+                <p class="description text-center text-danger"> {{ errorGDPR }}</p>
+
+                <div class="footer text-center">
+                    <button class="btn btn-primary btn-round btn-wd btn-lg" (click)="saveData()">Save your data</button>
                 </div>
-            </div>
-            <div class="col-md-2 pt-3">
-                <div class="togglebutton">
-                    <label class="form-check-label">
-                        <input class="form-check-input" name="contactEmail" id="contactEmail" type="checkbox"
-                            [checked]="model.contactEmail" (change)="model.contactEmail = !model.contactEmail">
-                        <span class="toggle">
-                            <span class="check"></span>
-                        </span>
-                    </label>
+                <div class="form-group"></div>
+                <p class="description text-center"> You can delete your account and speakers profile. We will delete all
+                    your data
+                    you provided. Be careful! This action will log you out and all the data you have entered will be
+                    lost.</p>
+
+                <div class="footer text-center">
+                    <a class="btn btn-danger btn-round btn-wd btn-sm" (click)="removeData()">Delete your
+                        account</a>
                 </div>
-            </div>
-            <div class="col-md-8">
-                <div [hidden]="!model.contactEmail" class="form-group">
-                    <label for="email"> Contact email
-                    </label>
-                    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="model.email">
-                </div>
-            </div>
+
+            </form>
+
         </div>
     </div>
-
-    <div class="form-group">
-        <label for="picture">Profile Picture</label>
-    </div>
-
-    <div class="row">
-        <div class="col-md-2">
-            <img src="{{model.picture}}" alt="Profile Picture" class="img-raised rounded-circle img-fluid">
-        </div>
-        <div class="col-md-10">
-            <input id="file-upload" type="file" class="btn btn-raised btn-round btn-primary btn-file"
-                (change)="handleFileInput($event.target.files)" />
-            <button type="button" class="btn btn-fab btn-round btn-danger" (click)="removeFile()">
-                <i class="fa fa-times"></i>
-            </button>
-        </div>
-    </div>
-
-    <div class="form-group text-center">
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="acceptedGDPR" [checked]="acceptedGDPR"
-                    (change)="acceptedGDPR= !acceptedGDPR">
-                I accept the Data privacy statement and Terms and conditions
-                <span class="form-check-sign">
-                    <span class="check"></span>
-                </span>
-            </label>
-        </div>
-    </div>
-    <p class="description text-center text-danger"> {{errorGDPR}}</p>
-
-<!-- 
-    <div class="form-group">
-        <label for="contact">
-            Do you want to sign-up for the Women in Geospatial+ slack channel and/or mailing list? <br>
-            (If yes, we will use your email address and name and add it to the network’s Slack channel and/or mailing
-            list) <br>
-        </label>
-    </div>
-    <div class="form-group">
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" name="signin" id="signin1" type="checkbox" value="Yes" [checked]="model.signin.yes"
-                    (change)="model.signin.yes= !model.signin.yes">
-                Yes
-                <span class="form-check-sign">
-                    <span class="check"></span>
-                </span>
-            </label>
-        </div>
-
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" name="signin" id="signin2"  type="checkbox" value="slack"
-                    [checked]="model.signin.slack" (change)="model.signin.slack= !model.signin.slack">
-                I want to be added to the Women in Geospatial+ slack channel <br>
-                <span class="form-check-sign">
-                    <span class="check"></span>
-                </span>
-            </label>
-        </div>
-
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" name="signin" id="signin3" type="checkbox" value="mailing"
-                    [checked]="model.signin.mailing" (change)="model.signin.mailing= !model.signin.mailing">
-                I want to be added to the Women in Geospatial+ mailing list <br>
-                <span class="form-check-sign">
-                    <span class="check"></span>
-                </span>
-            </label>
-        </div>
-
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" name="signin" id="signin4" type="checkbox" value="no" [checked]="model.signin.no"
-                    (change)="model.signin.no= !model.signin.no">
-                No, I am not interested <br>
-                <span class="form-check-sign">
-                    <span class="check"></span>
-                </span>
-            </label>
-        </div>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" name="signin" id="signin5" type="checkbox" value="already"
-                    [checked]="model.signin.already" (change)="model.signin.already= !model.signin.already">
-                I am already part of Women in Geospatial+ <br>
-                <span class="form-check-sign">
-                    <span class="check"></span>
-                </span>
-            </label>
-        </div>
-    </div>
-
- -->
-    <p class="description text-center text-success"> {{savedTxt}}</p>
-    <div class="footer text-center">
-        <a href="#" class="btn btn-primary btn-round btn-wd btn-lg" (click)="saveData()">Save your data</a>
-    </div>
-    <div class="form-group"></div>
-    <p class="description text-center"> You can delete your account and speakers profile. We will delete all your data
-        you provided. Be careful! This action will log you out and all the data you have entered will be lost.</p>
-
-    <div class="footer text-center">
-        <a href="#" class="btn btn-danger btn-round btn-wd btn-sm" (click)="removeData()">Delete your account</a>
-    </div>
-
-</form>
+</div>

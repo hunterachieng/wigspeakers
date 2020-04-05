@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵsetCurrentInjector } from '@angular/core';
+import { Component, OnInit, ɵsetCurrentInjector, NgZone } from '@angular/core';
 import { Speaker } from '../../speaker';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -7,6 +7,8 @@ import 'firebase/firestore';
 import { auth, User } from 'firebase/app';
 import { AngularFireStorage } from '@angular/fire/storage';
 import 'firebase/storage';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
@@ -24,12 +26,92 @@ export class RegisterComponent implements OnInit {
   public otherAreaAdd = '';
   public otherAppAdd = '';
   public otherSector = '';
-
-  public errorGDPR = '';
   public savedTxt = '';
+  public errorGDPR = '';
 
   public acceptedGDPR = false;
 
+  public areasText = {
+    research:   'Research / Science Please specify ...',
+    geosoft: 'Geospatial Software',
+    geosoftsub: {
+        foss4g: 'FOSS4G (e.g. QGIS, gdal)',
+        arcgis: 'ArcGIS Suite',
+        mapinfo: 'Mapinfo Suite',
+        cadcorp: 'Cadcorp Suite',
+        fme: 'FME',
+        other: 'Other (specify)',
+    },
+    webmapping: 'Webmapping',
+    webmappingsub: {
+        openlayers: 'Open Layers',
+        leaflet: 'Leaflet',
+        arcgis: 'ArcGIS Suite',
+        d3: 'D3',
+        mapbox: 'Mapbox Studio and Mapbox GL',
+        other: 'Other (Specify)',
+    },
+    geoopendata: 'Geospatial Open Data platforms',
+    geoopendatasub: {
+        geonode: 'Geonode /Carto',
+        arcgis: 'ArcGIS Open Data Platform',
+        copernicus: 'Copernicus Open Data',
+        earth: 'Earth on AWS',
+        google: 'Google Open Data initiative',
+    },
+    remote: 'Remote Sensing & Earth Observations',
+    gis: 'Geographic Information Systems',
+    ethical: 'Ethical Geography',
+    geocloud: 'Geospatial cloud platforms',
+    geocloudsub: {
+        google: 'Google Earth Engine',
+        amazon: 'Amazon Web Services',
+        other: 'Other (Specify)',
+    },
+    geoprogramming: '(Geospatial) programming / Data Science',
+    geoprogrammingsub: {
+        python: 'Python',
+        r: 'R',
+        jupyter: 'Jupyter Notebooks',
+        javascript: 'Javascript',
+        other: 'Other (Specify)',
+    },
+    datavis: 'Data Visualisation ',
+    datavissub: {
+        cartography: 'Cartography',
+        dashboards: 'Dashboards',
+        graphic: 'Graphic design',
+    },
+    dataJournalism: '(Geospatial) Data Journalism',
+    strategic: 'Strategic Skills',
+    strategicsub: {
+        geospatial: 'Geospatial leadership',
+        policy: 'Policy',
+        gi: 'GI Implementation / Strategy',
+        growth: 'Growth in the geospatial / space Industry',
+    },
+    geodata: 'Geospatial Data',
+    geodatasub: {
+        spatial: 'Spatial Data Analysis & Insight',
+        location: 'Location Intelligence',
+        bigdata: 'Big Data / Geospatial Data',
+        opendata: 'Open Data',
+    },
+    entrepreneurship: 'Entrepreneurship',
+    innovation: 'Innovation / New Uses of GIS data',
+    innovationsub: {
+        ar: 'Augmented Reality (AR)',
+        vr: 'Virtual Reality (VR)',
+        ml: 'Machine Learning / Artificial Intelligence',
+        blockchain: 'Blockchain',
+        fiveg: '5G',
+        iot: 'Internet-of-Things (IoT)',
+        geotrans: 'Geospatial and digital transformation',
+    },
+    other: 'Other'
+};
+
+/*
   public areas = [
     { name: 'Please specify ...', group: 'Research / Science', full: 'Research / Science' },
     { name: 'FOSS4G(e.g.QGIS, gdal)', group: 'Geospatial Software', full: 'FOSS4G(e.g.QGIS, gdal) -> Geospatial Software' },
@@ -83,21 +165,7 @@ export class RegisterComponent implements OnInit {
     { name: 'Other', group: '', full: 'Other' }
   ];
 
-  public applications = [
-    { name: 'Public Health', group: '' },
-    { name: 'Defence and Security', group: '' },
-    { name: 'Emergency Service / Public Safety', group: '' },
-    { name: 'Climate', group: '' },
-    { name: 'Smart Cities', group: '' },
-    { name: 'Citizen Science', group: '' },
-    { name: 'Transportation', group: '' },
-    { name: 'Energy', group: '' },
-    { name: 'Manufacturing', group: '' },
-    { name: 'Environment', group: '' },
-    { name: 'Food, Forestry, Agriculture', group: '' },
-    { name: 'Sustainable Development', group: '' },
-    { name: 'Other(Please specify …)', group: '' }
-  ];
+  */
 
   public languages = [
     'Afrikaans',
@@ -194,10 +262,25 @@ export class RegisterComponent implements OnInit {
     'Europe - UK/ Ireland ',
   ];
 
-  constructor(public fAuth: AngularFireAuth, public fFire: AngularFirestore, private fStorage: AngularFireStorage) {
+  constructor(
+    public fAuth: AngularFireAuth,
+    private ngZone: NgZone,
+    public fFire: AngularFirestore,
+    private fStorage: AngularFireStorage,
+    private router: Router) {
+
     this.model = new Speaker();
     this.userIdToDelete = '';
+    // this.errorGDPR = '';
+
+    if (fAuth.auth.currentUser == null) { // there is not user logged in
+      // this.router.navigate(['/login']);
+      this.ngZone.run(() => this.router.navigateByUrl('/login')).then();
+    }
+
     this.fAuth.auth.onAuthStateChanged(u => {
+      /*       this.zone.run();
+            ngZone.run(); */
       if (u && u.uid !== this.userIdToDelete) {
         this.user = u;
         this.fFire.collection('speakers').doc<Speaker>(this.user.uid).valueChanges().subscribe(s => {
@@ -219,12 +302,109 @@ export class RegisterComponent implements OnInit {
             }
             if (!this.model.signin) {
               this.model.signin = {
-                yes: false,
+                option: '',
                 slack: false,
-                mailing: false,
-                no: false,
-                already: false
+                mailing: false
               };
+            }
+            if (!this.model.domain) {
+              this.model.domain = {
+                public: false,
+                defence: false,
+                emergency: false,
+                climate: false,
+                smart: false,
+                citizen: false,
+                transportation: false,
+                energy: false,
+                manufacturing: false,
+                environment: false,
+                food: false,
+                sustainable: false,
+                policy: false,
+                other: false
+              };
+            }
+            if (!this.model.newareas) {
+              this.model.newareas = {
+                research: false,
+                geosoft: false,
+                geosoftsub: {
+                    foss4g: false,
+                    arcgis: false,
+                    mapinfo: false,
+                    cadcorp: false,
+                    fme: false,
+                    other: false,
+                },
+                webmapping: false,
+                webmappingsub: {
+                    openlayers: false,
+                    leaflet: false,
+                    arcgis: false,
+                    d3: false,
+                    mapbox: false,
+                    other: false,
+                },
+                geoopendata: false,
+                geoopendatasub: {
+                    geonode: false,
+                    arcgis: false,
+                    copernicus: false,
+                    earth: false,
+                    google: false,
+                },
+                remote: false,
+                gis: false,
+                ethical: false,
+                geocloud: false,
+                geocloudsub: {
+                    google: false,
+                    amazon: false,
+                    other: false,
+                },
+                geoprogramming: false,
+                geoprogrammingsub: {
+                    python: false,
+                    r: false,
+                    jupyter: false,
+                    javascript: false,
+                    other: false,
+                },
+                datavis: false,
+                datavissub: {
+                    cartography: false,
+                    dashboards: false,
+                    graphic: false,
+                },
+                dataJournalism: false,
+                strategic: false,
+                strategicsub: {
+                    geospatial: false,
+                    policy: false,
+                    gi: false,
+                    growth: false,
+                },
+                geodata: false,
+                geodatasub: {
+                    spatial: false,
+                    location: false,
+                    bigdata: false,
+                    opendata: false,
+                },
+                entrepreneurship: false,
+                innovation: false,
+                innovationsub: {
+                    ar: false,
+                    vr: false,
+                    ml: false,
+                    blockchain: false,
+                    fiveg: false,
+                    iot: false,
+                    geotrans: false,
+                },
+                other: false,
+            };
             }
             console.log(this.model);
           } else {
@@ -243,7 +423,7 @@ export class RegisterComponent implements OnInit {
       this.errorGDPR = '';
       this.savedTxt = 'Your data has been saved!';
     } else {
-      this.errorGDPR = 'Yo need to accept our GDPR statement and Terms and Conditions.';
+      this.errorGDPR = 'You need to accept our GDPR statement and Terms and Conditions.';
       this.savedTxt = '';
     }
   }
@@ -254,6 +434,7 @@ export class RegisterComponent implements OnInit {
     this.fFire.collection('speakers').doc<Speaker>(this.user.uid).delete();
     this.fAuth.auth.currentUser.delete().catch(error => {
       if (error) {
+        // tslint:disable-next-line:max-line-length
         this.errorGDPR = 'This operation is sensitive and requires recent authentication. Log in again before retrying to delete your data.';
       }
     }).then(() => {
@@ -269,18 +450,8 @@ export class RegisterComponent implements OnInit {
     this.fAuth.auth.signOut();
   }
 
-  addOtherApp() {
-    if (this.otherAppAdd !== '') {
-      if (!this.model.otherApplications) {
-        this.model.otherApplications = [];
-      }
-      this.model.otherApplications.push(this.otherAppAdd);
-      this.otherAppAdd = '';
-    }
-  }
-
   addOtherArea() {
-    if (this.otherAreaAdd != '') {
+    if (this.otherAreaAdd !== '') {
       if (!this.model.otherAreas) {
         this.model.otherAreas = [];
       }

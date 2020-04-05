@@ -1,4 +1,8 @@
 .title {
     font-family: Oswald;
     font-weight: 200;
- }
+}
+
+.btn-text-white {
+    color: #fff !important;
+}

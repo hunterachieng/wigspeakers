@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,20 +18,35 @@ export class LoginComponent implements OnInit {
   public pwdInputCreate = '';
   public repPwdInputCreate = '';
   public isCreating = false;
+  public isLoading = true;
 
-  constructor(public fAuth: AngularFireAuth) {
+  constructor(public fAuth: AngularFireAuth, private router: Router, private ngZone: NgZone) {
+    this.isLoading = true;
+    if (fAuth.auth.currentUser !== null) { // there is user logged in
+      this.isLoading = false;
+      console.log('is loading currentuser: ' + this.isLoading);
+      this.ngZone.run(() => this.router.navigateByUrl('/register')).then();
+      // this.router.navigate(['/register']);
+    }
+    this.fAuth.auth.onAuthStateChanged(u => {
+      this.isLoading = false;
+      console.log('is loading state changed: ' + this.isLoading);
+      if (u) {
+        this.ngZone.run(() => this.router.navigateByUrl('/register')).then();
+      }
+    });
   }
 
   loginFB() {
-    this.fAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
+    this.fAuth.auth.signInWithPopup(new auth.FacebookAuthProvider());
   }
 
   loginTW() {
-    this.fAuth.auth.signInWithPopup(new auth.TwitterAuthProvider())
+    this.fAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
   }
 
   loginG() {
-    this.fAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
+    this.fAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
   login() {
@@ -68,6 +84,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.errorSignIn = '';
+    this.isLoading = false;
+    console.log('is loading onInit: ' + this.isLoading);
   }
 
 }

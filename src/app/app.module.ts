@@ -20,6 +20,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import 'firebase/storage';
 import { GdprComponent } from './components/gdpr/gdpr.component';
 import { TermsComponent } from './components/terms/terms.component';
+import { HowComponent } from './components/how/how.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { TermsComponent } from './components/terms/terms.component';
     RegisterComponent,
     LoginComponent,
     GdprComponent,
-    TermsComponent
+    TermsComponent,
+    HowComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { TermsComponent } from './components/terms/terms.component';
     AngularFireStorageModule,
     NgSelectModule,
     FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
