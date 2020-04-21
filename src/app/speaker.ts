@@ -108,8 +108,7 @@ export class Speaker {
                 iot: boolean,
                 geotrans: boolean,
             },
-            other: boolean,
-
+            other: boolean
         } = {
                 research: false,
                 geosoft: false,
@@ -189,6 +188,21 @@ export class Speaker {
                 },
                 other: false,
             },
+        public newAreasOther: {
+            researchText: string,
+            geoprogrammingsubText: string,
+            geosoftsubText: string,
+            otherText: string,
+            geocloudsubText: string,
+            webmappingsubText: string
+        } = {
+                researchText: '',
+                geoprogrammingsubText: '',
+                geosoftsubText: '',
+                otherText: '',
+                geocloudsubText: '',
+                webmappingsubText: ''
+            },
         public domain: {
             public: boolean,
             defence: boolean,
@@ -222,6 +236,7 @@ export class Speaker {
             },
         public otherAreas: string[] = [],
         public otherApplications: string = '',
+        public otherDomains: string[] = [],
         public languages: string[] = [],
         public speakingExperience: string = '',
         public contactEmail: boolean = false,

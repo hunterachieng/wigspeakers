@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   // fileToUpload: File = null;
 
   public otherAreaAdd = '';
-  public otherAppAdd = '';
+  public otherDomainAdd = '';
   public otherSector = '';
   public savedTxt = '';
   public errorGDPR = '';
@@ -32,140 +32,140 @@ export class RegisterComponent implements OnInit {
   public acceptedGDPR = false;
 
   public areasText = {
-    research:   'Research / Science Please specify ...',
+    research: 'Research / Science Please specify ...',
     geosoft: 'Geospatial Software',
     geosoftsub: {
-        foss4g: 'FOSS4G (e.g. QGIS, gdal)',
-        arcgis: 'ArcGIS Suite',
-        mapinfo: 'Mapinfo Suite',
-        cadcorp: 'Cadcorp Suite',
-        fme: 'FME',
-        other: 'Other (specify)',
+      foss4g: 'FOSS4G (e.g. QGIS, gdal)',
+      arcgis: 'ArcGIS Suite',
+      mapinfo: 'Mapinfo Suite',
+      cadcorp: 'Cadcorp Suite',
+      fme: 'FME',
+      other: 'Other (specify)',
     },
     webmapping: 'Webmapping',
     webmappingsub: {
-        openlayers: 'Open Layers',
-        leaflet: 'Leaflet',
-        arcgis: 'ArcGIS Suite',
-        d3: 'D3',
-        mapbox: 'Mapbox Studio and Mapbox GL',
-        other: 'Other (Specify)',
+      openlayers: 'Open Layers',
+      leaflet: 'Leaflet',
+      arcgis: 'ArcGIS Suite',
+      d3: 'D3',
+      mapbox: 'Mapbox Studio and Mapbox GL',
+      other: 'Other (Specify)',
     },
     geoopendata: 'Geospatial Open Data platforms',
     geoopendatasub: {
-        geonode: 'Geonode /Carto',
-        arcgis: 'ArcGIS Open Data Platform',
-        copernicus: 'Copernicus Open Data',
-        earth: 'Earth on AWS',
-        google: 'Google Open Data initiative',
+      geonode: 'Geonode /Carto',
+      arcgis: 'ArcGIS Open Data Platform',
+      copernicus: 'Copernicus Open Data',
+      earth: 'Earth on AWS',
+      google: 'Google Open Data initiative',
     },
     remote: 'Remote Sensing & Earth Observations',
     gis: 'Geographic Information Systems',
     ethical: 'Ethical Geography',
     geocloud: 'Geospatial cloud platforms',
     geocloudsub: {
-        google: 'Google Earth Engine',
-        amazon: 'Amazon Web Services',
-        other: 'Other (Specify)',
+      google: 'Google Earth Engine',
+      amazon: 'Amazon Web Services',
+      other: 'Other (Specify)',
     },
     geoprogramming: '(Geospatial) programming / Data Science',
     geoprogrammingsub: {
-        python: 'Python',
-        r: 'R',
-        jupyter: 'Jupyter Notebooks',
-        javascript: 'Javascript',
-        other: 'Other (Specify)',
+      python: 'Python',
+      r: 'R',
+      jupyter: 'Jupyter Notebooks',
+      javascript: 'Javascript',
+      other: 'Other (Specify)',
     },
     datavis: 'Data Visualisation ',
     datavissub: {
-        cartography: 'Cartography',
-        dashboards: 'Dashboards',
-        graphic: 'Graphic design',
+      cartography: 'Cartography',
+      dashboards: 'Dashboards',
+      graphic: 'Graphic design',
     },
     dataJournalism: '(Geospatial) Data Journalism',
     strategic: 'Strategic Skills',
     strategicsub: {
-        geospatial: 'Geospatial leadership',
-        policy: 'Policy',
-        gi: 'GI Implementation / Strategy',
-        growth: 'Growth in the geospatial / space Industry',
+      geospatial: 'Geospatial leadership',
+      policy: 'Policy',
+      gi: 'GI Implementation / Strategy',
+      growth: 'Growth in the geospatial / space Industry',
     },
     geodata: 'Geospatial Data',
     geodatasub: {
-        spatial: 'Spatial Data Analysis & Insight',
-        location: 'Location Intelligence',
-        bigdata: 'Big Data / Geospatial Data',
-        opendata: 'Open Data',
+      spatial: 'Spatial Data Analysis & Insight',
+      location: 'Location Intelligence',
+      bigdata: 'Big Data / Geospatial Data',
+      opendata: 'Open Data',
     },
     entrepreneurship: 'Entrepreneurship',
     innovation: 'Innovation / New Uses of GIS data',
     innovationsub: {
-        ar: 'Augmented Reality (AR)',
-        vr: 'Virtual Reality (VR)',
-        ml: 'Machine Learning / Artificial Intelligence',
-        blockchain: 'Blockchain',
-        fiveg: '5G',
-        iot: 'Internet-of-Things (IoT)',
-        geotrans: 'Geospatial and digital transformation',
+      ar: 'Augmented Reality (AR)',
+      vr: 'Virtual Reality (VR)',
+      ml: 'Machine Learning / Artificial Intelligence',
+      blockchain: 'Blockchain',
+      fiveg: '5G',
+      iot: 'Internet-of-Things (IoT)',
+      geotrans: 'Geospatial and digital transformation',
     },
     other: 'Other'
-};
+  };
 
-/*
-  public areas = [
-    { name: 'Please specify ...', group: 'Research / Science', full: 'Research / Science' },
-    { name: 'FOSS4G(e.g.QGIS, gdal)', group: 'Geospatial Software', full: 'FOSS4G(e.g.QGIS, gdal) -> Geospatial Software' },
-    { name: 'ArcGIS Suite', group: 'Geospatial Software', full: 'ArcGIS Suite -> Geospatial Software' },
-    { name: 'Mapinfo Suite', group: 'Geospatial Software', full: 'Mapinfo Suite -> Geospatial Software' },
-    { name: 'Cadcorp Suite', group: 'Geospatial Software', full: 'Cadcorp Suite -> Geospatial Software' },
-    { name: 'FME', group: 'Geospatial Software', full: 'FME -> Geospatial Software' },
-    { name: 'Other(specify)', group: 'Geospatial Software', full: 'Other(specify) -> Geospatial Software' },
-    { name: 'Open Layers', group: 'Webmapping', full: 'Open Layers -> Webmapping' },
-    { name: 'Leaflet', group: 'Webmapping', full: 'Leaflet -> Webmapping' },
-    { name: 'ArcGIS Suite', group: 'Webmapping', full: 'ArcGIS Suite -> Webmapping' },
-    { name: 'D3', group: 'Webmapping', full: 'D3 -> Webmapping' },
-    { name: 'Mapbox Studio and Mapbox GL', group: 'Webmapping', full: 'Mapbox Studio and Mapbox GL -> Webmapping' },
-    { name: 'Other(Specify)', group: 'Webmapping', full: 'Other(Specify) -> Webmapping' },
-    { name: 'Geonode / Carto', group: 'Geospatial Open Data platforms', full: 'Geonode / Carto -> Geospatial Open Data platforms' },
-    { name: 'ArcGIS Open Data Platform', group: 'Geospatial Open Data platforms', full: 'ArcGIS Open Data Platform -> Geospatial Open Data platforms' },
-    { name: 'Copernicus Open Data', group: 'Geospatial Open Data platforms', full: 'Copernicus Open Data -> Geospatial Open Data platforms' },
-    { name: 'Earth on AWS', group: 'Geospatial Open Data platforms', full: 'Earth on AWS -> Geospatial Open Data platforms' },
-    { name: 'Google Open Data initiative', group: 'Geospatial Open Data platforms', full: 'Google Open Data initiative -> Geospatial Open Data platforms' },
-    { name: 'Remote Sensing & Earth Observations', group: 'EO', full: 'Remote Sensing & Earth Observations' },
-    { name: 'Geographic Information Systems', group: 'GI', full: 'Geographic Information Systems' },
-    { name: 'Ethical Geography', group: '', full: 'Ethical Geography' },
-    { name: 'Google Earth Engine', group: 'Geospatial cloud platforms', full: 'Google Earth Engine -> Geospatial cloud platforms' },
-    { name: 'Amazon Web Services', group: 'Geospatial cloud platforms', full: 'Amazon Web Services -> Geospatial cloud platforms' },
-    { name: 'Other(Specify)', group: 'Geospatial cloud platforms', full: 'Other(Specify) -> Geospatial cloud platforms' },
-    { name: 'Python', group: '(Geospatial) programming / Data Science', full: 'Python -> (Geospatial) programming / Data Science' },
-    { name: 'R', group: '(Geospatial) programming / Data Science', full: 'R -> (Geospatial) programming / Data Science' },
-    { name: 'Jupyter Notebooks', group: '(Geospatial) programming / Data Science', full: 'Jupyter Notebooks -> (Geospatial) programming / Data Science' },
-    { name: 'Javascript', group: '(Geospatial) programming / Data Science', full: 'Javascript -> (Geospatial) programming / Data Science' },
-    { name: 'Other(Specify)', group: '(Geospatial) programming / Data Science', full: 'Other(Specify) -> (Geospatial) programming / Data Science' },
-    { name: 'Cartography', group: 'Data Visualisation', full: 'Cartography -> Data Visualisation' },
-    { name: 'Dashboards', group: 'Data Visualisation', full: 'Dashboards -> Data Visualisation' },
-    { name: 'Graphic design', group: 'Data Visualisation', full: 'Graphic design -> Data Visualisation' },
-    { name: '(Geospatial) Data Journalism', group: '', full: '(Geospatial) Data Journalism' },
-    { name: 'Geospatial leadership', group: 'Strategic Skills', full: 'Geospatial leadership -> Strategic Skills' },
-    { name: 'Policy', group: 'Strategic Skills', full: 'Policy -> Strategic Skills' },
-    { name: 'GI Implementation / Strategy', group: 'Strategic Skills', full: 'GI Implementation / Strategy -> Strategic Skills' },
-    { name: 'Growth in the geospatial / space Industry', group: 'Strategic Skills', full: 'Growth in the geospatial / space Industry -> Strategic Skills' },
-    { name: 'Spatial Data Analysis & Insight', group: 'Geospatial Data', full: 'Spatial Data Analysis & Insight -> Geospatial Data' },
-    { name: 'Location Intelligence', group: 'Geospatial Data', full: 'Location Intelligence -> Geospatial Data' },
-    { name: 'Big Data / Geospatial Data', group: 'Geospatial Data', full: 'Big Data / Geospatial Data -> Geospatial Data' },
-    { name: 'Open Data', group: 'Geospatial Data', full: 'Open Data -> Geospatial Data' },
-    { name: 'Entrepreneurship', group: '', full: 'Entrepreneurship' },
-    { name: 'Augmented Reality (AR)', group: 'Innovation / New Uses of GIS data', full: 'Augmented Reality (AR) -> Innovation / New Uses of GIS data' },
-    { name: 'Virtual Reality (VR)', group: 'Innovation / New Uses of GIS data', full: 'Virtual Reality (VR) -> Innovation / New Uses of GIS data' },
-    { name: 'Machine Learning / Artificial Intelligence', group: 'Innovation / New Uses of GIS data', full: 'Machine Learning / Artificial Intelligence -> Innovation / New Uses of GIS data' },
-    { name: 'Blockchain', group: 'Innovation / New Uses of GIS data', full: 'Blockchain -> Innovation / New Uses of GIS data' },
-    { name: '5G', group: 'Innovation / New Uses of GIS data', full: '5G -> Innovation / New Uses of GIS data' },
-    { name: 'Internet-of-Things (IoT)', group: 'Innovation / New Uses of GIS data', full: 'Internet-of-Things (IoT) -> Innovation / New Uses of GIS data' },
-    { name: 'Geospatial and digital transformation', group: 'Innovation / New Uses of GIS data', full: 'Geospatial and digital transformation -> Innovation / New Uses of GIS data' },
-    { name: 'Other', group: '', full: 'Other' }
-  ];
-
-  */
+  /*
+    public areas = [
+      { name: 'Please specify ...', group: 'Research / Science', full: 'Research / Science' },
+      { name: 'FOSS4G(e.g.QGIS, gdal)', group: 'Geospatial Software', full: 'FOSS4G(e.g.QGIS, gdal) -> Geospatial Software' },
+      { name: 'ArcGIS Suite', group: 'Geospatial Software', full: 'ArcGIS Suite -> Geospatial Software' },
+      { name: 'Mapinfo Suite', group: 'Geospatial Software', full: 'Mapinfo Suite -> Geospatial Software' },
+      { name: 'Cadcorp Suite', group: 'Geospatial Software', full: 'Cadcorp Suite -> Geospatial Software' },
+      { name: 'FME', group: 'Geospatial Software', full: 'FME -> Geospatial Software' },
+      { name: 'Other(specify)', group: 'Geospatial Software', full: 'Other(specify) -> Geospatial Software' },
+      { name: 'Open Layers', group: 'Webmapping', full: 'Open Layers -> Webmapping' },
+      { name: 'Leaflet', group: 'Webmapping', full: 'Leaflet -> Webmapping' },
+      { name: 'ArcGIS Suite', group: 'Webmapping', full: 'ArcGIS Suite -> Webmapping' },
+      { name: 'D3', group: 'Webmapping', full: 'D3 -> Webmapping' },
+      { name: 'Mapbox Studio and Mapbox GL', group: 'Webmapping', full: 'Mapbox Studio and Mapbox GL -> Webmapping' },
+      { name: 'Other(Specify)', group: 'Webmapping', full: 'Other(Specify) -> Webmapping' },
+      { name: 'Geonode / Carto', group: 'Geospatial Open Data platforms', full: 'Geonode / Carto -> Geospatial Open Data platforms' },
+      { name: 'ArcGIS Open Data Platform', group: 'Geospatial Open Data platforms', full: 'ArcGIS Open Data Platform -> Geospatial Open Data platforms' },
+      { name: 'Copernicus Open Data', group: 'Geospatial Open Data platforms', full: 'Copernicus Open Data -> Geospatial Open Data platforms' },
+      { name: 'Earth on AWS', group: 'Geospatial Open Data platforms', full: 'Earth on AWS -> Geospatial Open Data platforms' },
+      { name: 'Google Open Data initiative', group: 'Geospatial Open Data platforms', full: 'Google Open Data initiative -> Geospatial Open Data platforms' },
+      { name: 'Remote Sensing & Earth Observations', group: 'EO', full: 'Remote Sensing & Earth Observations' },
+      { name: 'Geographic Information Systems', group: 'GI', full: 'Geographic Information Systems' },
+      { name: 'Ethical Geography', group: '', full: 'Ethical Geography' },
+      { name: 'Google Earth Engine', group: 'Geospatial cloud platforms', full: 'Google Earth Engine -> Geospatial cloud platforms' },
+      { name: 'Amazon Web Services', group: 'Geospatial cloud platforms', full: 'Amazon Web Services -> Geospatial cloud platforms' },
+      { name: 'Other(Specify)', group: 'Geospatial cloud platforms', full: 'Other(Specify) -> Geospatial cloud platforms' },
+      { name: 'Python', group: '(Geospatial) programming / Data Science', full: 'Python -> (Geospatial) programming / Data Science' },
+      { name: 'R', group: '(Geospatial) programming / Data Science', full: 'R -> (Geospatial) programming / Data Science' },
+      { name: 'Jupyter Notebooks', group: '(Geospatial) programming / Data Science', full: 'Jupyter Notebooks -> (Geospatial) programming / Data Science' },
+      { name: 'Javascript', group: '(Geospatial) programming / Data Science', full: 'Javascript -> (Geospatial) programming / Data Science' },
+      { name: 'Other(Specify)', group: '(Geospatial) programming / Data Science', full: 'Other(Specify) -> (Geospatial) programming / Data Science' },
+      { name: 'Cartography', group: 'Data Visualisation', full: 'Cartography -> Data Visualisation' },
+      { name: 'Dashboards', group: 'Data Visualisation', full: 'Dashboards -> Data Visualisation' },
+      { name: 'Graphic design', group: 'Data Visualisation', full: 'Graphic design -> Data Visualisation' },
+      { name: '(Geospatial) Data Journalism', group: '', full: '(Geospatial) Data Journalism' },
+      { name: 'Geospatial leadership', group: 'Strategic Skills', full: 'Geospatial leadership -> Strategic Skills' },
+      { name: 'Policy', group: 'Strategic Skills', full: 'Policy -> Strategic Skills' },
+      { name: 'GI Implementation / Strategy', group: 'Strategic Skills', full: 'GI Implementation / Strategy -> Strategic Skills' },
+      { name: 'Growth in the geospatial / space Industry', group: 'Strategic Skills', full: 'Growth in the geospatial / space Industry -> Strategic Skills' },
+      { name: 'Spatial Data Analysis & Insight', group: 'Geospatial Data', full: 'Spatial Data Analysis & Insight -> Geospatial Data' },
+      { name: 'Location Intelligence', group: 'Geospatial Data', full: 'Location Intelligence -> Geospatial Data' },
+      { name: 'Big Data / Geospatial Data', group: 'Geospatial Data', full: 'Big Data / Geospatial Data -> Geospatial Data' },
+      { name: 'Open Data', group: 'Geospatial Data', full: 'Open Data -> Geospatial Data' },
+      { name: 'Entrepreneurship', group: '', full: 'Entrepreneurship' },
+      { name: 'Augmented Reality (AR)', group: 'Innovation / New Uses of GIS data', full: 'Augmented Reality (AR) -> Innovation / New Uses of GIS data' },
+      { name: 'Virtual Reality (VR)', group: 'Innovation / New Uses of GIS data', full: 'Virtual Reality (VR) -> Innovation / New Uses of GIS data' },
+      { name: 'Machine Learning / Artificial Intelligence', group: 'Innovation / New Uses of GIS data', full: 'Machine Learning / Artificial Intelligence -> Innovation / New Uses of GIS data' },
+      { name: 'Blockchain', group: 'Innovation / New Uses of GIS data', full: 'Blockchain -> Innovation / New Uses of GIS data' },
+      { name: '5G', group: 'Innovation / New Uses of GIS data', full: '5G -> Innovation / New Uses of GIS data' },
+      { name: 'Internet-of-Things (IoT)', group: 'Innovation / New Uses of GIS data', full: 'Internet-of-Things (IoT) -> Innovation / New Uses of GIS data' },
+      { name: 'Geospatial and digital transformation', group: 'Innovation / New Uses of GIS data', full: 'Geospatial and digital transformation -> Innovation / New Uses of GIS data' },
+      { name: 'Other', group: '', full: 'Other' }
+    ];
+  
+    */
 
   public languages = [
     'Afrikaans',
@@ -330,82 +330,93 @@ export class RegisterComponent implements OnInit {
                 research: false,
                 geosoft: false,
                 geosoftsub: {
-                    foss4g: false,
-                    arcgis: false,
-                    mapinfo: false,
-                    cadcorp: false,
-                    fme: false,
-                    other: false,
+                  foss4g: false,
+                  arcgis: false,
+                  mapinfo: false,
+                  cadcorp: false,
+                  fme: false,
+                  other: false,
                 },
                 webmapping: false,
                 webmappingsub: {
-                    openlayers: false,
-                    leaflet: false,
-                    arcgis: false,
-                    d3: false,
-                    mapbox: false,
-                    other: false,
+                  openlayers: false,
+                  leaflet: false,
+                  arcgis: false,
+                  d3: false,
+                  mapbox: false,
+                  other: false,
                 },
                 geoopendata: false,
                 geoopendatasub: {
-                    geonode: false,
-                    arcgis: false,
-                    copernicus: false,
-                    earth: false,
-                    google: false,
+                  geonode: false,
+                  arcgis: false,
+                  copernicus: false,
+                  earth: false,
+                  google: false,
                 },
                 remote: false,
                 gis: false,
                 ethical: false,
                 geocloud: false,
                 geocloudsub: {
-                    google: false,
-                    amazon: false,
-                    other: false,
+                  google: false,
+                  amazon: false,
+                  other: false,
                 },
                 geoprogramming: false,
                 geoprogrammingsub: {
-                    python: false,
-                    r: false,
-                    jupyter: false,
-                    javascript: false,
-                    other: false,
+                  python: false,
+                  r: false,
+                  jupyter: false,
+                  javascript: false,
+                  other: false,
                 },
                 datavis: false,
                 datavissub: {
-                    cartography: false,
-                    dashboards: false,
-                    graphic: false,
+                  cartography: false,
+                  dashboards: false,
+                  graphic: false,
                 },
                 dataJournalism: false,
                 strategic: false,
                 strategicsub: {
-                    geospatial: false,
-                    policy: false,
-                    gi: false,
-                    growth: false,
+                  geospatial: false,
+                  policy: false,
+                  gi: false,
+                  growth: false,
                 },
                 geodata: false,
                 geodatasub: {
-                    spatial: false,
-                    location: false,
-                    bigdata: false,
-                    opendata: false,
+                  spatial: false,
+                  location: false,
+                  bigdata: false,
+                  opendata: false,
                 },
                 entrepreneurship: false,
                 innovation: false,
                 innovationsub: {
-                    ar: false,
-                    vr: false,
-                    ml: false,
-                    blockchain: false,
-                    fiveg: false,
-                    iot: false,
-                    geotrans: false,
+                  ar: false,
+                  vr: false,
+                  ml: false,
+                  blockchain: false,
+                  fiveg: false,
+                  iot: false,
+                  geotrans: false,
                 },
                 other: false,
-            };
+              };
             }
+            if (!this.model.newAreasOther) {
+              this.model.newAreasOther = {
+                researchText: '',
+                geoprogrammingsubText: '',
+                geosoftsubText: '',
+                otherText: '',
+                geocloudsubText: '',
+                webmappingsubText: ''
+              };
+            }
+
             console.log(this.model);
           } else {
             this.model.email = this.user.email;
@@ -459,6 +470,24 @@ export class RegisterComponent implements OnInit {
       this.otherAreaAdd = '';
     }
   }
+
+  addOtherDomain() {
+    if (this.otherDomainAdd !== '') {
+      if (!this.model.otherDomains) {
+        this.model.otherDomains = [];
+      }
+      this.model.otherDomains.push(this.otherDomainAdd);
+      this.otherDomainAdd = '';
+    }
+  }
+
+  removeOtherItem(item, model) {
+    const indexToRemove = model.indexOf(item);
+    if (indexToRemove !== -1) {
+      model.splice(indexToRemove, 1);
+    }
+  }
+
   handleFileInput(files) {
     console.log(files[0]);
     let filePath = '';

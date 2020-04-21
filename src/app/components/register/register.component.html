@@ -157,6 +157,7 @@
                                 </span>
                             </label>
                         </div>
+                        <br>
 
                         <label class="heading" for="level">What career level are you at the moment?</label>
                         <div class="form-check form-check-radio">
@@ -229,19 +230,27 @@
 
                 <div class="form-group">
                     <label class="heading" for="areas">Areas of expertise</label>
-
-                    <div class="form-check form-check-radio">
-                        <label class="form-check-label">
-                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
-                                [checked]="model.newareas.research"
-                                (change)="model.newareas.research= !model.newareas.research">
-                            Research / Science
-                            Please specify ...
-                            <span class="form-check-sign">
-                                <span class="check"></span>
-                            </span>
-                        </label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="areas" id="areas" type="checkbox"
+                                        value="research" [checked]="model.newareas.research"
+                                        (change)="model.newareas.research= !model.newareas.research">
+                                    Research / Science
+                                    Please specify ...
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="newareas.research" name="newareas.research"
+                                [(ngModel)]="model.newAreasOther.researchText" [hidden]="!model.newareas.research">
+                        </div>
                     </div>
+
                     <div class="form-check form-check-radio">
                         <label class="form-check-label">
                             <input class="form-check-input" name="areas" id="areas" type="checkbox" value="geoSoft"
@@ -308,16 +317,25 @@
                             </span>
                         </label>
                     </div>
-                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geosoft">
-                        <label class="form-check-label">
-                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
-                                [checked]="model.newareas.geosoftsub.other"
-                                (change)="model.newareas.geosoftsub.other= !model.newareas.geosoftsub.other">
-                            Other (specify)
-                            <span class="form-check-sign">
-                                <span class="check"></span>
-                            </span>
-                        </label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geosoft">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="areas" id="areas" type="checkbox"
+                                        value="research" [checked]="model.newareas.geosoftsub.other"
+                                        (change)="model.newareas.geosoftsub.other= !model.newareas.geosoftsub.other">
+                                    Other (specify)
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="geosoftsub.other" name="geosoftsub.other"
+                                [(ngModel)]="model.newAreasOther.geosoftsubText"
+                                [hidden]="!model.newareas.geosoftsub.other">
+                        </div>
                     </div>
 
                     <div class="form-check form-check-radio">
@@ -386,16 +404,26 @@
                             </span>
                         </label>
                     </div>
-                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.webmapping">
-                        <label class="form-check-label">
-                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
-                                [checked]="model.newareas.webmappingsub.other"
-                                (change)="model.newareas.webmappingsub.other = !model.newareas.webmappingsub.other">
-                            Other (Specify)
-                            <span class="form-check-sign">
-                                <span class="check"></span>
-                            </span>
-                        </label>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.webmapping">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="areas" id="areas" type="checkbox"
+                                        value="research" [checked]="model.newareas.webmappingsub.other"
+                                        (change)="model.newareas.webmappingsub.other = !model.newareas.webmappingsub.other">
+                                    Other (Specify)
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="webmappingsub.other" name="webmappingsub.other"
+                                [(ngModel)]="model.newAreasOther.webmappingsubText"
+                                [hidden]="!model.newareas.webmappingsub.other">
+                        </div>
                     </div>
 
                     <div class="form-check form-check-radio">
@@ -534,16 +562,26 @@
                             </span>
                         </label>
                     </div>
-                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geocloud">
-                        <label class="form-check-label">
-                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
-                                [checked]="model.newareas.geocloudsub.other"
-                                (change)="model.newareas.geocloudsub.other = !model.newareas.geocloudsub.other">
-                            Other (Specify)
-                            <span class="form-check-sign">
-                                <span class="check"></span>
-                            </span>
-                        </label>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geocloud">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="areas" id="areas" type="checkbox"
+                                        value="research" [checked]="model.newareas.geocloudsub.other"
+                                        (change)="model.newareas.geocloudsub.other = !model.newareas.geocloudsub.other">
+                                    Other (Specify)
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="geocloudsub.other" name="geocloudsub.other"
+                                [(ngModel)]="model.newAreasOther.geocloudsubText"
+                                [hidden]="!model.newareas.geocloudsub.other">
+                        </div>
                     </div>
 
                     <div class="form-check form-check-radio">
@@ -601,16 +639,25 @@
                             </span>
                         </label>
                     </div>
-                    <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoprogramming">
-                        <label class="form-check-label">
-                            <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
-                                [checked]="model.newareas.geoprogrammingsub.other"
-                                (change)="model.newareas.geoprogrammingsub.other = !model.newareas.geoprogrammingsub.other">
-                            Other (Specify)
-                            <span class="form-check-sign">
-                                <span class="check"></span>
-                            </span>
-                        </label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="pl-5 form-check form-check-radio" [hidden]="!model.newareas.geoprogramming">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="areas" id="areas" type="checkbox"
+                                        value="research" [checked]="model.newareas.geoprogrammingsub.other"
+                                        (change)="model.newareas.geoprogrammingsub.other = !model.newareas.geoprogrammingsub.other">
+                                    Other (Specify)
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="geoprogrammingsub.other"
+                                name="geoprogrammingsub.other" [(ngModel)]="model.newAreasOther.geoprogrammingsubText"
+                                [hidden]="!model.newareas.geoprogrammingsub.other">
+                        </div>
                     </div>
 
                     <div class="form-check form-check-radio">
@@ -854,7 +901,7 @@
                             <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
                                 [checked]="model.newareas.innovationsub.fiveg"
                                 (change)="model.newareas.innovationsub.fiveg = !model.newareas.innovationsub.fiveg">
-                                5G
+                            5G
                             <span class="form-check-sign">
                                 <span class="check"></span>
                             </span>
@@ -865,7 +912,7 @@
                             <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
                                 [checked]="model.newareas.innovationsub.iot"
                                 (change)="model.newareas.innovationsub.iot = !model.newareas.innovationsub.iot">
-                                Internet-of-Things (IoT)
+                            Internet-of-Things (IoT)
                             <span class="form-check-sign">
                                 <span class="check"></span>
                             </span>
@@ -876,31 +923,31 @@
                             <input class="form-check-input" name="areas" id="areas" type="checkbox" value="research"
                                 [checked]="model.newareas.innovationsub.geotrans"
                                 (change)="model.newareas.innovationsub.geotrans = !model.newareas.innovationsub.geotrans">
-                                Geospatial and digital transformation
+                            Geospatial and digital transformation
                             <span class="form-check-sign">
                                 <span class="check"></span>
                             </span>
                         </label>
                     </div>
+
 
                     <div class="form-check form-check-radio">
                         <label class="form-check-label">
                             <input class="form-check-input" name="areas" id="areas" type="checkbox" value="other"
-                                [checked]="model.newareas.other"
-                                (change)="model.newareas.other= !model.newareas.other">
-                                Other
+                                [checked]="model.newareas.other" (change)="model.newareas.other= !model.newareas.other">
+                            Other
                             <span class="form-check-sign">
                                 <span class="check"></span>
                             </span>
                         </label>
                     </div>
-
                 </div>
-                <div style="display: inline" *ngFor="let a of model.otherAreas">
-                    <button class="btn btn-other btn-primary"><span aria-hidden="true" class="ng-value-icon left x"
+
+                <div style="display: inline" *ngFor="let a of model.otherAreas" [hidden]="!model.newareas.other">
+                    <button class="btn btn-other btn-primary" (click)="removeOtherItem(a, model.otherAreas)" ><span aria-hidden="true" class="ng-value-icon left x"
                             style="z-index: 199">×</span>{{a}}</button>
                 </div>
-                <div class="form-group">
+                <div class="form-group" [hidden]="!model.newareas.other">
                     <label class="heading" for="otherArea">Add any additional areas of expertise</label>
                     <div class="input-group">
                         <input type="text" style="max-width: 90%;" class="form-control" id="otherArea" name="otherArea"
@@ -1086,14 +1133,46 @@
                                     </span>
                                 </label>
                             </div>
+                            <div class="form-check form-check-radio">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="domain" id="domain14" type="checkbox"
+                                        value="Other" [checked]="model.domain.other"
+                                        (change)="model.domain.other = !model.domain.other">
+                                    Other
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+
+                <!-- otherDomains -->
+
+        <!--         <div class="form-group" [hidden]="!model.domain.other">
                     <label class="heading" for="otherApp">List any other domain(s) you work in</label>
                     <div class="input-group">
                         <input type="text" class="form-control" id="otherApp" name="otherApp"
                             [(ngModel)]="model.otherApplications">
+                    </div>
+                </div>
+ -->
+
+                <div style="display: inline" *ngFor="let a of model.otherDomains" [hidden]="!model.domain.other">
+                    <button class="btn btn-other btn-primary" (click)="removeOtherItem(a, model.otherDomains)" ><span aria-hidden="true" class="ng-value-icon left x"
+                            style="z-index: 199">×</span>{{a}}</button>
+                </div>
+                <div class="form-group" [hidden]="!model.domain.other">
+                    <label class="heading" for="otherApp">List any other domain(s) you work in</label>
+                    <div class="input-group">
+                        <input type="text" style="max-width: 90%;" class="form-control" id="otherApp" name="otherApp"
+                            [(ngModel)]="otherDomainAdd">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-fab btn-round btn-primary" (click)="addOtherDomain()">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </span>
                     </div>
                 </div>
 
@@ -1113,7 +1192,7 @@
 
                 <div class="form-group">
                     <label class="heading" for="speakingExperience">List here any relevant speaking experience
-                        here…</label>
+                    </label>
                     <textarea type="text" class="form-control" id="speakingExperience" name="speakingExperience"
                         [(ngModel)]="model.speakingExperience" rows="3"></textarea>
                 </div>
