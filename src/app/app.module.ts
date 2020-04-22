@@ -9,7 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-// import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFireAnalyticsModule, ScreenTrackingService } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
@@ -37,7 +37,7 @@ import { HowComponent } from './components/how/how.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    // AngularFireAnalyticsModule,
+    AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
@@ -45,7 +45,9 @@ import { HowComponent } from './components/how/how.component';
     FormsModule
 
   ],
-  providers: [],
+  providers: [
+    ScreenTrackingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

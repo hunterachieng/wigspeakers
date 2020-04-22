@@ -8,6 +8,7 @@ import { auth, User } from 'firebase/app';
 import { AngularFireStorage } from '@angular/fire/storage';
 import 'firebase/storage';
 import { Router } from '@angular/router';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 
 @Component({
@@ -111,62 +112,6 @@ export class RegisterComponent implements OnInit {
     other: 'Other'
   };
 
-  /*
-    public areas = [
-      { name: 'Please specify ...', group: 'Research / Science', full: 'Research / Science' },
-      { name: 'FOSS4G(e.g.QGIS, gdal)', group: 'Geospatial Software', full: 'FOSS4G(e.g.QGIS, gdal) -> Geospatial Software' },
-      { name: 'ArcGIS Suite', group: 'Geospatial Software', full: 'ArcGIS Suite -> Geospatial Software' },
-      { name: 'Mapinfo Suite', group: 'Geospatial Software', full: 'Mapinfo Suite -> Geospatial Software' },
-      { name: 'Cadcorp Suite', group: 'Geospatial Software', full: 'Cadcorp Suite -> Geospatial Software' },
-      { name: 'FME', group: 'Geospatial Software', full: 'FME -> Geospatial Software' },
-      { name: 'Other(specify)', group: 'Geospatial Software', full: 'Other(specify) -> Geospatial Software' },
-      { name: 'Open Layers', group: 'Webmapping', full: 'Open Layers -> Webmapping' },
-      { name: 'Leaflet', group: 'Webmapping', full: 'Leaflet -> Webmapping' },
-      { name: 'ArcGIS Suite', group: 'Webmapping', full: 'ArcGIS Suite -> Webmapping' },
-      { name: 'D3', group: 'Webmapping', full: 'D3 -> Webmapping' },
-      { name: 'Mapbox Studio and Mapbox GL', group: 'Webmapping', full: 'Mapbox Studio and Mapbox GL -> Webmapping' },
-      { name: 'Other(Specify)', group: 'Webmapping', full: 'Other(Specify) -> Webmapping' },
-      { name: 'Geonode / Carto', group: 'Geospatial Open Data platforms', full: 'Geonode / Carto -> Geospatial Open Data platforms' },
-      { name: 'ArcGIS Open Data Platform', group: 'Geospatial Open Data platforms', full: 'ArcGIS Open Data Platform -> Geospatial Open Data platforms' },
-      { name: 'Copernicus Open Data', group: 'Geospatial Open Data platforms', full: 'Copernicus Open Data -> Geospatial Open Data platforms' },
-      { name: 'Earth on AWS', group: 'Geospatial Open Data platforms', full: 'Earth on AWS -> Geospatial Open Data platforms' },
-      { name: 'Google Open Data initiative', group: 'Geospatial Open Data platforms', full: 'Google Open Data initiative -> Geospatial Open Data platforms' },
-      { name: 'Remote Sensing & Earth Observations', group: 'EO', full: 'Remote Sensing & Earth Observations' },
-      { name: 'Geographic Information Systems', group: 'GI', full: 'Geographic Information Systems' },
-      { name: 'Ethical Geography', group: '', full: 'Ethical Geography' },
-      { name: 'Google Earth Engine', group: 'Geospatial cloud platforms', full: 'Google Earth Engine -> Geospatial cloud platforms' },
-      { name: 'Amazon Web Services', group: 'Geospatial cloud platforms', full: 'Amazon Web Services -> Geospatial cloud platforms' },
-      { name: 'Other(Specify)', group: 'Geospatial cloud platforms', full: 'Other(Specify) -> Geospatial cloud platforms' },
-      { name: 'Python', group: '(Geospatial) programming / Data Science', full: 'Python -> (Geospatial) programming / Data Science' },
-      { name: 'R', group: '(Geospatial) programming / Data Science', full: 'R -> (Geospatial) programming / Data Science' },
-      { name: 'Jupyter Notebooks', group: '(Geospatial) programming / Data Science', full: 'Jupyter Notebooks -> (Geospatial) programming / Data Science' },
-      { name: 'Javascript', group: '(Geospatial) programming / Data Science', full: 'Javascript -> (Geospatial) programming / Data Science' },
-      { name: 'Other(Specify)', group: '(Geospatial) programming / Data Science', full: 'Other(Specify) -> (Geospatial) programming / Data Science' },
-      { name: 'Cartography', group: 'Data Visualisation', full: 'Cartography -> Data Visualisation' },
-      { name: 'Dashboards', group: 'Data Visualisation', full: 'Dashboards -> Data Visualisation' },
-      { name: 'Graphic design', group: 'Data Visualisation', full: 'Graphic design -> Data Visualisation' },
-      { name: '(Geospatial) Data Journalism', group: '', full: '(Geospatial) Data Journalism' },
-      { name: 'Geospatial leadership', group: 'Strategic Skills', full: 'Geospatial leadership -> Strategic Skills' },
-      { name: 'Policy', group: 'Strategic Skills', full: 'Policy -> Strategic Skills' },
-      { name: 'GI Implementation / Strategy', group: 'Strategic Skills', full: 'GI Implementation / Strategy -> Strategic Skills' },
-      { name: 'Growth in the geospatial / space Industry', group: 'Strategic Skills', full: 'Growth in the geospatial / space Industry -> Strategic Skills' },
-      { name: 'Spatial Data Analysis & Insight', group: 'Geospatial Data', full: 'Spatial Data Analysis & Insight -> Geospatial Data' },
-      { name: 'Location Intelligence', group: 'Geospatial Data', full: 'Location Intelligence -> Geospatial Data' },
-      { name: 'Big Data / Geospatial Data', group: 'Geospatial Data', full: 'Big Data / Geospatial Data -> Geospatial Data' },
-      { name: 'Open Data', group: 'Geospatial Data', full: 'Open Data -> Geospatial Data' },
-      { name: 'Entrepreneurship', group: '', full: 'Entrepreneurship' },
-      { name: 'Augmented Reality (AR)', group: 'Innovation / New Uses of GIS data', full: 'Augmented Reality (AR) -> Innovation / New Uses of GIS data' },
-      { name: 'Virtual Reality (VR)', group: 'Innovation / New Uses of GIS data', full: 'Virtual Reality (VR) -> Innovation / New Uses of GIS data' },
-      { name: 'Machine Learning / Artificial Intelligence', group: 'Innovation / New Uses of GIS data', full: 'Machine Learning / Artificial Intelligence -> Innovation / New Uses of GIS data' },
-      { name: 'Blockchain', group: 'Innovation / New Uses of GIS data', full: 'Blockchain -> Innovation / New Uses of GIS data' },
-      { name: '5G', group: 'Innovation / New Uses of GIS data', full: '5G -> Innovation / New Uses of GIS data' },
-      { name: 'Internet-of-Things (IoT)', group: 'Innovation / New Uses of GIS data', full: 'Internet-of-Things (IoT) -> Innovation / New Uses of GIS data' },
-      { name: 'Geospatial and digital transformation', group: 'Innovation / New Uses of GIS data', full: 'Geospatial and digital transformation -> Innovation / New Uses of GIS data' },
-      { name: 'Other', group: '', full: 'Other' }
-    ];
-  
-    */
-
   public languages = [
     'Afrikaans',
     'Albanian',
@@ -267,6 +212,7 @@ export class RegisterComponent implements OnInit {
     private ngZone: NgZone,
     public fFire: AngularFirestore,
     private fStorage: AngularFireStorage,
+    private fAnalytics: AngularFireAnalytics,
     private router: Router) {
 
     this.model = new Speaker();
@@ -419,15 +365,21 @@ export class RegisterComponent implements OnInit {
 
             console.log(this.model);
           } else {
+            // login for first time
+            if (this.user && this.model) {
             this.model.email = this.user.email;
             this.fFire.collection('speakers').doc<Speaker>(this.user.uid).set(Object.assign({}, this.model));
+            }
           }
         });
+      } else {
+        this.ngZone.run(() => this.router.navigateByUrl('/login')).then();
       }
     });
   }
 
   saveData() {
+    this.fAnalytics.logEvent('custom_event', { event: 'saveData', date: new Date().toUTCString() });
     if (this.acceptedGDPR) {
       console.log(this.model);
       this.fFire.collection('speakers').doc<Speaker>(this.user.uid).set(Object.assign({}, this.model));
@@ -440,18 +392,25 @@ export class RegisterComponent implements OnInit {
   }
 
   removeData() {
+    this.fAnalytics.logEvent('custom_event', { event: 'removeData', date: new Date().toUTCString() });
     this.userIdToDelete = this.user.uid;
-
-    this.fFire.collection('speakers').doc<Speaker>(this.user.uid).delete();
-    this.fAuth.auth.currentUser.delete().catch(error => {
-      if (error) {
-        // tslint:disable-next-line:max-line-length
-        this.errorGDPR = 'This operation is sensitive and requires recent authentication. Log in again before retrying to delete your data.';
-      }
-    }).then(() => {
-      this.fFire.collection('speakers').doc<Speaker>(this.userIdToDelete).delete();
-      this.fAuth.auth.signOut();
-    });
+    this.user = null;
+    this.model = null;
+    this.fFire.collection('speakers').doc<Speaker>(this.userIdToDelete).delete().catch(error => {
+      console.log('Error deleting data: ' + error);
+    })
+      .then(res => {
+        console.log('Result deleting data: ' + res);
+        // this.fAuth.auth.signOut();
+        this.fAuth.auth.currentUser.delete().catch(error => {
+          if (error) {
+            // tslint:disable-next-line:max-line-length
+            this.errorGDPR = 'This operation is sensitive and requires recent authentication. Log in again before retrying to delete your data.';
+          }
+        }).then(() => {
+          this.fAuth.auth.signOut();
+        });
+      });
   }
 
   ngOnInit(): void {
