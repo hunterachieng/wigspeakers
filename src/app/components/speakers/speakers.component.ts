@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SpeakerService } from '../../services/speaker.service';
+import { Speaker } from '../../speaker';
+import { MapService } from 'src/app/services/map.service';
 
 @Component({
   selector: 'app-speakers',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpeakersComponent implements OnInit {
 
-  constructor() { }
+  public speakersList: Speaker[] = [];
+  public displayMap = true;
+
+  /*   @ViewChild(Element) map!: Element;
+   */
+  constructor(public spService: SpeakerService, private map: MapService) {
+    this.speakersList = this.spService.speakersList;
+  }
 
   ngOnInit(): void {
+
+    setTimeout(() => {
+      this.map.buildMap();
+    }, 2000);
+
   }
 
 }

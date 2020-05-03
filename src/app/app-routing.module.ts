@@ -5,6 +5,8 @@ import { GdprComponent } from './components/gdpr/gdpr.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { HowComponent } from './components/how/how.component';
+import { SpeakersComponent } from './components/speakers/speakers.component';
+import { SpeakerComponent } from './components/speaker/speaker.component';
 
 const routes: Routes = [
   { path: 'terms', component: TermsComponent },
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'how', component: HowComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '',  redirectTo: '/login', pathMatch: 'full'}
+  { path: 'speakers', component: SpeakersComponent },
+  { path: 'speaker/:id', component: SpeakerComponent},
+  { path: '',  redirectTo: '/speakers', pathMatch: 'full'}
 ];
 
 @NgModule({

@@ -1,0 +1,90 @@
+<div class="profile-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ml-auto mr-auto">
+                <div class="profile">
+                    <div class="avatar">
+                        <img *ngIf="sp.picture != ''" src="{{sp.picture}}" alt="{{sp.name}} Profile Picture WiG+"
+                        class="img-raised rounded-circle img-fluid">
+                    <img *ngIf="sp.picture == ''" src="../../../assets/img/logo.png" alt="{{sp.name}} Profile Picture WiG+"
+                        class="img-raised rounded-circle img-fluid">
+                    </div>
+                    <div class="name">
+                        <h3 class="title">{{sp.name}}</h3>
+                        <h6>{{sp.position}}</h6>
+                        <div class="card-footer justify-content-center">
+                            <a *ngIf="sp.contactLinkedIn" href="{{sp.linkedIn}}" class="btn btn-link btn-just-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a *ngIf="sp.contactTwitter" href="{{sp.twitter}}" class="btn btn-link btn-just-icon"><i class="fab fa-twitter"></i></a>
+                            <a *ngIf="sp.contactEmail" href="mailto:{{sp.email}}subject=WiG+ speaker" class="btn btn-link btn-just-icon"><i class="fa fa-envelope"></i></a>
+                            <a *ngIf="sp.webpage != '' && sp.webpage != null" href="{{sp.webpage}}" class="btn btn-link btn-just-icon"><i class="fas fa-globe-americas"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="description text-center">
+            <p>{{sp.bio}}</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 ml-auto mr-auto">
+                <h6>Sector(s)</h6>
+                <div *ngFor="let s of sp.sector | keyvalue">
+                    <div *ngIf="s.value && s.key == 'private'">Private Company</div>
+                    <div *ngIf="s.value && s.key == 'public'">Public sector / Government</div>
+                    <div *ngIf="s.value && s.key == 'ngo'">Non-governmental organisation (NGO) / Not-For-Profit organisation</div>
+                    <div *ngIf="s.value && s.key == 'self'">Self-employed / Consulting</div>
+                    <div *ngIf="s.value && s.key == 'university'">University / Academia</div>
+                    <div *ngIf="s.value && s.key == 'international'">International organisation</div>
+                    <div *ngIf="s.value && s.key == 'other'">Other: {{sp.otherSector}}</div>
+                </div>
+            </div>
+            <div class="col-md-6 ml-auto mr-auto">
+                <h6> {{sp.years}} of experience</h6>
+                <h6> Career level {{sp.level}}</h6>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--         <div class="row">
+            <div class="col-md-6 ml-auto mr-auto">
+                <div class="profile-tabs">
+                    <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
+                                <i class="material-icons">camera</i> Studio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#works" role="tab" data-toggle="tab">
+                                <i class="material-icons">palette</i> Work
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                                <i class="material-icons">favorite</i> Favorite
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+
+    </div>
+</div>
