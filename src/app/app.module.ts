@@ -24,6 +24,9 @@ import { GdprComponent } from './components/gdpr/gdpr.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { HowComponent } from './components/how/how.component';
 import { SpeakerComponent } from './components/speaker/speaker.component';
+import { SpeakerService } from './services/speaker.service';
+
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 
 @NgModule({
   declarations: [
@@ -47,10 +50,16 @@ import { SpeakerComponent } from './components/speaker/speaker.component';
     AngularFireAuthModule,
     AngularFireStorageModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    NgxMapboxGLModule.withConfig({
+      accessToken: environment.mapBoxToken // Optional, can also be set per map (accessToken input of mgl-map)
+     // geocoderAccessToken: 'TOKEN' // Optional, specify if different from the map access token, 
+     // can also be set per mgl-geocoder (accessToken input of mgl-geocoder)
+    })
   ],
   providers: [
-    ScreenTrackingService
+    ScreenTrackingService,
+    SpeakerService
   ],
   bootstrap: [AppComponent]
 })

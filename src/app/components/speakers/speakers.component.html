@@ -1,56 +1,109 @@
-<div *ngIf="this.spService && this.spService.speakersList && this.spService.speakersList.length > 0" class="section text-center">
+<div *ngIf="this.spService && this.spService.speakersList && this.spService.speakersList.length > 0"
+    class="section text-center">
     <h2>Find your WiG+ speaker here (total: {{this.spService.speakersList.length}})</h2>
 
     <div>
 
-        <button class="btn btn-primary btn-lg" (click)="displayMap = true"> <i class="material-icons">map</i> Map</button>
-        <button class="btn btn-primary btn-lg" (click)="displayMap = false"> List <i class="material-icons">list</i></button>
+        <ul class="nav nav-pills nav-pills-primary nav-pills-icons justify-content-center" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" href="#mapPane" role="tab" data-toggle="tab">
+                    <i class="material-icons">map</i>
+                    Map
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#listPane" role="tab" data-toggle="tab">
+                    <i class="material-icons">dashboard</i>
+                    List
+                </a>
+            </li>
+        </ul>
 
     </div>
 
+    <div class="row">
 
-    <div *ngIf="displayMap">
-        <div id="map" class="map-container" > </div>
+        <div class="col-md-3">
 
-    </div>
+            filter
+
+        </div>
+        <div class="col-md-9">
 
 
-    <div *ngIf="!displayMap" class="team">
-        <div>
-            <!-- *ngIf="speakersList && speakersList.length > 0" -->
-            <div class="row">
-                <div *ngFor="let sp of this.spService.speakersList; index as i;" class="col-md-3">
+            <div class="tab-content tab-space">
+                <div class="tab-pane active" id="mapPane">
 
-                    <div class="team-player">
-                        <div class="card card-plain">
-                            <div class="col-md-6 ml-auto mr-auto">
-                                <img *ngIf="sp.picture != ''" src="{{sp.picture}}"
-                                    alt="{{sp.name}} Profile Picture WiG+" class="img-raised rounded-circle img-fluid">
-                                <img *ngIf="sp.picture == ''" src="../../../assets/img/logo.png"
-                                    alt="{{sp.name}} Profile Picture WiG+" class="img-raised rounded-circle img-fluid">
-                            </div>
-                            <h4 class="card-title"> {{sp.name}}
-                                <br>
-                                <small class="card-description text-muted"> {{sp.position}}</small>
-                            </h4>
-                            <div class="card-body">
-                                <p class="card-description">{{sp.bio | slice:0:200}}...</p>
-                                <a routerLink="/speaker/{{ sp.id }}" href="#">See complete profile</a>
-                            </div>
-                            <div class="card-footer justify-content-center">
-                                <a *ngIf="sp.contactLinkedIn" href="{{sp.linkedIn}}"
-                                    class="btn btn-link btn-just-icon"><i class="fab fa-linkedin-in"></i></a>
-                                <a *ngIf="sp.contactTwitter" href="{{sp.twitter}}" class="btn btn-link btn-just-icon"><i
-                                        class="fab fa-twitter"></i></a>
-                                <a *ngIf="sp.contactEmail" href="mailto:{{sp.email}}subject=WiG+ speaker"
-                                    class="btn btn-link btn-just-icon"><i class="fa fa-envelope"></i></a>
-                                <a *ngIf="sp.webpage != '' && sp.webpage != null" href="{{sp.webpage}}"
-                                    class="btn btn-link btn-just-icon"><i class="fas fa-globe-americas"></i></a>
+                    <div style="height: 600px;">
+
+                        <mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[1]" [center]="[0, 0]">
+                        </mgl-map>
+
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="listPane">
+                    <div class="row">
+                        <div *ngFor="let sp of this.spService.speakersList | slice:paginationLimitFrom:paginationLimitTo; let i=index"
+                            class="col-md-3">
+                            <div class="team-player">
+                                <div class="card card-plain">
+                                    <div class="col-md-6 ml-auto mr-auto">
+                                        <img *ngIf="sp.picture != ''" src="{{sp.picture}}"
+                                            alt="{{sp.name}} Profile Picture WiG+"
+                                            class="img-raised rounded-circle img-fluid">
+                                        <img *ngIf="sp.picture == ''" src="../../../assets/img/logo.png"
+                                            alt="{{sp.name}} Profile Picture WiG+"
+                                            class="img-raised rounded-circle img-fluid">
+                                    </div>
+                                    <h4 class="card-title"> {{sp.name}}
+                                        <br>
+                                        <small class="card-description text-muted"> {{sp.position}}</small>
+                                    </h4>
+                                    <div class="card-body">
+                                        <p class="card-description">{{sp.bio | slice:0:200}}...</p>
+                                        <a routerLink="/speaker/{{ sp.id }}" href="#">See complete profile</a>
+                                    </div>
+                                    <div class="card-footer justify-content-center">
+                                        <a *ngIf="sp.contactLinkedIn" href="{{sp.linkedIn}}"
+                                            class="btn btn-link btn-just-icon"><i class="fab fa-linkedin-in"></i></a>
+                                        <a *ngIf="sp.contactTwitter" href="{{sp.twitter}}"
+                                            class="btn btn-link btn-just-icon"><i class="fab fa-twitter"></i></a>
+                                        <a *ngIf="sp.contactEmail" href="mailto:{{sp.email}}subject=WiG+ speaker"
+                                            class="btn btn-link btn-just-icon"><i class="fa fa-envelope"></i></a>
+                                        <a *ngIf="sp.webpage != '' && sp.webpage != null" href="{{sp.webpage}}"
+                                            class="btn btn-link btn-just-icon"><i class="fas fa-globe-americas"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div *ngIf="this.spService.speakersList" class="row">
+                        <div class="col-md-6 ml-auto mr-auto">
+                            <nav aria-label="pagination">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" href="javascript:;"
+                                            (click)="previousPage()">Previous</a>
+                                    </li>
+                                    <li *ngFor="let page of range(this.spService.speakersList.length/LIMIT_PER_PAGE, 0)" class="page-item"
+                                        [ngClass]="currentPage == page? 'active': ''">
+                                        <a class="page-link" href="javascript:;" (click)="currentPage=page; paginationLimitFrom=page*LIMIT_PER_PAGE; paginationLimitTo=page*LIMIT_PER_PAGE+4 ">{{page+1}}
+                                            <span *ngIf="currentPage == page" class="sr-only">(current)</span>
+                                        </a></li>
+
+                                    <li class="page-item">
+                                        <a class="page-link" href="javascript:;" (click)="nextPage()">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
+
             </div>
+
         </div>
     </div>
+
 </div>

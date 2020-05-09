@@ -27,7 +27,7 @@ export class MapService {
     this.map.addControl(new mapboxgl.NavigationControl());
 
     console.log('build map');
-
+/* 
     this.map.on('load', () => {
       this.map.loadImage(
         '../assets/img/pin.png',
@@ -63,7 +63,7 @@ export class MapService {
         }
       );
     });
-
+ */
 
 
 

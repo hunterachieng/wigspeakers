@@ -12,3 +12,8 @@ h4 {
     height: 100%;
     position: absolute;
 }
+
+mgl-map {
+    height: 100%;
+    width: 100%;
+  }

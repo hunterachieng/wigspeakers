@@ -14,6 +14,7 @@ export class SpeakerService {
   private db: AngularFirestore;
   constructor(db: AngularFirestore) {
     this.db = db;
+    console.log('Speakers query');
     const spSubs = this.subscribeToSpeakers().subscribe(res => {
       this.speakersList = [];
       res.forEach(sp => {
@@ -22,6 +23,7 @@ export class SpeakerService {
         }
       });
       spSubs.unsubscribe();
+      console.log('Speakers ready');
     });
   }
 
