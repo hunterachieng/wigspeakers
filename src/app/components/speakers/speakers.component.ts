@@ -15,19 +15,27 @@ export class SpeakersComponent implements OnInit {
   public paginationLimitFrom = 0;
   public paginationLimitTo = 4;
   public LIMIT_PER_PAGE = 4;
-  public limitPagination = [];
   public currentPage = 0;
+
+  textSearch = '';
+  searchSector = {
+    private: false,
+    public: false,
+    ngo: false,
+    self: false,
+    university: false,
+    international: false,
+   // other: false,
+  };
 
   constructor(public spService: SpeakerService) {
   }
 
   ngOnInit(): void {
-    this.limitPagination = this.range(20, 0);
   }
 
   range(size, startAt = 0) {
     size = Math.round(size);
-    console.log('Array de ' + size);
     return [...Array(size).keys()].map(i => i + startAt);
   }
 
@@ -45,6 +53,22 @@ export class SpeakersComponent implements OnInit {
       this.paginationLimitTo = this.paginationLimitTo - this.LIMIT_PER_PAGE;
       this.currentPage--;
     }
+  }
+
+  filterByText() {
+    this.spService.filterSpeakersByText(this.textSearch);
+  }
+
+  filterBySector() {
+    this.spService.filterSpeakersBySector(this.searchSector);
+  }
+
+  onGeocoderResult(event) {
+    console.log(event);
+    /*     new Popup()
+          .setLngLat(location)
+          .setDOMContent(contentContainer)
+          .addTo(this.map); */
   }
 
   @HostListener('window:resize')

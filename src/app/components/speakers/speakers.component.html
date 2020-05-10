@@ -1,6 +1,6 @@
-<div *ngIf="this.spService && this.spService.speakersList && this.spService.speakersList.length > 0"
+<div *ngIf="this.spService && this.spService.filteredSpeakersList && this.spService.filteredSpeakersList.length > 0"
     class="section text-center">
-    <h2>Find your WiG+ speaker here (total: {{this.spService.speakersList.length}})</h2>
+    <h2>Find your WiG+ speaker here (total: {{this.spService.filteredSpeakersList.length}})</h2>
 
     <div>
 
@@ -23,9 +23,83 @@
 
     <div class="row">
 
-        <div class="col-md-3">
+        <div class="col-md-3 text-left">
 
-            filter
+            <div class="form-group">
+                <label for="searchText">Filter results by text</label>
+                <input type="text" class="form-control" id="searchText" placeholder="Name, bio, position ..." [(ngModel)]="textSearch" (keyup)="filterByText()">
+              </div>
+
+              <label class="heading" for="sector">Filter by sector:</label>
+                        <div class="form-check ">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector1" type="checkbox"
+                                    value="Private Company" [checked]="searchSector.private"
+                                    (change)="searchSector.private = !searchSector.private; filterBySector()">
+                                Private Company
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector2" type="checkbox"
+                                    value="Public sector / Government" [checked]="searchSector.public"
+                                    (change)="searchSector.public = !searchSector.public; filterBySector()">
+                                Public sector / Government
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector3" type="checkbox"
+                                    value="Non-governmental organisation (NGO) / Not-For-Profit organisation"
+                                    [checked]="searchSector.ngo" (change)="searchSector.ngo = !searchSector.ngo; filterBySector()">
+                                Non-governmental organisation (NGO) / Not-For-Profit organisation
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector4" type="checkbox"
+                                    value="Self-employed / Consulting" [checked]="searchSector.self"
+                                    (change)="searchSector.self = !searchSector.self; filterBySector()">
+                                Self-employed / Consulting
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-radio">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector5" type="checkbox"
+                                    value="University / Academia" [checked]="searchSector.university"
+                                    (change)="searchSector.university = !searchSector.university; filterBySector()">
+                                University / Academia
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+                                    value="International organisation" [checked]="searchSector.international"
+                                    (change)="searchSector.international = !searchSector.international; filterBySector()">
+                                International organisation
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+
+
+
 
         </div>
         <div class="col-md-9">
@@ -37,6 +111,125 @@
                     <div style="height: 600px;">
 
                         <mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[1]" [center]="[0, 0]">
+                            <!-- Zoom controls -->
+                            <mgl-control mglNavigation position="top-left"> </mgl-control>
+
+                            <!-- Geolocation control -->
+                            <mgl-control mglGeolocate position="top-left" [positionOptions]="{
+                                                                enableHighAccuracy: true
+                                                             }" [trackUserLocation]="true">
+                            </mgl-control>
+
+
+
+                            <mgl-control class="search-box" mglGeocoder (result)="onGeocoderResult($event)"
+                                types="address"></mgl-control>
+
+                            <mgl-geojson-source id="wigs-source" [cluster]="true" [clusterMaxZoom]="14"
+                                [clusterRadius]="50">
+
+
+                                <!--        <mgl-layer
+                            id="clusters"
+                            type="circle"
+                            source="wigs-source"
+                            [filter]="['has', 'point_count']"
+                            [paint]="{
+                              'circle-color': {
+                                property: 'point_count',
+                                type: 'interval',
+                                stops: [
+                                  [0, '#51bbd6'],
+                                  [100, '#f1f075'],
+                                  [750, '#f28cb1']
+                                ]
+                              },
+                              'circle-radius': {
+                                property: 'point_count',
+                                type: 'interval',
+                                stops: [
+                                  [0, 20],
+                                  [100, 30],
+                                  [750, 40]
+                                ]
+                              }
+                            }"
+                          >
+                          </mgl-layer>
+                          <mgl-layer
+                            id="cluster-count"
+                            type="symbol"
+                            source="wigs-source"
+                            [filter]="['has', 'point_count']"
+                            [layout]="{
+                              'text-field': '{point_count_abbreviated}',
+                              'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                              'text-size': 12
+                            }"
+                          >
+                          </mgl-layer>
+                          <mgl-layer
+                            id="unclustered-point"
+                            type="circle"
+                            source="wigs-source"
+                            [filter]="['!has', 'point_count']"
+                            [paint]="{
+                              'circle-color': '#11b4da',
+                              'circle-radius': 4,
+                              'circle-stroke-width': 1,
+                              'circle-stroke-color': '#fff'
+                            }"
+                          >
+                          </mgl-layer> -->
+
+
+                                <mgl-feature *ngFor="let sp of spService.filteredSpeakersList">
+                                    <mgl-marker #myMarker
+                                        [lngLat]="sp.geoFeature != null? sp.geoFeature.geometry.coordinates : [0,0]">
+                                        <div [ngStyle]="{
+                                                'background-image': 'url(https://firebasestorage.googleapis.com/v0/b/speakerswig.appspot.com/o/map%2Fpin.png?alt=media&token=d29343d0-2d30-42b5-8bb3-24a5f22ba8f4)',
+                                                'background-size': 'cover',
+                                                width: '41px',
+                                                height: '50px',
+                                                cursor: 'pointer'
+                                              }"></div>
+                                    </mgl-marker>
+                                    <mgl-popup [marker]="myMarker">
+                                        <div class="card card-plain text-center">
+                                            <div class="col-md-4 ml-auto mr-auto">
+                                                <img *ngIf="sp.picture != ''" src="{{sp.picture}}"
+                                                    alt="{{sp.name}} Profile Picture WiG+"
+                                                    class="img-raised rounded-circle img-fluid">
+                                                <img *ngIf="sp.picture == ''" src="../../../assets/img/logo.png"
+                                                    alt="{{sp.name}} Profile Picture WiG+"
+                                                    class="img-raised rounded-circle img-fluid">
+                                            </div>
+                                            <h6 class="card-title"> {{sp.name}}
+                                                <br>
+                                                <small class="card-description text-muted small">
+                                                    {{sp.position}}</small>
+                                            </h6>
+                                            <a routerLink="/speaker/{{ sp.id }}" href="#">See complete profile</a>
+                                            <div class="card-footer justify-content-center">
+                                                <a *ngIf="sp.contactLinkedIn" href="{{sp.linkedIn}}"
+                                                    class="btn btn-link btn-just-icon"><i
+                                                        class="fab fa-linkedin-in"></i></a>
+                                                <a *ngIf="sp.contactTwitter" href="{{sp.twitter}}"
+                                                    class="btn btn-link btn-just-icon"><i
+                                                        class="fab fa-twitter"></i></a>
+                                                <a *ngIf="sp.contactEmail"
+                                                    href="mailto:{{sp.email}}subject=WiG+ speaker"
+                                                    class="btn btn-link btn-just-icon"><i
+                                                        class="fa fa-envelope"></i></a>
+                                                <a *ngIf="sp.webpage != '' && sp.webpage != null" href="{{sp.webpage}}"
+                                                    class="btn btn-link btn-just-icon"><i
+                                                        class="fas fa-globe-americas"></i></a>
+                                            </div>
+                                        </div>
+                                    </mgl-popup>
+                                </mgl-feature>
+
+                            </mgl-geojson-source>
                         </mgl-map>
 
                     </div>
@@ -44,7 +237,7 @@
 
                 <div class="tab-pane" id="listPane">
                     <div class="row">
-                        <div *ngFor="let sp of this.spService.speakersList | slice:paginationLimitFrom:paginationLimitTo; let i=index"
+                        <div *ngFor="let sp of this.spService.filteredSpeakersList | slice:paginationLimitFrom:paginationLimitTo; let i=index"
                             class="col-md-3">
                             <div class="team-player">
                                 <div class="card card-plain">
@@ -78,17 +271,17 @@
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="this.spService.speakersList" class="row">
+                    <div *ngIf="this.spService.filteredSpeakersList" class="row">
                         <div class="col-md-6 ml-auto mr-auto">
                             <nav aria-label="pagination">
                                 <ul class="pagination justify-content-center">
                                     <li class="page-item">
-                                        <a class="page-link" href="javascript:;"
-                                            (click)="previousPage()">Previous</a>
+                                        <a class="page-link" href="javascript:;" (click)="previousPage()">Previous</a>
                                     </li>
-                                    <li *ngFor="let page of range(this.spService.speakersList.length/LIMIT_PER_PAGE, 0)" class="page-item"
-                                        [ngClass]="currentPage == page? 'active': ''">
-                                        <a class="page-link" href="javascript:;" (click)="currentPage=page; paginationLimitFrom=page*LIMIT_PER_PAGE; paginationLimitTo=page*LIMIT_PER_PAGE+4 ">{{page+1}}
+                                    <li *ngFor="let page of range(this.spService.filteredSpeakersList.length/LIMIT_PER_PAGE, 0)"
+                                        class="page-item" [ngClass]="currentPage == page? 'active': ''">
+                                        <a class="page-link" href="javascript:;"
+                                            (click)="currentPage=page; paginationLimitFrom=page*LIMIT_PER_PAGE; paginationLimitTo=page*LIMIT_PER_PAGE+4 ">{{page+1}}
                                             <span *ngIf="currentPage == page" class="sr-only">(current)</span>
                                         </a></li>
 

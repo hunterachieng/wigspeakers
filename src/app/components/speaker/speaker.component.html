@@ -4,7 +4,7 @@
             <div class="col-md-6 ml-auto mr-auto">
                 <div class="profile">
                     <div class="avatar">
-                        <img *ngIf="sp.picture != ''" src="{{sp.picture}}" alt="{{sp.name}} Profile Picture WiG+"
+                        <img *ngIf="sp && sp.picture != ''" src="{{sp.picture}}" alt="{{sp.name}} Profile Picture WiG+"
                         class="img-raised rounded-circle img-fluid">
                     <img *ngIf="sp.picture == ''" src="../../../assets/img/logo.png" alt="{{sp.name}} Profile Picture WiG+"
                         class="img-raised rounded-circle img-fluid">

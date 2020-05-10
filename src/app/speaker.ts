@@ -256,6 +256,7 @@ export class Speaker {
                 slack: false,
                 mailing: false
             },
+        public geoFeature: any = null
     ) { }
 
 }
