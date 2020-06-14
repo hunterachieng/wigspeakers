@@ -1,5 +1,5 @@
 h2 {
-    color: #9124a3;
+    color: #86339A;
     text-align: center;
 }
 
@@ -16,4 +16,51 @@ h4 {
 mgl-map {
     height: 100%;
     width: 100%;
-  }
+}
+
+.hidden {
+    display: none;
+}
+
+.btn-chevron {
+    color: #86339A !important;
+    padding: 0%;
+    padding-right: 2px;
+    text-transform: none;
+}
+
+label.heading {
+    color: #86339A;
+}
+
+.ng-option-label{
+    font-size: smaller !important;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    max-width: 160px;
+    width: 100%;
+    margin: 0 auto;
+    -webkit-transform: translate3d(0, -50%, 0);
+    -moz-transform: translate3d(0, -50%, 0);
+    -o-transform: translate3d(0, -50%, 0);
+    -ms-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+}
+
+.profile .name {
+    margin-top: -80px;
+}
+
+span {
+    font-size: 14px;
+    margin: 0 0 10px;
+}
+
+p {
+    white-space: break-spaces;
+}

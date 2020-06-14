@@ -16,3 +16,12 @@
 .profile .name {
     margin-top: -80px;
 }
+
+span {
+    font-size: 14px;
+    margin: 0 0 10px;
+}
+
+p {
+    white-space: break-spaces;
+}

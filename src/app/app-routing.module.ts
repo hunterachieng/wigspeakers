@@ -6,7 +6,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { HowComponent } from './components/how/how.component';
 import { SpeakersComponent } from './components/speakers/speakers.component';
-import { SpeakerComponent } from './components/speaker/speaker.component';
 
 const routes: Routes = [
   { path: 'terms', component: TermsComponent },
@@ -15,7 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'speakers', component: SpeakersComponent },
-  { path: 'speaker/:id', component: SpeakerComponent},
+  { path: 'speakers/:id', component: SpeakersComponent },
   { path: '',  redirectTo: '/speakers', pathMatch: 'full'}
 ];
 

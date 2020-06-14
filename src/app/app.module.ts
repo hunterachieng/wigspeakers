@@ -27,6 +27,7 @@ import { SpeakerComponent } from './components/speaker/speaker.component';
 import { SpeakerService } from './services/speaker.service';
 
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
     TermsComponent,
     HowComponent,
     SpeakersComponent,
-    SpeakerComponent
+    SpeakerComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
