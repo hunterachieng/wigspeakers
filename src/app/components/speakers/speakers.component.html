@@ -1,7 +1,7 @@
 <div [hidden]="selectedSpeaker"
     *ngIf="this.spService && this.spService.speakersList && this.spService.speakersList.length > 0"
     class="section text-center">
-    <h2>Find your WiG+ speaker here (total: {{this.spService.filteredSpeakersList.length}})</h2>
+    <h2>Find your Women in Geospatial+ speaker today (total: {{this.spService.filteredSpeakersList.length}})</h2>
     <div>
         <ul class="nav nav-pills nav-pills-primary nav-pills-icons justify-content-center" role="tablist">
             <li class="nav-item">
@@ -29,9 +29,9 @@
             <button type="button" class="btn btn-link btn-xs btn-chevron"
                 (click)="showSE.classList.contains('hidden') ? showSE.className = '' : showSE.className = 'hidden' ">
                 <i [ngClass]="showSE.classList.contains('hidden')? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
-        
-            <label class="heading" for="sector">&nbsp; Filter by sector</label>
-        </button>
+
+                <label class="heading" for="sector">&nbsp; Filter by sector</label>
+            </button>
             <div #showSE>
                 <div class="form-check ">
                     <label class="form-check-label">
@@ -104,8 +104,8 @@
             <button type="button" class="btn btn-link btn-xs btn-chevron"
                 (click)="showYE.classList.contains('hidden') ? showYE.className = '' : showYE.className = 'hidden' ">
                 <i [ngClass]="showYE.classList.contains('hidden')? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
-           
-            <label class="heading" for="experience">&nbsp; Filter by years of work experience</label>
+
+                <label class="heading" for="experience">&nbsp; Filter by years of work experience</label>
             </button>
             <div #showYE>
                 <div class="form-check form-check-radio">
@@ -154,8 +154,8 @@
                 (click)="showLE.classList.contains('hidden') ? showLE.className = '' : showLE.className = 'hidden' ">
                 <!-- [tooltip]="showLO.classList.contains('hidden')? 'Show' : 'Hide'" -->
                 <i [ngClass]="showLE.classList.contains('hidden')? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
-          
-            <label class="heading" for="level">&nbsp; Filter by career level</label>
+
+                <label class="heading" for="level">&nbsp; Filter by career level</label>
             </button>
             <div #showLE>
                 <div class="form-check form-check-radio">
@@ -195,8 +195,8 @@
                 (click)="showAR.classList.contains('hidden') ? showAR.className = '' : showAR.className = 'hidden' ">
                 <!-- [tooltip]="showLO.classList.contains('hidden')? 'Show' : 'Hide'" -->
                 <i [ngClass]="showAR.classList.contains('hidden')? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
-           
-            <label class="heading" for="level">&nbsp; Filter by area of expertise</label>
+
+                <label class="heading" for="level">&nbsp; Filter by area of expertise</label>
             </button>
             <div #showAR class="hidden">
 
@@ -211,7 +211,7 @@
                         </span>
                     </label>
 
-           <!--          <span *ngFor="let arChild of ar.value | keyvalue">
+                    <!--          <span *ngFor="let arChild of ar.value | keyvalue">
                         <label *ngIf="typeOf(areasText[ar.key][arChild.key]) === 'string'" class="form-check-label">
                             <input class="form-check-input" name="area" type="checkbox" [checked]="ar.value"
                                 (change)="searchAreas[ar.key][arChild.key] = !arChild.value; filterAll()">
@@ -230,8 +230,8 @@
                 (click)="showDO.classList.contains('hidden') ? showDO.className = '' : showDO.className = 'hidden' ">
                 <!-- [tooltip]="showLO.classList.contains('hidden')? 'Show' : 'Hide'" -->
                 <i [ngClass]="showDO.classList.contains('hidden')? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
-        
-            <label class="heading" for="level">&nbsp; Filter by domain of expertise</label>
+
+                <label class="heading" for="level">&nbsp; Filter by domain of expertise</label>
             </button>
             <div #showDO class="hidden">
 
@@ -252,8 +252,8 @@
             <button type="button" class="btn btn-link btn-xs btn-chevron"
                 (click)="showLAN.classList.contains('hidden') ? showLAN.className = '' : showLAN.className = 'hidden' ">
                 <i [ngClass]="showLAN.classList.contains('hidden')? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
-           
-            <label class="heading" for="experience">&nbsp; Filter by presenting language</label>
+
+                <label class="heading" for="experience">&nbsp; Filter by presenting language</label>
             </button>
             <div #showLAN>
                 <div class="form-group">
@@ -506,9 +506,156 @@
                 </div>
             </div>
         </div>
-        <div class="description text-center">
+        <div class="text-center">
             <p>{{selectedSpeaker.bio}}</p>
         </div>
+
+        <div class="row">
+            <div class="col-md-3 text-left">
+
+
+                <div class="row">
+                    <div class="col-md-3 ma">
+                        <span class="material-icons">
+                            device_hub
+                        </span>
+                    </div>
+                    <div class="col-md-9">
+                        <h6 class="heading">Sector(s)</h6>
+                        <div *ngFor="let s of selectedSpeaker.sector | keyvalue">
+                            <div *ngIf="s.value && s.key == 'private'">Private Company</div>
+                            <div *ngIf="s.value && s.key == 'public'">Public sector / Government</div>
+                            <div *ngIf="s.value && s.key == 'ngo'">Non-governmental organisation (NGO) / Not-For-Profit
+                                organisation</div>
+                            <div *ngIf="s.value && s.key == 'self'">Self-employed / Consulting</div>
+                            <div *ngIf="s.value && s.key == 'university'">University / Academia</div>
+                            <div *ngIf="s.value && s.key == 'international'">International organisation</div>
+                            <div *ngIf="s.value && s.key == 'other'">Other: {{selectedSpeaker.otherSector}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 ma">
+                        <span class="material-icons">
+                            assignment_ind
+                        </span>
+                    </div>
+                    <div class="col-md-9">
+                        <h6 class="heading">Years of experience</h6>
+                        {{selectedSpeaker.years}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 ma">
+                        <span class="material-icons">
+                            poll
+                        </span>
+                    </div>
+                    <div class="col-md-9">
+                        <h6 class="heading"> Career level</h6>
+                        {{selectedSpeaker.level}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 ma">
+                        <span class="material-icons">
+                            present_to_all
+                        </span>
+                    </div>
+                    <div class="col-md-9">
+                        <h6 class="heading">I can present in </h6>
+                        <span *ngFor="let lan of selectedSpeaker.languages">
+                            {{lan}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9 text-left">
+                <div class="row">
+                    <div class="col-md-1 ma">
+                        <span class="material-icons">
+                            public
+                        </span>
+                    </div>
+                    <div class="col-md-11 text-left">
+                        <h6 class="heading">Areas of expertise</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div *ngFor="let s of selectedSpeaker.newareas | keyvalue" class="col-md-6 text-left">
+                        <li *ngIf="s.value && typeOf(areasText[s.key]) === 'string'">{{areasText[s.key]}} </li>
+                        <div *ngFor="let sv of s.value | keyvalue">
+                            <li *ngIf="sv.value && typeOf(areasText[s.key][sv.key]) === 'string'">
+                                {{areasText[s.key][sv.key]}} </li>
+                        </div>
+                    </div>
+                    <div *ngFor="let oa of selectedSpeaker.otherAreas" class="col-md-6 text-left">
+                        <li>{{oa}} </li>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-1 ma">
+                        <span class="material-icons">
+                            speaker_notes
+                        </span>
+                    </div>
+                    <div class="col-md-11 text-left">
+                        <h6 class="heading">Domains of expertise</h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <span *ngFor="let d of selectedSpeaker.domain | keyvalue" class="col-md-6 text-left">
+                        <li *ngIf="d.value">{{domainText[d.key]}} </li>
+                    </span>
+                    <span *ngFor="let od of selectedSpeaker.otherDomains">
+                        <li *ngIf="od != ''">{{od}} </li>
+                    </span>
+                </div>
+                <br>
+                <div *ngIf="selectedSpeaker.qualifications && selectedSpeaker.qualifications != ''"
+                    class="row text-left">
+                    <div class="col-md-12 ml-auto mr-auto">
+                        <div class="row">
+                            <div class="col-md-1 ma">
+                                <span class="material-icons">
+                                    fact_check
+                                </span>
+                            </div>
+                            <div class="col-md-11 text-left">
+                                <h6 class="heading">Qualifications </h6>
+                            </div>
+                        </div>
+                        <p>{{selectedSpeaker.qualifications}}</p>
+                    </div>
+                </div>
+                <br>
+                <div *ngIf="selectedSpeaker.speakingExperience && selectedSpeaker.speakingExperience != ''"
+                    class="row text-left">
+                    <div class="col-md-12 ml-auto mr-auto">
+                        <div class="row">
+                            <div class="col-md-1 ma">
+                                <span class="material-icons">
+                                    record_voice_over
+                                </span>
+                            </div>
+                            <div class="col-md-11 text-left">
+                                <h6 class="heading">Speaking experience </h6>
+                            </div>
+                        </div>
+                        <p [innerHTML]="selectedSpeaker.speakingExperience"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--  <hr>
 
         <div class="row text-center">
             <div class="col-md-6 ml-auto mr-auto">
@@ -579,7 +726,7 @@
                 <h6>My speaking experince </h6>
                 <p>{{selectedSpeaker.speakingExperience}}</p>
             </div>
-        </div>
+        </div> -->
 
         <br>
         <br>

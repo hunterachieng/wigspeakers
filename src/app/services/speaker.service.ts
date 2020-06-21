@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import * as mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
 
+
 // const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const geocodingService = mbxGeocoding(
   { accessToken: 'pk.eyJ1IjoiYWlkYW1vbmZvcnQiLCJhIjoiY2locnFpdmJkMDAwd3cxa3BsbzR1bjcycSJ9.qV_JJ8BMW67X5BoV1gCcTQ' });
@@ -61,12 +62,14 @@ export class SpeakerService {
           if (sp.geoFeature) {
             this.featureCollection = this.featureCollection + JSON.stringify(sp.geoFeature) + ',';
           }
+
           this.speakersList.push(sp);
         }
       });
       this.filteredSpeakersList = this.speakersList;
       spSubs.unsubscribe();
       console.log('Speakers ready');
+      console.log(this.speakersList);
       this.featureCollection = this.featureCollection + ']}';
     });
   }

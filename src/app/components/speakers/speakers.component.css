@@ -33,7 +33,23 @@ label.heading {
     color: #86339A;
 }
 
-.ng-option-label{
+h6.heading {
+    color: #86339A;
+    text-transform: uppercase;
+    font-size: small;
+}
+
+span.material-icons {
+    font-size: 40px;
+    vertical-align: middle;
+    margin: auto;
+}
+
+.ma {
+    margin: auto;
+}
+
+.ng-option-label {
     font-size: smaller !important;
 }
 

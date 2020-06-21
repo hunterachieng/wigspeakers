@@ -3,6 +3,8 @@ import { SpeakerService } from '../../services/speaker.service';
 import { Speaker } from '../../speaker';
 import { ActivatedRoute } from '@angular/router';
 
+import Autolinker from 'autolinker';
+
 /* import { MapService } from 'src/app/services/map.service';
  */
 @Component({
@@ -334,6 +336,9 @@ export class SpeakersComponent implements OnInit {
       .subscribe(speaker => {
         if (speaker) {
           this.selectedSpeaker = speaker;
+          if (this.selectedSpeaker.speakingExperience) {
+            this.selectedSpeaker.speakingExperience = Autolinker.link( this.selectedSpeaker.speakingExperience );
+          }
           spSub.unsubscribe();
         }
       });
