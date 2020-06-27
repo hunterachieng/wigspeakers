@@ -80,3 +80,7 @@ span {
 p {
     white-space: break-spaces;
 }
+
+.bio {
+    font-size: 16px;
+}

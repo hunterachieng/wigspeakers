@@ -255,10 +255,23 @@
 
                 <label class="heading" for="experience">&nbsp; Filter by presenting language</label>
             </button>
-            <div #showLAN>
+            <div #showLAN class="hidden">
                 <div class="form-group">
                     <ng-select class="text-sm" [items]="languages" [multiple]="false" appendTo="body" name="languages"
                         [(ngModel)]="searchLanguages" (change)="filterAll()"></ng-select>
+                </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-link btn-xs btn-chevron"
+                (click)="showWR.classList.contains('hidden') ? showWR.className = '' : showWR.className = 'hidden' ">
+                <i [ngClass]="showWR.classList.contains('hidden')? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
+
+                <label class="heading" for="experience">&nbsp; Filter by world region</label>
+            </button>
+            <div #showWR class="hidden">
+                <div class="form-group">
+                    <ng-select class="text-sm" [items]="regions" [multiple]="false" appendTo="body" name="region"
+                        [(ngModel)]="searchRegions" (change)="filterAll()"></ng-select>
                 </div>
             </div>
         </div>
@@ -507,13 +520,11 @@
             </div>
         </div>
         <div class="text-center">
-            <p>{{selectedSpeaker.bio}}</p>
+            <p class="bio">{{selectedSpeaker.bio}}</p>
         </div>
-
+        <hr>
         <div class="row">
             <div class="col-md-3 text-left">
-
-
                 <div class="row">
                     <div class="col-md-3 ma">
                         <span class="material-icons">

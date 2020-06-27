@@ -62,6 +62,12 @@ export class SpeakerService {
           if (sp.geoFeature) {
             this.featureCollection = this.featureCollection + JSON.stringify(sp.geoFeature) + ',';
           }
+          if (sp.contactTwitter) {
+            if (sp.twitter[0] === '@') {
+              const tw = sp.twitter.split('@')[1];
+              sp.twitter = 'https://twitter.com/' + tw;
+            }
+          }
 
           this.speakersList.push(sp);
         }
@@ -228,6 +234,18 @@ export class SpeakerService {
       this.filteredSpeakersList = this.filteredSpeakersList.filter(
         it =>
           it.languages.includes(lan)
+      );
+      //  });
+    }
+  }
+
+  filterSpeakersByRegions(reg) {
+    // at least one sector checked
+    if (reg && reg !== '' && reg !== ' ') {
+      // lan.forEach(l => {
+      this.filteredSpeakersList = this.filteredSpeakersList.filter(
+        it =>
+          it.region === reg
       );
       //  });
     }

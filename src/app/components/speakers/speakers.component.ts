@@ -311,12 +311,34 @@ export class SpeakersComponent implements OnInit {
   };
 
   searchLanguages = '';
+  searchRegions = '';
 
   contactEmail = {
     name: '',
     email: '',
     message: ''
   };
+
+
+  public regions = [
+    'Africa - West',
+    'Africa - East',
+    'Africa - Other',
+    'Asia - China',
+    'Asia - India',
+    'Asia - Other',
+    'Australia / New Zealand',
+    'Canada',
+    'Central America',
+    'US - East Coast',
+    'US - West Coast',
+    'US - South',
+    'US - Midwest',
+    'Latin America',
+    'Middle East',
+    'Europe - Other',
+    'Europe - UK/ Ireland ',
+  ];
 
   selectedSpeaker: Speaker;
 
@@ -338,6 +360,12 @@ export class SpeakersComponent implements OnInit {
           this.selectedSpeaker = speaker;
           if (this.selectedSpeaker.speakingExperience) {
             this.selectedSpeaker.speakingExperience = Autolinker.link( this.selectedSpeaker.speakingExperience );
+          }
+          if (this.selectedSpeaker.contactTwitter) {
+            if (this.selectedSpeaker.twitter[0] === '@') {
+              const tw = this.selectedSpeaker.twitter.split('@')[1];
+              this.selectedSpeaker.twitter = 'https://twitter.com/' + tw;
+            }
           }
           spSub.unsubscribe();
         }
@@ -374,6 +402,7 @@ export class SpeakersComponent implements OnInit {
     this.filterByLanguages();
     this.filterByDomain();
     this.filterByArea();
+    this.filterByRegions();
   }
 
   filterByText() {
@@ -402,6 +431,10 @@ export class SpeakersComponent implements OnInit {
 
   filterByLanguages() {
     this.spService.filterSpeakersByLanguages(this.searchLanguages);
+  }
+
+  filterByRegions() {
+    this.spService.filterSpeakersByRegions(this.searchRegions);
   }
 
   onGeocoderResult(event) {
