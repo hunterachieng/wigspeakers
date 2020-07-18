@@ -2,6 +2,8 @@
     *ngIf="this.spService && this.spService.speakersList && this.spService.speakersList.length > 0"
     class="section text-center">
     <h2>Find your Women in Geospatial+ speaker today (total: {{this.spService.filteredSpeakersList.length}})</h2>
+    <h3 *ngIf="this.spService.filteredSpeakersList.length == 0">Sorry, there is no profile fitting your request, try
+        widening your search!</h3>
     <div>
         <ul class="nav nav-pills nav-pills-primary nav-pills-icons justify-content-center" role="tablist">
             <li class="nav-item">
@@ -111,7 +113,8 @@
                 <div class="form-check form-check-radio">
                     <label class="form-check-label">
                         <input class="form-check-input" name="experience" id="experience1" type="radio"
-                            value="0 - 5 years" (change)="filterAll()" [(ngModel)]="textYears">
+                            value="0 - 5 years" (click)="textYears === '0 - 5 years'? textYears='':null; filterAll()"
+                            (change)="filterAll()" [(ngModel)]="textYears">
                         0 - 5 years
                         <span class="circle">
                             <span class="check"></span>
@@ -121,7 +124,8 @@
                 <div class="form-check form-check-radio">
                     <label class="form-check-label">
                         <input class="form-check-input" name="experience" id="experience2" type="radio"
-                            value="5 - 10 years" (change)="filterAll()" [(ngModel)]="textYears">
+                            value="5 - 10 years" (click)="textYears === '5 - 10 years'? textYears='':null; filterAll()"
+                            (change)="filterAll()" [(ngModel)]="textYears">
                         5 - 10 years
                         <span class="circle">
                             <span class="check"></span>
@@ -131,7 +135,9 @@
                 <div class="form-check form-check-radio">
                     <label class="form-check-label">
                         <input class="form-check-input" name="experience" id="experience3" type="radio"
-                            value="10 - 20 years" (change)="filterAll()" [(ngModel)]="textYears">
+                            value="10 - 20 years"
+                            (click)="textYears === '10 - 20 years'? textYears='':null; filterAll()"
+                            (change)="filterAll()" [(ngModel)]="textYears">
                         10 - 20 years
                         <span class="circle">
                             <span class="check"></span>
@@ -141,7 +147,8 @@
                 <div class="form-check form-check-radio">
                     <label class="form-check-label">
                         <input class="form-check-input" name="experience" id="experience4" type="radio"
-                            value="20 + years " (change)="filterAll()" [(ngModel)]="textYears">
+                            value="20 + years " (click)="textYears === '20 + years '? textYears='':null; filterAll()"
+                            (change)="filterAll()" [(ngModel)]="textYears">
                         20 + years
                         <span class="circle">
                             <span class="check"></span>
@@ -161,6 +168,7 @@
                 <div class="form-check form-check-radio">
                     <label class="form-check-label">
                         <input class="form-check-input" name="level" id="level1" type="radio" value="Early-career"
+                            (click)="textLevel === 'Early-career'? textLevel='':null; filterAll()"
                             (change)="filterAll()" [(ngModel)]="textLevel">
                         Early-career
                         <span class="circle">
@@ -171,7 +179,8 @@
                 <div class="form-check form-check-radio">
                     <label class="form-check-label">
                         <input class="form-check-input" name="level" id="level2" type="radio" value="Mid-level"
-                            (change)="filterAll()" [(ngModel)]="textLevel">
+                            (click)="textLevel === 'Mid-level'? textLevel='':null; filterAll()" (change)="filterAll()"
+                            [(ngModel)]="textLevel">
                         Mid-level
                         <span class="circle">
                             <span class="check"></span>
@@ -181,6 +190,7 @@
                 <div class="form-check form-check-radio">
                     <label class="form-check-label">
                         <input class="form-check-input" name="level" id="level3" type="radio" value="Senior-level"
+                            (click)="textLevel === 'Senior-level'? textLevel='':null; filterAll()"
                             (change)="filterAll()" [(ngModel)]="textLevel">
                         Senior-level
                         <span class="circle">
@@ -274,6 +284,9 @@
                         [(ngModel)]="searchRegions" (change)="filterAll()"></ng-select>
                 </div>
             </div>
+            <br>
+            <button class="btn btn-outline-primary btn-round" (click)="clearSearch()">Clear search</button>
+
         </div>
         <div class="col-md-9">
 
@@ -293,9 +306,9 @@
                             </mgl-control> -->
 
 
-
+                            <!-- 
                             <mgl-control class="search-box" mglGeocoder (result)="onGeocoderResult($event)"
-                                types="address"></mgl-control>
+                                types="address"></mgl-control> -->
 
                             <mgl-geojson-source id="wigs-source" [cluster]="true" [clusterMaxZoom]="14"
                                 [clusterRadius]="50">
@@ -393,8 +406,8 @@
                                                     <a *ngIf="sp.contactTwitter" href="{{sp.twitter}}" target="_blank"
                                                         class="btn btn-link btn-just-icon"><i
                                                             class="fab fa-twitter"></i></a>
-                                                    <a *ngIf="sp.contactEmail"
-                                                        href="mailto:{{sp.email}}subject=WiG+ speaker"
+                                                    <a *ngIf="sp.contactEmail" href="javascript:;"
+                                                        (click)="sendEmail(sp.email)"
                                                         class="btn btn-link btn-just-icon"><i
                                                             class="fa fa-envelope"></i></a>
                                                     <a *ngIf="sp.webpage != '' && sp.webpage != null" target="_blank"
@@ -597,6 +610,14 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div *ngFor="let a of areasClean" class="col-md-6 text-left">
+                        <li>{{a}} </li>
+                    </div>
+                    <div *ngFor="let oa of selectedSpeaker.otherAreas" class="col-md-6 text-left">
+                        <li>{{oa}} </li>
+                    </div>
+                </div>
+                <!--  <div class="row">
                     <div *ngFor="let s of selectedSpeaker.newareas | keyvalue" class="col-md-6 text-left">
                         <li *ngIf="s.value && typeOf(areasText[s.key]) === 'string'">{{areasText[s.key]}} </li>
                         <div *ngFor="let sv of s.value | keyvalue">
@@ -607,7 +628,7 @@
                     <div *ngFor="let oa of selectedSpeaker.otherAreas" class="col-md-6 text-left">
                         <li>{{oa}} </li>
                     </div>
-                </div>
+                </div> -->
                 <br>
                 <div class="row">
                     <div class="col-md-1 ma">
@@ -619,13 +640,21 @@
                         <h6 class="heading">Domains of expertise</h6>
                     </div>
                 </div>
-                <div class="row">
+                <!--              <div class="row">
                     <span *ngFor="let d of selectedSpeaker.domain | keyvalue" class="col-md-6 text-left">
                         <li *ngIf="d.value">{{domainText[d.key]}} </li>
                     </span>
                     <span *ngFor="let od of selectedSpeaker.otherDomains">
                         <li *ngIf="od != ''">{{od}} </li>
                     </span>
+                </div> -->
+                <div class="row">
+                    <div *ngFor="let d of domainsClean" class="col-md-6 text-left">
+                        <li>{{d}} </li>
+                    </div>
+                    <div *ngFor="let od of selectedSpeaker.otherDomains">
+                        <li *ngIf="od != ''">{{od}} </li>
+                    </div>
                 </div>
                 <br>
                 <div *ngIf="selectedSpeaker.qualifications && selectedSpeaker.qualifications != ''"

@@ -73,11 +73,12 @@ span.material-icons {
 }
 
 span {
-    font-size: 14px;
+    font-size: 16px;
     margin: 0 0 10px;
 }
 
 p {
+    font-size: 16px;
     white-space: break-spaces;
 }
 
