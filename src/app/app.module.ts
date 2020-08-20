@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { AngularFireAnalyticsModule, ScreenTrackingService } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
@@ -28,6 +29,9 @@ import { SpeakerService } from './services/speaker.service';
 
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { ContactComponent } from './components/contact/contact.component';
+import { AdminComponent } from './components/admin/admin.component';
+
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,8 @@ import { ContactComponent } from './components/contact/contact.component';
     HowComponent,
     SpeakersComponent,
     SpeakerComponent,
-    ContactComponent
+    ContactComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -57,11 +62,13 @@ import { ContactComponent } from './components/contact/contact.component';
       accessToken: environment.mapBoxToken // Optional, can also be set per map (accessToken input of mgl-map)
      // geocoderAccessToken: 'TOKEN' // Optional, specify if different from the map access token, 
      // can also be set per mgl-geocoder (accessToken input of mgl-geocoder)
-    })
+    }),
+    DataTablesModule
   ],
   providers: [
     ScreenTrackingService,
-    SpeakerService
+    SpeakerService,
+    AngularFireAuthGuard
   ],
   bootstrap: [AppComponent]
 })

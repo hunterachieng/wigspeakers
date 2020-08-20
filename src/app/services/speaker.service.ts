@@ -105,13 +105,38 @@ export class SpeakerService {
       });
   }
 
+  updateSignInAlready(speakerId: string, ml, sl) {
+    this.speakersList.forEach(sp => {
+      if (sp.id === speakerId) {
+        sp.signin = {
+          option: 'already',
+          slack: sl,
+          mailing: ml
+        };
+      }
+    });
+    return this.db
+      .collection(this.collection)
+      .doc<Speaker>(speakerId)
+      .update({
+        signin: {
+          option: 'already',
+          slack: sl,
+          mailing: ml
+        }
+      });
+
+  }
+
   filterSpeakersByText(search) {
     if (search && search !== '' && search !== ' ') {
       this.filteredSpeakersList = this.filteredSpeakersList.filter(
         it =>
           it.name.toLowerCase().includes(search.toLowerCase()) ||
           it.bio.toLowerCase().includes(search.toLowerCase()) ||
-          it.position.toLowerCase().includes(search.toLowerCase())
+          it.position.toLowerCase().includes(search.toLowerCase()) ||
+          it.city.toLowerCase().includes(search.toLowerCase()) ||
+          it.country.toLowerCase().includes(search.toLowerCase())
       );
     }
   }
@@ -179,99 +204,99 @@ export class SpeakerService {
       }
     }
 
-     /*     this.filteredSpeakersList.forEach(sk => {
-      if (!sk.newareas) {
+    /*     this.filteredSpeakersList.forEach(sk => {
+     if (!sk.newareas) {
 
-        const newAEmpty = {
-          research: false,
-          geosoft: false,
-          geosoftsub: {
-            foss4g: false,
-            arcgis: false,
-            mapinfo: false,
-            cadcorp: false,
-            fme: false,
-            other: false,
-          },
-          webmapping: false,
-          webmappingsub: {
-            openlayers: false,
-            leaflet: false,
-            arcgis: false,
-            d3: false,
-            mapbox: false,
-            other: false,
-          },
-          geoopendata: false,
-          geoopendatasub: {
-            geonode: false,
-            arcgis: false,
-            copernicus: false,
-            earth: false,
-            google: false,
-          },
-          remote: false,
-          gis: false,
-          ethical: false,
-          geocloud: false,
-          geocloudsub: {
-            google: false,
-            amazon: false,
-            other: false,
-          },
-          geoprogramming: false,
-          geoprogrammingsub: {
-            python: false,
-            r: false,
-            jupyter: false,
-            javascript: false,
-            other: false,
-          },
-          datavis: false,
-          datavissub: {
-            cartography: false,
-            dashboards: false,
-            graphic: false,
-          },
-          dataJournalism: false,
-          strategic: false,
-          strategicsub: {
-            geospatial: false,
-            policy: false,
-            gi: false,
-            growth: false,
-          },
-          geodata: false,
-          geodatasub: {
-            spatial: false,
-            location: false,
-            bigdata: false,
-            opendata: false,
-          },
-          entrepreneurship: false,
-          innovation: false,
-          innovationsub: {
-            ar: false,
-            vr: false,
-            ml: false,
-            blockchain: false,
-            fiveg: false,
-            iot: false,
-            geotrans: false,
-          },
-          other: false};
+       const newAEmpty = {
+         research: false,
+         geosoft: false,
+         geosoftsub: {
+           foss4g: false,
+           arcgis: false,
+           mapinfo: false,
+           cadcorp: false,
+           fme: false,
+           other: false,
+         },
+         webmapping: false,
+         webmappingsub: {
+           openlayers: false,
+           leaflet: false,
+           arcgis: false,
+           d3: false,
+           mapbox: false,
+           other: false,
+         },
+         geoopendata: false,
+         geoopendatasub: {
+           geonode: false,
+           arcgis: false,
+           copernicus: false,
+           earth: false,
+           google: false,
+         },
+         remote: false,
+         gis: false,
+         ethical: false,
+         geocloud: false,
+         geocloudsub: {
+           google: false,
+           amazon: false,
+           other: false,
+         },
+         geoprogramming: false,
+         geoprogrammingsub: {
+           python: false,
+           r: false,
+           jupyter: false,
+           javascript: false,
+           other: false,
+         },
+         datavis: false,
+         datavissub: {
+           cartography: false,
+           dashboards: false,
+           graphic: false,
+         },
+         dataJournalism: false,
+         strategic: false,
+         strategicsub: {
+           geospatial: false,
+           policy: false,
+           gi: false,
+           growth: false,
+         },
+         geodata: false,
+         geodatasub: {
+           spatial: false,
+           location: false,
+           bigdata: false,
+           opendata: false,
+         },
+         entrepreneurship: false,
+         innovation: false,
+         innovationsub: {
+           ar: false,
+           vr: false,
+           ml: false,
+           blockchain: false,
+           fiveg: false,
+           iot: false,
+           geotrans: false,
+         },
+         other: false};
 
 
-        console.log('No areas');
-        console.log(sk);
-        return this.db
-        .collection(this.collection)
-        .doc<Speaker>(sk.id)
-        .update({
-          newareas: newAEmpty
-        });
-      }
-    }); */
+       console.log('No areas');
+       console.log(sk);
+       return this.db
+       .collection(this.collection)
+       .doc<Speaker>(sk.id)
+       .update({
+         newareas: newAEmpty
+       });
+     }
+   }); */
 
     if (filter) {
       this.filteredSpeakersList = this.filteredSpeakersList.filter(
