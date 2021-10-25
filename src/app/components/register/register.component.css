@@ -7,7 +7,7 @@ form {
 }
 
 .btn-other {
-    background-color: #86339A;
+    background-color: #e1251b;
     border-radius: 2px;
     color: #fff;
     padding: 2px 5px;
@@ -33,5 +33,5 @@ label,
 }
 
 label.heading {
-    color: #86339A;
+    color: #e1251b;
 }

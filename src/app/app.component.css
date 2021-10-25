@@ -1,11 +1,12 @@
 .page-header {
     height: 80vh !important;
+    background-position: center;
+   
 }
 
 .logo-image {
     width: 46px;
     height: 46px;
-    border-radius: 50%;
     overflow: hidden;
     margin-top: -6px;
   }
