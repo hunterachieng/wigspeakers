@@ -1,0 +1,3 @@
+[submodule "wigspeakers"]
+	path = wigspeakers
+	url = https://github.com/hunterachieng/wigspeakers.git
