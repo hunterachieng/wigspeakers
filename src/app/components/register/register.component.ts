@@ -237,12 +237,26 @@ export class RegisterComponent implements OnInit {
             }
             if (!this.model.sector) {
               this.model.sector = {
-                private: false,
-                public: false,
-                ngo: false,
-                self: false,
-                university: false,
-                international: false,
+                professionalDriver: false,
+                professionalRider: false,
+                plantOperator: false,
+                conductor: false,
+                captain: false,
+                fleetManager: false,
+                stageManager: false,
+                stageClerk: false,
+                courier: false,
+                driverInstructor: false,
+                conductorsInstructor: false,
+                mechanic: false,
+                civil: false,
+                urbanPlanner: false,
+                trainer: false,
+                leadership: false,
+                speaker: false,
+                policy: false,
+                softwareTelephone: false,
+                automotive: false,
                 other: false,
               };
             }
@@ -256,112 +270,113 @@ export class RegisterComponent implements OnInit {
             if (!this.model.domain) {
               this.model.domain = {
                 public: false,
-                defence: false,
-                emergency: false,
-                climate: false,
-                smart: false,
-                citizen: false,
-                transportation: false,
-                energy: false,
-                manufacturing: false,
-                environment: false,
-                food: false,
-                sustainable: false,
-                policy: false,
+                taxis: false,
+                courierService: false,
+                policyResearch: false,
+                construction: false,
+                safety: false,
+                skillBuilding: false,
+                advocacy: false,
+                leadershipMentorship: false,
+                conferenceSpeaker: false,
+                academia: false,
+                manufacturer2: false,
+                iTSoftware: false,
+                innovation: false,
                 other: false
               };
             }
-            if (!this.model.newareas) {
-              this.model.newareas = {
-                research: false,
-                geosoft: false,
-                geosoftsub: {
-                  foss4g: false,
-                  arcgis: false,
-                  mapinfo: false,
-                  cadcorp: false,
-                  fme: false,
-                  other: false,
-                },
-                webmapping: false,
-                webmappingsub: {
-                  openlayers: false,
-                  leaflet: false,
-                  arcgis: false,
-                  d3: false,
-                  mapbox: false,
-                  other: false,
-                },
-                geoopendata: false,
-                geoopendatasub: {
-                  geonode: false,
-                  arcgis: false,
-                  copernicus: false,
-                  earth: false,
-                  google: false,
-                },
-                remote: false,
-                gis: false,
-                ethical: false,
-                geocloud: false,
-                geocloudsub: {
-                  google: false,
-                  amazon: false,
-                  other: false,
-                },
-                geoprogramming: false,
-                geoprogrammingsub: {
-                  python: false,
-                  r: false,
-                  jupyter: false,
-                  javascript: false,
-                  other: false,
-                },
-                datavis: false,
-                datavissub: {
-                  cartography: false,
-                  dashboards: false,
-                  graphic: false,
-                },
-                dataJournalism: false,
-                strategic: false,
-                strategicsub: {
-                  geospatial: false,
-                  policy: false,
-                  gi: false,
-                  growth: false,
-                },
-                geodata: false,
-                geodatasub: {
-                  spatial: false,
-                  location: false,
-                  bigdata: false,
-                  opendata: false,
-                },
-                entrepreneurship: false,
-                innovation: false,
-                innovationsub: {
-                  ar: false,
-                  vr: false,
-                  ml: false,
-                  blockchain: false,
-                  fiveg: false,
-                  iot: false,
-                  geotrans: false,
-                },
-                other: false,
-              };
-            }
-            if (!this.model.newAreasOther) {
-              this.model.newAreasOther = {
-                researchText: '',
-                geoprogrammingsubText: '',
-                geosoftsubText: '',
-                otherText: '',
-                geocloudsubText: '',
-                webmappingsubText: ''
-              };
-            }
+            // if (!this.model.newareas) {
+            //   this.model.newareas = {
+            //     research: false,
+            //     geosoft: false,
+            //     geosoftsub: {
+            //       foss4g: false,
+            //       arcgis: false,
+            //       mapinfo: false,
+            //       cadcorp: false,
+            //       fme: false,
+            //       other: false,
+            //     },
+            //     webmapping: false,
+            //     webmappingsub: {
+            //       openlayers: false,
+            //       leaflet: false,
+            //       arcgis: false,
+            //       d3: false,
+            //       mapbox: false,
+            //       other: false,
+            //     },
+            //     geoopendata: false,
+            //     geoopendatasub: {
+            //       geonode: false,
+            //       arcgis: false,
+            //       copernicus: false,
+            //       earth: false,
+            //       google: false,
+            //     },
+            //     remote: false,
+            //     gis: false,
+            //     ethical: false,
+            //     geocloud: false,
+            //     geocloudsub: {
+            //       google: false,
+            //       amazon: false,
+            //       other: false,
+            //     },
+            //     geoprogramming: false,
+            //     geoprogrammingsub: {
+            //       python: false,
+            //       r: false,
+            //       jupyter: false,
+            //       javascript: false,
+            //       other: false,
+            //     },
+            //     datavis: false,
+            //     datavissub: {
+            //       cartography: false,
+            //       dashboards: false,
+            //       graphic: false,
+            //     },
+            //     dataJournalism: false,
+            //     strategic: false,
+            //     strategicsub: {
+            //       geospatial: false,
+            //       policy: false,
+            //       gi: false,
+            //       growth: false,
+            //     },
+            //     geodata: false,
+            //     geodatasub: {
+            //       spatial: false,
+            //       location: false,
+            //       bigdata: false,
+            //       opendata: false,
+            //     },
+            //     entrepreneurship: false,
+            //     innovation: false,
+            //     innovationsub: {
+            //       ar: false,
+            //       vr: false,
+            //       ml: false,
+            //       blockchain: false,
+            //       fiveg: false,
+            //       iot: false,
+            //       geotrans: false,
+            //     },
+            //     other: false,
+            //   };
+            // }
+            // if (!this.model.newAreasOther) {
+            //   this.model.newAreasOther = {
+            //     researchText: '',
+            //     geoprogrammingsubText: '',
+            //     geosoftsubText: '',
+            //     otherText: '',
+            //     geocloudsubText: '',
+            //     webmappingsubText: ''
+            //   };
+            // }
 
             console.log(this.model);
           } else {

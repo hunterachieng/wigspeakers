@@ -32,8 +32,8 @@
                         <div class="form-check ">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector1" type="checkbox"
-                                    value="Private Company" [checked]="model.sector.private"
-                                    (change)="model.sector.private = !model.sector.private">
+                                    value="Professional Driver specify(Truck, Matatus, Bus, BRT , Ambulance)" [checked]="model.sector.professionalDriver"
+                                    (change)="model.sector.professionalDriver = !model.sector.professionalDriver">
                                     Professional Driver specify(Truck, Matatus, Bus, BRT , Ambulance)
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -43,8 +43,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector2" type="checkbox"
-                                    value="Public sector / Government" [checked]="model.sector.public"
-                                    (change)="model.sector.public = !model.sector.public">
+                                    value="Professional Riders Specify(Bicycle, Motorcycle, TukTuk/Rickshaws)" [checked]="model.sector.professionalRider"
+                                    (change)="model.sector.professionalRider = !model.sector.professionalRider">
                                 Professional Riders Specify(Bicycle, Motorcycle, TukTuk/Rickshaws)
 
                                 <span class="form-check-sign">
@@ -55,8 +55,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector3" type="checkbox"
-                                    value="Non-governmental organisation (NGO) / Not-For-Profit organisation"
-                                    [checked]="model.sector.ngo" (change)="model.sector.ngo = !model.sector.ngo">
+                                    value=" Plant operator(excavator, harvester)"
+                                    [checked]="model.sector.plantOperator" (change)="model.sector.plantOperator = !model.sector.plantOperator">
                                     Plant operator(excavator, harvester)
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -66,8 +66,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector4" type="checkbox"
-                                    value="Self-employed / Consulting" [checked]="model.sector.self"
-                                    (change)="model.sector.self = !model.sector.self">
+                                    value="Professional conductor" [checked]="model.sector.conductor"
+                                    (change)="model.sector.conductor = !model.sector.conductor">
                                     Professional conductor
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -77,8 +77,8 @@
                         <div class="form-check form-check-radio">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector5" type="checkbox"
-                                    value="University / Academia" [checked]="model.sector.university"
-                                    (change)="model.sector.university = !model.sector.university">
+                                    value=" Captain Specify(Ship,Plane,train)" [checked]="model.sector.captain"
+                                    (change)="model.sector.captain = !model.sector.captain">
                                     Captain Specify(Ship,Plane,train)
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -88,8 +88,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value="Fleet/Sacco Manager" [checked]="model.sector.fleetManager"
+                                    (change)="model.sector.fleetManager = !model.sector.fleetManager">
                                     Fleet/Sacco Manager
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -99,8 +99,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value=" Stage Manager" [checked]="model.sector.stageManager"
+                                    (change)="model.sector.stageManager = !model.sector.stageManager">
                                     Stage Manager
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -110,8 +110,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value=" Stage Clerk" [checked]="model.sector.stageClerk"
+                                    (change)="model.sector.stageClerk = !model.sector.stageClerk">
                                     Stage Clerk
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -121,8 +121,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value=" Courier Service Provider" [checked]="model.sector.courier"
+                                    (change)="model.sector.courier = !model.sector.courier">
                                     Courier Service Provider
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -132,8 +132,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value="Drivers Instructor" [checked]="model.sector.driverInstructor"
+                                    (change)="model.sector.driverInstructor = !model.sector.driverInstructor">
                                     Drivers Instructor
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -143,8 +143,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value="Conductors Instructor" [checked]="model.sector.conductorsInstructor"
+                                    (change)="model.sector.conductorsInstructor = !model.sector.conductorsInstructor">
                                     Conductors Instructor
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -154,8 +154,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value=" Mechanic" [checked]="model.sector.mechanic"
+                                    (change)="model.sector.mechanic = !model.sector.mechanic">
                                    Mechanic
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -165,8 +165,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value="Civil Engineer" [checked]="model.sector.civil"
+                                    (change)="model.sector.civil = !model.sector.civil">
                                     Civil Engineer
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -176,8 +176,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value="Urban Planner" [checked]="model.sector.urbanPlanner"
+                                    (change)="model.sector.urbanPlanner = !model.sector.urbanPlanner">
                                     Urban Planner
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -187,8 +187,9 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value="Trainer(First Aid, Road Safety, Customer Service, Gender Mainstreaming, CV writing,
+                                    Disability sensitization, Mental Health, SRHR, Women rights, Financial Literacy….)" [checked]="model.sector.trainer"
+                                    (change)="model.sector.trainer = !model.sector.trainer">
                                     Trainer(First Aid, Road Safety, Customer Service, Gender Mainstreaming, CV writing,
                                      Disability sensitization, Mental Health, SRHR, Women rights, Financial Literacy….)
                                 <span class="form-check-sign">
@@ -199,8 +200,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value="Women In Transport Leadership & Mentorship" [checked]="model.sector.leadership"
+                                    (change)="model.sector.leadership = !model.sector.leadership">
                                     Women In Transport Leadership & Mentorship
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -210,8 +211,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value=" Women In Transport Africa Conference Speaker" [checked]="model.sector.speaker"
+                                    (change)="model.sector.speaker = !model.sector.speaker">
                                     Women In Transport Africa Conference Speaker
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -221,8 +222,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value=" Researcher and Policy Practitioner" [checked]="model.sector.policy"
+                                    (change)="model.sector.policy = !model.sector.policy">
                                    Researcher and Policy Practitioner
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -232,8 +233,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value="Software Telephone Developer " [checked]="model.sector.softwareTelephone"
+                                    (change)="model.sector.softwareTelephone = !model.sector.softwareTelephone">
                                     Software Telephone Developer 
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -243,8 +244,8 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                    value="International organisation" [checked]="model.sector.international"
-                                    (change)="model.sector.international = !model.sector.international">
+                                    value=" Automotive manufacturer" [checked]="model.sector.automotive"
+                                    (change)="model.sector.automotive = !model.sector.automotive">
                                     Automotive manufacturer
                                 <span class="form-check-sign">
                                     <span class="check"></span>
@@ -256,7 +257,7 @@
                                 <div class="form-check">
                                     <label class="form-check-label">
                                         <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                                            value="International organisation" [checked]="model.sector.other"
+                                            value=" Other (please specify)" [checked]="model.sector.other"
                                             (change)="model.sector.other = !model.sector.other">
                                         Other (please specify)
                                         <span class="form-check-sign">
@@ -416,7 +417,7 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain1" type="checkbox"
-                                        value="Public Health" [checked]="model.domain.public"
+                                        value="Public Transport Operator" [checked]="model.domain.public"
                                         (change)="model.domain.public = !model.domain.public">
                                         Public Transport Operator
                                     <span class="form-check-sign">
@@ -427,8 +428,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain2" type="checkbox"
-                                        value="Defence and Security" [checked]="model.domain.defence"
-                                        (change)="model.domain.defence = !model.domain.defence">
+                                        value="Online Taxis" [checked]="model.domain.taxis"
+                                        (change)="model.domain.taxis = !model.domain.taxis">
                                         Online Taxis
                                     <span class="form-check-sign">
                                         <span class="check"></span>
@@ -438,8 +439,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain3" type="checkbox"
-                                        value="Emergency Service / Public Safety" [checked]="model.domain.emergency"
-                                        (change)="model.domain.emergency = !model.domain.emergency">
+                                        value="Courier services" [checked]="model.domain.courierService"
+                                        (change)="model.domain.courierService = !model.domain.courierService">
                                         Courier services
                                     <span class="form-check-sign">
                                     </span>
@@ -449,8 +450,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain4" type="checkbox"
-                                        value="Climate" [checked]="model.domain.climate"
-                                        (change)="model.domain.climate = !model.domain.climate">
+                                        value="Policy & Research" [checked]="model.domain.policyResearch"
+                                        (change)="model.domain.policyResearch = !model.domain.policyResearch">
                                         Policy & Research
                                     <span class="form-check-sign">
                                         <span class="check"></span>
@@ -460,8 +461,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain5" type="checkbox"
-                                        value="Smart Cities" [checked]="model.domain.smart"
-                                        (change)="model.domain.smart = !model.domain.smart">
+                                        value="Construction" [checked]="model.domain.construction"
+                                        (change)="model.domain.construction = !model.domain.construction">
                                         Construction
                                     <span class="form-check-sign">
                                         <span class="check"></span>
@@ -471,8 +472,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain6" type="checkbox"
-                                        value="Citizen Science" [checked]="model.domain.citizen"
-                                        (change)="model.domain.citizen = !model.domain.citizen">
+                                        value="Public Safety & Security" [checked]="model.domain.safety"
+                                        (change)="model.domain.safety = !model.domain.safety">
                                         Public Safety & Security
                                     <span class="form-check-sign">
                                         <span class="check"></span>
@@ -485,8 +486,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain7" type="checkbox"
-                                        value="Transportation" [checked]="model.domain.transportation"
-                                        (change)="model.domain.transportation = !model.domain.transportation">
+                                        value="Capacity/Skills Building" [checked]="model.domain.skillBuilding"
+                                        (change)="model.domain.skillBuilding = !model.domain.skillBuilding">
                                         Capacity/Skills Building
                                     <span class="form-check-sign">
                                         <span class="check"></span>
@@ -496,8 +497,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain8" type="checkbox"
-                                        value="Energy" [checked]="model.domain.energy"
-                                        (change)="model.domain.energy = !model.domain.energy">
+                                        value=" Advocacy" [checked]="model.domain.advocacy"
+                                        (change)="model.domain.advocacy = !model.domain.advocacy">
                                         Advocacy
                                     <span class="form-check-sign">
                                         <span class="check"></span>
@@ -507,8 +508,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain9" type="checkbox"
-                                        value="Manufacturing" [checked]="model.domain.manufacturing"
-                                        (change)="model.domain.manufacturing = !model.domain.manufacturing">
+                                        value="Leadership mentorship" [checked]="model.domain.leadershipMentorship"
+                                        (change)="model.domain.leadershipMentorship = !model.domain.leadershipMentorship">
                                         Leadership mentorship
                                     <span class="form-check-sign">
                                         <span class="check"></span>
@@ -518,8 +519,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain10" type="checkbox"
-                                        value="Environment" [checked]="model.domain.environment"
-                                        (change)="model.domain.environment = !model.domain.environment">
+                                        value="Conference Speaker" [checked]="model.domain.conferenceSpeaker"
+                                        (change)="model.domain.conferenceSpeaker = !model.domain.conferenceSpeaker">
                                         Conference Speaker
                                     <span class="form-check-sign">
                                         <span class="check"></span>
@@ -529,8 +530,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain11" type="checkbox"
-                                        value="Food, Forestry, Agriculture" [checked]="model.domain.food"
-                                        (change)="model.domain.food = !model.domain.food">
+                                        value="Academia" [checked]="model.domain.academia"
+                                        (change)="model.domain.academia = !model.domain.academia">
                                         Academia
                                     <span class="form-check-sign">
                                         <span class="check"></span>
@@ -540,8 +541,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain12" type="checkbox"
-                                        value="Sustainable Development" [checked]="model.domain.sustainable"
-                                        (change)="model.domain.sustainable = !model.domain.sustainable">
+                                        value="Manufacturer" [checked]="model.domain.manufacturer2"
+                                        (change)="model.domain.manufacturer2 = !model.domain.manufacturer2">
                                         Manufacturer
                                     <span class="form-check-sign">
                                         <span class="check"></span>
@@ -551,8 +552,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain13" type="checkbox"
-                                        value="Policy" [checked]="model.domain.policy"
-                                        (change)="model.domain.policy = !model.domain.policy">
+                                        value=" IT & Software" [checked]="model.domain.iTSoftware"
+                                        (change)="model.domain.iTSoftware = !model.domain.iTSoftware">
                                         IT & Software
                                     <span class="form-check-sign">
                                         <span class="check"></span>
@@ -562,8 +563,8 @@
                             <div class="form-check form-check-radio">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="domain" id="domain13" type="checkbox"
-                                        value="Policy" [checked]="model.domain.policy"
-                                        (change)="model.domain.policy = !model.domain.policy">
+                                        value="Innovation" [checked]="model.domain.innovation"
+                                        (change)="model.domain.innovation= !model.domain.innovation">
                                         Innovation
                                     <span class="form-check-sign">
                                         <span class="check"></span>

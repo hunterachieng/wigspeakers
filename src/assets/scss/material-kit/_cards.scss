@@ -175,7 +175,9 @@
     &.bg-primary,
     &.card-rotate.bg-primary .front,
     &.card-rotate.bg-primary .back{
-      background: linear-gradient(60deg, $purple-400, $purple-700);
+      // background: #e1251b;
+      // background: linear-gradient(60deg, $purple-400, $purple-700);
+      background: linear-gradient(60deg, $red-400, $purple-700);
     }
     .card-header-info,
     &.bg-info,
@@ -271,7 +273,8 @@
       }
 
       a{
-        color: $black-color;
+        // color: $black-color;
+       color: #e1251b;
         text-decoration: none;
 
         .ripple-container{
