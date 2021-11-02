@@ -233,7 +233,7 @@ export class RegisterComponent implements OnInit {
           if (s) {
             this.model = s;
             if (this.model.picture === '') {
-              this.model.picture = '../assets/img/profile.jpg';
+              this.model.picture = '../assets/img/profile.png';
             }
             if (!this.model.sector) {
               this.model.sector = {
