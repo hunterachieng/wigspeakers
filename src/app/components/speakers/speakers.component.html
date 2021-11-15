@@ -1,7 +1,7 @@
 <div [hidden]="selectedSpeaker"
     *ngIf="this.spService && this.spService.speakersList && this.spService.speakersList.length > 0"
     class="section text-center">
-    <h2>Find your WiG+ speaker here (total: {{this.spService.filteredSpeakersList.length}})</h2>
+    <h2>Find your WiT Professional here (total: {{this.spService.filteredSpeakersList.length}})</h2>
     <div>
         <ul class="nav nav-pills nav-pills-primary nav-pills-icons justify-content-center" role="tablist">
             <li class="nav-item">
@@ -36,9 +36,9 @@
                 <div class="form-check ">
                     <label class="form-check-label">
                         <input class="form-check-input" name="sector" id="sector1" type="checkbox"
-                            value="Private Company" [checked]="searchSector.private"
-                            (change)="searchSector.private = !searchSector.private; filterAll()">
-                        Private Company
+                            value="Professional Driver specify(Truck, Matatus, Bus, BRT , Ambulance)" [checked]="searchSector.professionalDriver"
+                            (change)="searchSector.professionalDriver = !searchSector.professionalDriver; filterAll()">
+                            Professional Driver specify(Truck, Matatus, Bus, BRT , Ambulance)
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -47,9 +47,9 @@
                 <div class="form-check">
                     <label class="form-check-label">
                         <input class="form-check-input" name="sector" id="sector2" type="checkbox"
-                            value="Public sector / Government" [checked]="searchSector.public"
-                            (change)="searchSector.public = !searchSector.public; filterAll()">
-                        Public sector / Government
+                            value="Professional Riders Specify(Bicycle, Motorcycle, TukTuk/Rickshaws)" [checked]="searchSector.professionalRider"
+                            (change)="searchSector.professionalRider = !searchSector.professionalRider; filterAll()">
+                            Professional Riders Specify(Bicycle, Motorcycle, TukTuk/Rickshaws)
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -58,9 +58,9 @@
                 <div class="form-check">
                     <label class="form-check-label">
                         <input class="form-check-input" name="sector" id="sector3" type="checkbox"
-                            value="Non-governmental organisation (NGO) / Not-For-Profit organisation"
-                            [checked]="searchSector.ngo" (change)="searchSector.ngo = !searchSector.ngo; filterAll()">
-                        Non-governmental organisation (NGO) / Not-For-Profit organisation
+                            value=" Plant operator(excavator, harvester)"
+                            [checked]="searchSector.plantOperator" (change)="searchSector.plantOperator = !searchSector.plantOperator; filterAll()">
+                            Plant operator(excavator, harvester)
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -69,9 +69,9 @@
                 <div class="form-check">
                     <label class="form-check-label">
                         <input class="form-check-input" name="sector" id="sector4" type="checkbox"
-                            value="Self-employed / Consulting" [checked]="searchSector.self"
-                            (change)="searchSector.self = !searchSector.self; filterAll()">
-                        Self-employed / Consulting
+                            value="Professional conductor" [checked]="searchSector.conductor"
+                            (change)="searchSector.conductor = !searchSector.conductor; filterAll()">
+                            Professional conductor
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -80,9 +80,9 @@
                 <div class="form-check form-check-radio">
                     <label class="form-check-label">
                         <input class="form-check-input" name="sector" id="sector5" type="checkbox"
-                            value="University / Academia" [checked]="searchSector.university"
-                            (change)="searchSector.university = !searchSector.university; filterAll()">
-                        University / Academia
+                            value="Captain Specify(Ship,Plane,train)" [checked]="searchSector.captain"
+                            (change)="searchSector.captain = !searchSector.captain; filterAll()">
+                            Captain Specify(Ship,Plane,train)
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
@@ -91,15 +91,186 @@
                 <div class="form-check">
                     <label class="form-check-label">
                         <input class="form-check-input" name="sector" id="sector6" type="checkbox"
-                            value="International organisation" [checked]="searchSector.international"
-                            (change)="searchSector.international = !searchSector.international; filterAll()">
-                        International organisation
+                            value="Fleet/Sacco Manager" [checked]="searchSector.saccoManager"
+                            (change)="searchSector.saccoManager = !searchSector.saccoManager; filterAll()">
+                            Fleet/Sacco Manager
                         <span class="form-check-sign">
                             <span class="check"></span>
                         </span>
                     </label>
                 </div>
+            
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+                        value="Stage Manager" [checked]="searchSector.stageManager"
+                        (change)="searchSector.stageManager = !searchSector.stageManager; filterAll()">
+                        Stage Manager
+                    <span class="form-check-sign">
+                        <span class="check"></span>
+                    </span>
+                </label>
             </div>
+        
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+                    value="Stage Clerk" [checked]="searchSector.clerk"
+                    (change)="searchSector.clerk = !searchSector.clerk; filterAll()">
+                    Stage Clerk
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+    
+    <div class="form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+                value="Courier Service Provider" [checked]="searchSector.courierProvider"
+                (change)="searchSector.courierProvider = !searchSector.courierProvider; filterAll()">
+                Courier Service Provider
+            <span class="form-check-sign">
+                <span class="check"></span>
+            </span>
+        </label>
+    </div>
+
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+            value="Drivers Instructor" [checked]="searchSector.driverInstructor"
+            (change)="searchSector.driverInstructor = !searchSector.driverInstructor; filterAll()">
+            Drivers Instructor
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+</div>
+
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+            value="Conductors Instructor" [checked]="searchSector.conductorInstructor"
+            (change)="searchSector.conductorInstructor = !searchSector.conductorInstructor; filterAll()">
+            Conductors Instructor
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+</div>
+
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+            value="Mechanic" [checked]="searchSector.mechanic"
+            (change)="searchSector.mechanic = !searchSector.mechanic; filterAll()">
+            Mechanic
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+
+</div>
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+            value="Civil Engineer" [checked]="searchSector.civilEng"
+            (change)="searchSector.civilEng = !searchSector.civilEng; filterAll()">
+            Civil Engineer
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+
+</div>
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+            value="Urban Planner" [checked]="searchSector.urban"
+            (change)="searchSector.urban = !searchSector.urban; filterAll()">
+            Urban Planner
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+</div>
+
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+            value="Trainer(First Aid, Road Safety, Customer Service, Gender Mainstreaming, CV writing, Disability sensitization,
+             Mental Health, SRHR, Women rights, Financial Literacy….)" [checked]="searchSector.trainer"
+            (change)="searchSector.trainer = !searchSector.trainer; filterAll()">
+            Trainer(First Aid, Road Safety, Customer Service, Gender Mainstreaming, CV writing, Disability sensitization, 
+            Mental Health, SRHR, Women rights, Financial Literacy….)
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+</div>
+
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+            value="Women In Transport Leadership & Mentorship" [checked]="searchSector.leadandMentor"
+            (change)="searchSector.leadandMentor = !searchSector.leadandMentor; filterAll()">
+            Women In Transport Leadership & Mentorship
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+
+</div>
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+            value="Women In Transport Africa Conference Speaker" [checked]="searchSector.confSpeaker"
+            (change)="searchSector.confSpeaker = !searchSector.confSpeaker; filterAll()">
+            Women In Transport Africa Conference Speaker
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+
+</div>
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+            value="Researcher and Policy practitioner" [checked]="searchSector.policy"
+            (change)="searchSector.policy = !searchSector.policy; filterAll()">
+            Researcher and Policy practitioner
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+</div>
+
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+            value="Software Telephone Developer" [checked]="searchSector.telphoneDev"
+            (change)="searchSector.telphoneDev = !searchSector.telphoneDev; filterAll()">
+            Software Telephone Developer
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+
+</div>
+<div class="form-check">
+    <label class="form-check-label">
+        <input class="form-check-input" name="sector" id="sector6" type="checkbox"
+            value="Automotive manufacturer" [checked]="searchSector.autoManufacture"
+            (change)="searchSector.autoManufacture = !searchSector.autoManufacture; filterAll()">
+            Automotive manufacturer
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+
+</div>
+
             <br>
             <button type="button" class="btn btn-link btn-xs btn-chevron"
                 (click)="showYE.classList.contains('hidden') ? showYE.className = '' : showYE.className = 'hidden' ">
@@ -191,26 +362,8 @@
             </div>
             <br>
 
-            <button type="button" class="btn btn-link btn-xs btn-chevron"
-                (click)="showAR.classList.contains('hidden') ? showAR.className = '' : showAR.className = 'hidden' ">
-                <!-- [tooltip]="showLO.classList.contains('hidden')? 'Show' : 'Hide'" -->
-                <i [ngClass]="showAR.classList.contains('hidden')? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
            
-            <label class="heading" for="level">&nbsp; Filter by area of expertise</label>
-            </button>
-            <div #showAR class="hidden">
-
-                <div *ngFor="let ar of searchAreas | keyvalue" class="form-check form-check-radio">
-                    <label *ngIf="typeOf(areasText[ar.key]) === 'string'" class="form-check-label">
-                        <input class="form-check-input" name="area" type="checkbox" [checked]="ar.value"
-                            (change)="searchAreas[ar.key] = !ar.value; filterAll()">
-                        {{areasText [ar.key]}}
-
-                        <span class="form-check-sign">
-                            <span class="check"></span>
-                        </span>
-                    </label>
-
+            
            <!--          <span *ngFor="let arChild of ar.value | keyvalue">
                         <label *ngIf="typeOf(areasText[ar.key][arChild.key]) === 'string'" class="form-check-label">
                             <input class="form-check-input" name="area" type="checkbox" [checked]="ar.value"
@@ -222,8 +375,7 @@
                         </label>
                     </span> -->
 
-                </div>
-            </div>
+              
             <br>
 
             <button type="button" class="btn btn-link btn-xs btn-chevron"
@@ -531,21 +683,7 @@
             </div>
         </div>
 
-        <div class="row text-center">
-            <div class="col-md-12 ml-auto mr-auto">
-                <h6>Areas of expertise</h6>
-                <span *ngFor="let s of selectedSpeaker.newareas | keyvalue">
-                    <span *ngIf="s.value && typeOf(areasText[s.key]) === 'string'">{{areasText[s.key]}} | </span>
-                    <span *ngFor="let sv of s.value | keyvalue">
-                        <span *ngIf="sv.value && typeOf(areasText[s.key][sv.key]) === 'string'">
-                            {{areasText[s.key][sv.key]}} | </span>
-                    </span>
-                </span>
-                <span *ngFor="let oa of selectedSpeaker.otherAreas">
-                    <span>{{oa}} | </span>
-                </span>
-            </div>
-        </div>
+        
         <div class="row text-center">
             <div class="col-md-12 ml-auto mr-auto">
                 <h6>Domains of expertise</h6>

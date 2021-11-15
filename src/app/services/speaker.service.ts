@@ -111,12 +111,12 @@ export class SpeakerService {
     if (sectors.private || sectors.public || sectors.ngo || sectors.self || sectors.university || sectors.internationa) {
       this.filteredSpeakersList = this.filteredSpeakersList.filter(
         it =>
-          it.sector.private && sectors.private ||
-          it.sector.public && sectors.public ||
-          it.sector.ngo && sectors.ngo ||
-          it.sector.self && sectors.self ||
-          it.sector.university && sectors.university ||
-          it.sector.international && sectors.international
+          it.sector.professionalDriver && sectors.private ||
+          it.sector.professionalRider && sectors.public ||
+          it.sector.plantOperator && sectors.ngo ||
+          it.sector.conductor&& sectors.self ||
+          it.sector.captain && sectors.university ||
+          it.sector.saccoManager && sectors.international
       );
     }
   }

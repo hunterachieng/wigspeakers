@@ -1,5 +1,5 @@
 h2 {
-    color: #86339A;
+    color: #e1251b;
     text-align: center;
 }
 
@@ -23,14 +23,14 @@ mgl-map {
 }
 
 .btn-chevron {
-    color: #86339A !important;
+    color: #e1251b !important;
     padding: 0%;
     padding-right: 2px;
     text-transform: none;
 }
 
 label.heading {
-    color: #86339A;
+    color: #e1251b;
 }
 
 .ng-option-label{

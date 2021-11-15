@@ -233,16 +233,30 @@ export class RegisterComponent implements OnInit {
           if (s) {
             this.model = s;
             if (this.model.picture === '') {
-              this.model.picture = '../assets/img/profile.jpg';
+              this.model.picture = '../assets/img/profile.png';
             }
             if (!this.model.sector) {
               this.model.sector = {
-                private: false,
-                public: false,
-                ngo: false,
-                self: false,
-                university: false,
-                international: false,
+                professionalDriver: false,
+                professionalRider: false,
+                plantOperator: false,
+                conductor: false,
+                captain: false,
+                saccoManager: false,
+                stageManager: false,
+                clerk: false,
+                courierProvider: false,
+                driverInstructor: false,
+                conductorInstructor: false,
+                mechanic: false,
+                civilEng: false,
+                urban: false,
+                trainer: false,
+                leadandMentor: false,
+                confSpeaker: false,
+                policy: false,
+                telphoneDev: false,
+                autoManufacture: false,
                 other: false,
               };
             }
@@ -271,97 +285,6 @@ export class RegisterComponent implements OnInit {
                 other: false
               };
             }
-            if (!this.model.newareas) {
-              this.model.newareas = {
-                research: false,
-                geosoft: false,
-                geosoftsub: {
-                  foss4g: false,
-                  arcgis: false,
-                  mapinfo: false,
-                  cadcorp: false,
-                  fme: false,
-                  other: false,
-                },
-                webmapping: false,
-                webmappingsub: {
-                  openlayers: false,
-                  leaflet: false,
-                  arcgis: false,
-                  d3: false,
-                  mapbox: false,
-                  other: false,
-                },
-                geoopendata: false,
-                geoopendatasub: {
-                  geonode: false,
-                  arcgis: false,
-                  copernicus: false,
-                  earth: false,
-                  google: false,
-                },
-                remote: false,
-                gis: false,
-                ethical: false,
-                geocloud: false,
-                geocloudsub: {
-                  google: false,
-                  amazon: false,
-                  other: false,
-                },
-                geoprogramming: false,
-                geoprogrammingsub: {
-                  python: false,
-                  r: false,
-                  jupyter: false,
-                  javascript: false,
-                  other: false,
-                },
-                datavis: false,
-                datavissub: {
-                  cartography: false,
-                  dashboards: false,
-                  graphic: false,
-                },
-                dataJournalism: false,
-                strategic: false,
-                strategicsub: {
-                  geospatial: false,
-                  policy: false,
-                  gi: false,
-                  growth: false,
-                },
-                geodata: false,
-                geodatasub: {
-                  spatial: false,
-                  location: false,
-                  bigdata: false,
-                  opendata: false,
-                },
-                entrepreneurship: false,
-                innovation: false,
-                innovationsub: {
-                  ar: false,
-                  vr: false,
-                  ml: false,
-                  blockchain: false,
-                  fiveg: false,
-                  iot: false,
-                  geotrans: false,
-                },
-                other: false,
-              };
-            }
-            if (!this.model.newAreasOther) {
-              this.model.newAreasOther = {
-                researchText: '',
-                geoprogrammingsubText: '',
-                geosoftsubText: '',
-                otherText: '',
-                geocloudsubText: '',
-                webmappingsubText: ''
-              };
-            }
 
             console.log(this.model);
           } else {
@@ -386,7 +309,7 @@ export class RegisterComponent implements OnInit {
       this.errorGDPR = '';
       this.savedTxt = 'Your data has been saved!';
     } else {
-      this.errorGDPR = 'You need to accept our GDPR statement and Terms and Conditions.';
+      this.errorGDPR = 'You need to accept our WiT Database statement and Terms and Conditions.';
       this.savedTxt = '';
     }
   }
@@ -467,7 +390,7 @@ export class RegisterComponent implements OnInit {
   }
 
   removeFile() {
-    this.model.picture = '../assets/img/profile.jpg';
+    this.model.picture = '../assets/img/profile.png';
   }
 
 }

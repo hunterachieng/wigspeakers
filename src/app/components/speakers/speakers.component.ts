@@ -20,12 +20,26 @@ export class SpeakersComponent implements OnInit {
 
   textSearch = '';
   searchSector = {
-    private: false,
-    public: false,
-    ngo: false,
-    self: false,
-    university: false,
-    international: false,
+    professionalDriver: false,
+    professionalRider: false,
+    plantOperator: false,
+    conductor: false,
+    captain: false,
+    saccoManager: false,
+    stageManager: false,
+    clerk: false,
+    courierProvider: false,
+    driverInstructor: false,
+    conductorInstructor: false,
+    mechanic: false,
+    civilEng: false,
+    urban: false,
+    trainer: false,
+    leadandMentor: false,
+    confSpeaker: false,
+    policy: false,
+    telphoneDev: false,
+    autoManufacture: false,
     // other: false,
   };
   textYears = '';
@@ -47,85 +61,7 @@ export class SpeakersComponent implements OnInit {
     policy: false,
     // other: false,
   };
-  searchAreas = {
-    research: false,
-    geosoft: false,
-    geosoftsub: {
-      foss4g: false,
-      arcgis: false,
-      mapinfo: false,
-      cadcorp: false,
-      fme: false,
-      other: false,
-    },
-    webmapping: false,
-    webmappingsub: {
-      openlayers: false,
-      leaflet: false,
-      arcgis: false,
-      d3: false,
-      mapbox: false,
-      other: false,
-    },
-    geoopendata: false,
-    geoopendatasub: {
-      geonode: false,
-      arcgis: false,
-      copernicus: false,
-      earth: false,
-      google: false,
-    },
-    remote: false,
-    gis: false,
-    ethical: false,
-    geocloud: false,
-    geocloudsub: {
-      google: false,
-      amazon: false,
-      other: false,
-    },
-    geoprogramming: false,
-    geoprogrammingsub: {
-      python: false,
-      r: false,
-      jupyter: false,
-      javascript: false,
-      other: false,
-    },
-    datavis: false,
-    datavissub: {
-      cartography: false,
-      dashboards: false,
-      graphic: false,
-    },
-    dataJournalism: false,
-    strategic: false,
-    strategicsub: {
-      geospatial: false,
-      policy: false,
-      gi: false,
-      growth: false,
-    },
-    geodata: false,
-    geodatasub: {
-      spatial: false,
-      location: false,
-      bigdata: false,
-      opendata: false,
-    },
-    entrepreneurship: false,
-    innovation: false,
-    innovationsub: {
-      ar: false,
-      vr: false,
-      ml: false,
-      blockchain: false,
-      fiveg: false,
-      iot: false,
-      geotrans: false,
-    },
-  };
-
+  
 
   public languages = [
     'Afrikaans',
@@ -202,95 +138,31 @@ export class SpeakersComponent implements OnInit {
     'Xhosa'
   ];
   public sectorsText: {
-    private: 'Private Company',
-    public: 'Public sector / Government',
-    ngo: 'Non-governmental organisation (NGO) / Not-For-Profit organisation',
-    self: 'Self-employed / Consulting',
-    university: 'University / Academia',
-    international: 'International organisation',
-    other: 'Other (please specify)'
+    professionalDriver: 'Professional Driver specify(Truck, Matatus, Bus, BRT , Ambulance)',
+    professionalRider: 'Professional Riders Specify(Bicycle, Motorcycle, TukTuk/Rickshaws)',
+    plantOperator: 'Plant operator(excavator, harvester)',
+    conductor: 'Professional conductor',
+    captain: 'Captain Specify(Ship,Plane,train)',
+    saccoManager: 'Fleet/Sacco Manager',
+    stageManager: 'Stage Manager',
+    clerk: 'Stage Clerk',
+    courierProvider: 'Courier Service Provider',
+    driverInstructor: 'Drivers Instructor',
+    conductorInstructor: 'Conductors Instructor',
+    mechanic: 'Mechanic',
+    civilEng: 'Civil Engineer',
+    urban: 'Urban Planner',
+    trainer: 'Trainer(First Aid, Road Safety, Customer Service, Gender Mainstreaming, CV writing, Disability sensitization, Mental Health, SRHR, Women rights, Financial Literacy….)',
+    leadandMentor: 'Women In Transport Leadership & Mentorship',
+    confSpeaker: 'Women In Transport Africa Conference Speaker',
+    policy: 'Researcher and Policy practitioner',
+    telphoneDev: 'Software Telephone Developer',
+    autoManufacture: 'Automotive manufacturer',
+    // other: 'Other (please specify)'
   };
 
 
-  public areasText = {
-    research: 'Research / Science',
-    geosoft: 'Geospatial Software',
-    geosoftsub: {
-      foss4g: 'FOSS4G (e.g. QGIS, gdal)',
-      arcgis: 'ArcGIS Suite',
-      mapinfo: 'Mapinfo Suite',
-      cadcorp: 'Cadcorp Suite',
-      fme: 'FME',
-      other: 'Other (specify)',
-    },
-    webmapping: 'Webmapping',
-    webmappingsub: {
-      openlayers: 'Open Layers',
-      leaflet: 'Leaflet',
-      arcgis: 'ArcGIS Suite',
-      d3: 'D3',
-      mapbox: 'Mapbox Studio and Mapbox GL',
-      other: 'Other (Specify)',
-    },
-    geoopendata: 'Geospatial Open Data platforms',
-    geoopendatasub: {
-      geonode: 'Geonode /Carto',
-      arcgis: 'ArcGIS Open Data Platform',
-      copernicus: 'Copernicus Open Data',
-      earth: 'Earth on AWS',
-      google: 'Google Open Data initiative',
-    },
-    remote: 'Remote Sensing & Earth Observations',
-    gis: 'Geographic Information Systems',
-    ethical: 'Ethical Geography',
-    geocloud: 'Geospatial cloud platforms',
-    geocloudsub: {
-      google: 'Google Earth Engine',
-      amazon: 'Amazon Web Services',
-      other: 'Other (Specify)',
-    },
-    geoprogramming: '(Geospatial) programming / Data Science',
-    geoprogrammingsub: {
-      python: 'Python',
-      r: 'R',
-      jupyter: 'Jupyter Notebooks',
-      javascript: 'Javascript',
-      other: 'Other (Specify)',
-    },
-    datavis: 'Data Visualisation ',
-    datavissub: {
-      cartography: 'Cartography',
-      dashboards: 'Dashboards',
-      graphic: 'Graphic design',
-    },
-    dataJournalism: '(Geospatial) Data Journalism',
-    strategic: 'Strategic Skills',
-    strategicsub: {
-      geospatial: 'Geospatial leadership',
-      policy: 'Policy',
-      gi: 'GI Implementation / Strategy',
-      growth: 'Growth in the geospatial / space Industry',
-    },
-    geodata: 'Geospatial Data',
-    geodatasub: {
-      spatial: 'Spatial Data Analysis & Insight',
-      location: 'Location Intelligence',
-      bigdata: 'Big Data / Geospatial Data',
-      opendata: 'Open Data',
-    },
-    entrepreneurship: 'Entrepreneurship',
-    innovation: 'Innovation / New Uses of GIS data',
-    innovationsub: {
-      ar: 'Augmented Reality (AR)',
-      vr: 'Virtual Reality (VR)',
-      ml: 'Machine Learning / Artificial Intelligence',
-      blockchain: 'Blockchain',
-      fiveg: '5G',
-      iot: 'Internet-of-Things (IoT)',
-      geotrans: 'Geospatial and digital transformation',
-    },
-    other: 'Other'
-  };
+  
 
   domainText = {
     public: 'Public Health',
@@ -368,7 +240,7 @@ export class SpeakersComponent implements OnInit {
     this.filterByLevel();
     this.filterByLanguages();
     this.filterByDomain();
-    this.filterByArea();
+    
   }
 
   filterByText() {
@@ -383,9 +255,7 @@ export class SpeakersComponent implements OnInit {
     this.spService.filterSpeakersByDomain(this.searchDomain);
   }
 
-  filterByArea() {
-    this.spService.filterSpeakersByArea(this.searchAreas);
-  }
+ 
 
   filterByYears() {
     this.spService.filterSpeakersByYears(this.textYears);
@@ -413,7 +283,7 @@ export class SpeakersComponent implements OnInit {
 
 
   sendEmail(e) {
-    location.href = 'mailto:' + e + '?subject=WiG+ speaker';
+    location.href = 'mailto:' + e + '?subject=WiT Professional';
   }
 
 
