@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mr-auto">
-                <a href="#" class="nav-link" routerLink="/speakers"> Back to WiG+ Speakers</a>
+                <a href="#" class="nav-link" routerLink="/speakers"> Back to WiT Professionals</a>
             </div>
         </div>
         <div class="row">
@@ -40,13 +40,26 @@
             <div class="col-md-6 ml-auto mr-auto">
                 <h6>Sector(s)</h6>
                 <div *ngFor="let s of sp.sector | keyvalue">
-                    <div *ngIf="s.value && s.key == 'private'">Private Company</div>
-                    <div *ngIf="s.value && s.key == 'public'">Public sector / Government</div>
-                    <div *ngIf="s.value && s.key == 'ngo'">Non-governmental organisation (NGO) / Not-For-Profit
-                        organisation</div>
-                    <div *ngIf="s.value && s.key == 'self'">Self-employed / Consulting</div>
-                    <div *ngIf="s.value && s.key == 'university'">University / Academia</div>
-                    <div *ngIf="s.value && s.key == 'international'">International organisation</div>
+                    <div *ngIf="s.value && s.key == 'professionalDriver'">Professional Driver specify(Truck, Matatus, Bus, BRT , Ambulance)</div>
+                    <div *ngIf="s.value && s.key == 'professionalRider'">Professional Riders Specify(Bicycle, Motorcycle, TukTuk/Rickshaws)</div>
+                    <div *ngIf="s.value && s.key == 'plantOperator'">Plant operator(excavator, harvester)</div>
+                    <div *ngIf="s.value && s.key == 'conductor'">Professional conductor</div>
+                    <div *ngIf="s.value && s.key == 'captain'">Captain Specify(Ship,Plane,train)</div>
+                    <div *ngIf="s.value && s.key == 'saccoManager'">Fleet/Sacco Manager</div>
+                    <div *ngIf="s.value && s.key == 'stageManager'">Stage Manager</div>
+                    <div *ngIf="s.value && s.key == 'clerk'">Stage Clerk</div>
+                    <div *ngIf="s.value && s.key == 'courierProvider'">Courier Service Provider</div>
+                    <div *ngIf="s.value && s.key == 'driverInstructor'">Drivers Instructor</div>
+                    <div *ngIf="s.value && s.key == 'conductorInstructor'">Conductors Instructor</div>
+                    <div *ngIf="s.value && s.key == 'mechanic'">Mechanic</div>
+                    <div *ngIf="s.value && s.key == 'civilEng'">Civil Engineer</div>
+                    <div *ngIf="s.value && s.key == 'urban'">Urban Planner</div>
+                    <div *ngIf="s.value && s.key == 'trainer'">Trainer(First Aid, Road Safety, Customer Service, Gender Mainstreaming, CV writing, Disability sensitization, Mental Health, SRHR, Women rights, Financial Literacy….)</div>
+                    <div *ngIf="s.value && s.key == 'leadandMentor'">Women In Transport Leadership & Mentorship</div>
+                    <div *ngIf="s.value && s.key == 'confSpeaker'">Women In Transport Africa Conference Speaker</div>
+                    <div *ngIf="s.value && s.key == 'policy'">Researcher and Policy practitioner</div>
+                    <div *ngIf="s.value && s.key == 'telphoneDev'">Software Telephone Developer</div>
+                    <div *ngIf="s.value && s.key == 'autoManufacture'">Automotive manufacturer</div>
                     <div *ngIf="s.value && s.key == 'other'">Other: {{sp.otherSector}}</div>
                 </div>
             </div>
@@ -57,21 +70,7 @@
             </div>
         </div>
 
-        <div class="row text-center">
-            <div class="col-md-12 ml-auto mr-auto">
-                <h6>Areas of expertise</h6>
-                <span *ngFor="let s of sp.newareas | keyvalue">
-                    <span *ngIf="s.value && typeOf(areasText[s.key]) === 'string'">{{areasText[s.key]}} | </span>
-                    <span *ngFor="let sv of s.value | keyvalue">
-                        <span *ngIf="sv.value && typeOf(areasText[s.key][sv.key]) === 'string'">
-                            {{areasText[s.key][sv.key]}} | </span>
-                    </span>
-                </span>
-                <span *ngFor="let oa of sp.otherAreas">
-                    <span>{{oa}} | </span>
-                </span>
-            </div>
-        </div>
+        
         <div class="row text-center">
             <div class="col-md-12 ml-auto mr-auto">
                 <h6>Domains of expertise</h6>

@@ -19,7 +19,7 @@
         </ul>
     </div>
 
-    <div class="row">
+    <div class="row" >
         <div class="col-md-3 text-left">
             <div class="form-group">
                 <label class="heading" for="searchText">Filter results by text</label>
@@ -270,7 +270,7 @@
     </label>
 
 </div>
-
+</div>
             <br>
             <button type="button" class="btn btn-link btn-xs btn-chevron"
                 (click)="showYE.classList.contains('hidden') ? showYE.className = '' : showYE.className = 'hidden' ">
@@ -414,7 +414,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9" >
 
             <div class="tab-content tab-space">
                 <div class="tab-pane active" id="mapPane">
@@ -515,7 +515,7 @@
                                                         alt="{{sp.name}} Profile Picture WiG+"
                                                         class="img-raised rounded-circle img-fluid">
                                                     <img *ngIf="sp.picture == ''" src="../../../assets/img/logo.png"
-                                                        alt="{{sp.name}} Profile Picture WiG+"
+                                                        alt="{{sp.name}} Profile Picture WiT"
                                                         class="img-raised rounded-circle img-fluid">
                                                 </div>
                                                 <h6 class="card-title"> {{sp.name}}
@@ -533,7 +533,7 @@
                                                         class="btn btn-link btn-just-icon"><i
                                                             class="fab fa-twitter"></i></a>
                                                     <a *ngIf="sp.contactEmail"
-                                                        href="mailto:{{sp.email}}subject=WiG+ speaker"
+                                                        href="mailto:{{sp.email}}subject=WiT Professional"
                                                         class="btn btn-link btn-just-icon"><i
                                                             class="fa fa-envelope"></i></a>
                                                     <a *ngIf="sp.webpage != '' && sp.webpage != null" target="_blank"
@@ -631,7 +631,7 @@
                 <div class="profile">
                     <div class="avatar">
                         <img *ngIf="selectedSpeaker && selectedSpeaker.picture != ''" src="{{selectedSpeaker.picture}}"
-                            loading="lazy" alt="{{selectedSpeaker.name}} Profile Picture WiG+"
+                            loading="lazy" alt="{{selectedSpeaker.name}} Profile Picture WiT"
                             class="img-raised rounded-circle img-fluid">
                         <img *ngIf="selectedSpeaker.picture == ''" src="../../../assets/img/logo.png"
                             alt="{{selectedSpeaker.name}} Profile Picture WiG+"
@@ -666,13 +666,26 @@
             <div class="col-md-6 ml-auto mr-auto">
                 <h6>Sector(s)</h6>
                 <div *ngFor="let s of selectedSpeaker.sector | keyvalue">
-                    <div *ngIf="s.value && s.key == 'private'">Private Company</div>
-                    <div *ngIf="s.value && s.key == 'public'">Public sector / Government</div>
-                    <div *ngIf="s.value && s.key == 'ngo'">Non-governmental organisation (NGO) / Not-For-Profit
-                        organisation</div>
-                    <div *ngIf="s.value && s.key == 'self'">Self-employed / Consulting</div>
-                    <div *ngIf="s.value && s.key == 'university'">University / Academia</div>
-                    <div *ngIf="s.value && s.key == 'international'">International organisation</div>
+                    <div *ngIf="s.value && s.key == 'professionalDriver'">Professional Driver specify(Truck, Matatus, Bus, BRT , Ambulance)</div>
+                    <div *ngIf="s.value && s.key == 'professionalRider'">Professional Riders Specify(Bicycle, Motorcycle, TukTuk/Rickshaws)</div>
+                    <div *ngIf="s.value && s.key == 'plantOperator'">Plant operator(excavator, harvester)</div>
+                    <div *ngIf="s.value && s.key == 'conductor'">Professional conductor</div>
+                    <div *ngIf="s.value && s.key == 'captain'">Captain Specify(Ship,Plane,train)</div>
+                    <div *ngIf="s.value && s.key == 'saccoManager'">Fleet/Sacco Manager</div>
+                    <div *ngIf="s.value && s.key == 'stageManager'">Stage Manager</div>
+                    <div *ngIf="s.value && s.key == 'clerk'">Stage Clerk</div>
+                    <div *ngIf="s.value && s.key == 'courierProvider'">Courier Service Provider</div>
+                    <div *ngIf="s.value && s.key == 'driverInstructor'">Drivers Instructor</div>
+                    <div *ngIf="s.value && s.key == 'conductorInstructor'">Conductors Instructor</div>
+                    <div *ngIf="s.value && s.key == 'mechanic'">Mechanic</div>
+                    <div *ngIf="s.value && s.key == 'civilEng'">Civil Engineer</div>
+                    <div *ngIf="s.value && s.key == 'urban'">Urban Planner</div>
+                    <div *ngIf="s.value && s.key == 'trainer'">Trainer(First Aid, Road Safety, Customer Service, Gender Mainstreaming, CV writing, Disability sensitization, Mental Health, SRHR, Women rights, Financial Literacy….)</div>
+                    <div *ngIf="s.value && s.key == 'leadandMentor'">Women In Transport Leadership & Mentorship</div>
+                    <div *ngIf="s.value && s.key == 'confSpeaker'">Women In Transport Africa Conference Speaker</div>
+                    <div *ngIf="s.value && s.key == 'policy'">Researcher and Policy practitioner</div>
+                    <div *ngIf="s.value && s.key == 'telphoneDev'">Software Telephone Developer</div>
+                    <div *ngIf="s.value && s.key == 'autoManufacture'">Automotive manufacturer</div>
                     <div *ngIf="s.value && s.key == 'other'">Other: {{selectedSpeaker.otherSector}}</div>
                 </div>
             </div>

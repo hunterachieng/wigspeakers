@@ -49,14 +49,32 @@ export class LoginComponent implements OnInit {
     this.fAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
+SendVerificationMail(){
+  this.fAuth.auth.currentUser.sendEmailVerification().then()
+}
+
   login() {
-    this.fAuth.auth.signInWithEmailAndPassword(this.emailInput, this.pwdInput).then().catch(error => {
+    this.fAuth.auth.signInWithEmailAndPassword(this.emailInput, this.pwdInput)
+    .then(result => this.SendVerificationMail())
+    .catch(error => {
       this.errorSignIn = error;
     });
   }
 
   signUp() {
-    this.fAuth.auth.createUserWithEmailAndPassword(this.emailInputCreate, this.pwdInputCreate).then().catch(error => {
+    this.fAuth.auth.createUserWithEmailAndPassword(this.emailInputCreate, this.pwdInputCreate)
+   
+    .then(result => {
+      if(result.user.emailVerified !== true){
+        this.SendVerificationMail();
+        window.alert('Please validate your email address. Kindly check your inbox.');
+      } else {
+        this.ngZone.run(() => {
+          this.router.navigateByUrl('/register');
+        });
+    }
+  })
+    .catch(error => {
       this.errorSignUp = error;
     });
   }

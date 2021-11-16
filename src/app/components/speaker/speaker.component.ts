@@ -14,110 +14,45 @@ export class SpeakerComponent implements OnInit {
   sp: Speaker;
 
   public sectorsText: {
-    private: 'Private Company',
-    public: 'Public sector / Government',
-    ngo: 'Non-governmental organisation (NGO) / Not-For-Profit organisation',
-    self: 'Self-employed / Consulting',
-    university: 'University / Academia',
-    international: 'International organisation',
+    professionalDriver: 'Professional Driver specify(Truck, Matatus, Bus, BRT , Ambulance)',
+    professionalRider: 'Professional Riders Specify(Bicycle, Motorcycle, TukTuk/Rickshaws)',
+    plantOperator: 'Plant operator(excavator, harvester)',
+    conductor: 'Professional conductor',
+    captain: 'Captain Specify(Ship,Plane,train)',
+    saccoManager: 'Fleet/Sacco Manager',
+    stageManager: 'Stage Manager',
+    clerk: 'Stage Clerk',
+    courierProvider: 'Courier Service Provider',
+    driverInstructor: 'Drivers Instructor',
+    conductorInstructor: 'Conductors Instructor',
+    mechanic: 'Mechanic',
+    civilEng: 'Civil Engineer',
+    urban: 'Urban Planner',
+    trainer: 'Trainer(First Aid, Road Safety, Customer Service, Gender Mainstreaming, CV writing, Disability sensitization, Mental Health, SRHR, Women rights, Financial Literacy….)',
+    leadandMentor: 'Women In Transport Leadership & Mentorship',
+    confSpeaker: 'Women In Transport Africa Conference Speaker',
+    policy: 'Researcher and Policy practitioner',
+    telphoneDev: 'Software Telephone Developer',
+    autoManufacture: 'Automotive manufacturer',
     other: 'Other (please specify)'
   };
 
 
-  public areasText = {
-    research: 'Research / Science Please specify ...',
-    geosoft: 'Geospatial Software',
-    geosoftsub: {
-      foss4g: 'FOSS4G (e.g. QGIS, gdal)',
-      arcgis: 'ArcGIS Suite',
-      mapinfo: 'Mapinfo Suite',
-      cadcorp: 'Cadcorp Suite',
-      fme: 'FME',
-      other: 'Other (specify)',
-    },
-    webmapping: 'Webmapping',
-    webmappingsub: {
-      openlayers: 'Open Layers',
-      leaflet: 'Leaflet',
-      arcgis: 'ArcGIS Suite',
-      d3: 'D3',
-      mapbox: 'Mapbox Studio and Mapbox GL',
-      other: 'Other (Specify)',
-    },
-    geoopendata: 'Geospatial Open Data platforms',
-    geoopendatasub: {
-      geonode: 'Geonode /Carto',
-      arcgis: 'ArcGIS Open Data Platform',
-      copernicus: 'Copernicus Open Data',
-      earth: 'Earth on AWS',
-      google: 'Google Open Data initiative',
-    },
-    remote: 'Remote Sensing & Earth Observations',
-    gis: 'Geographic Information Systems',
-    ethical: 'Ethical Geography',
-    geocloud: 'Geospatial cloud platforms',
-    geocloudsub: {
-      google: 'Google Earth Engine',
-      amazon: 'Amazon Web Services',
-      other: 'Other (Specify)',
-    },
-    geoprogramming: '(Geospatial) programming / Data Science',
-    geoprogrammingsub: {
-      python: 'Python',
-      r: 'R',
-      jupyter: 'Jupyter Notebooks',
-      javascript: 'Javascript',
-      other: 'Other (Specify)',
-    },
-    datavis: 'Data Visualisation ',
-    datavissub: {
-      cartography: 'Cartography',
-      dashboards: 'Dashboards',
-      graphic: 'Graphic design',
-    },
-    dataJournalism: '(Geospatial) Data Journalism',
-    strategic: 'Strategic Skills',
-    strategicsub: {
-      geospatial: 'Geospatial leadership',
-      policy: 'Policy',
-      gi: 'GI Implementation / Strategy',
-      growth: 'Growth in the geospatial / space Industry',
-    },
-    geodata: 'Geospatial Data',
-    geodatasub: {
-      spatial: 'Spatial Data Analysis & Insight',
-      location: 'Location Intelligence',
-      bigdata: 'Big Data / Geospatial Data',
-      opendata: 'Open Data',
-    },
-    entrepreneurship: 'Entrepreneurship',
-    innovation: 'Innovation / New Uses of GIS data',
-    innovationsub: {
-      ar: 'Augmented Reality (AR)',
-      vr: 'Virtual Reality (VR)',
-      ml: 'Machine Learning / Artificial Intelligence',
-      blockchain: 'Blockchain',
-      fiveg: '5G',
-      iot: 'Internet-of-Things (IoT)',
-      geotrans: 'Geospatial and digital transformation',
-    },
-    other: 'Other'
-  };
-
   domainText = {
-    public: 'Public Health',
-    defence: 'Defence and Security',
-    emergency: 'Emergency Service / Public Safety',
-    climate: 'Climate',
-    smart: 'Smart Cities',
-    citizen: 'Citizen Science',
-    transportation: 'Transportation',
-    energy: 'Energy',
-    manufacturing: 'Manufacturing',
-    environment: 'Environment',
-    food: 'Food, Forestry, Agriculture',
-    sustainable: 'Sustainable Development',
-    policy: 'Policy'
+    publicTransport: ' Public Transport Operator',
+    onlineTaxi: 'Online Taxis',
+    courierService: 'Courier services',
+    research: 'Policy & Research',
+    roads: 'Roads Construction',
+    safety: 'Public Safety & Security',
+    skills: 'Capacity/Skills Building',
+    advocacy: 'Advocacy',
+    mentorship: 'Leadership mentorship',
+    speaker: 'Conference Speaker',
+    academia: 'Academia',
+    manufacturer: 'Manufacturer',
+    software: 'IT & Software',
+    innovation: 'Innovation'
   };
 
   constructor(private route: ActivatedRoute, private speakerService: SpeakerService) { }
@@ -139,7 +74,7 @@ export class SpeakerComponent implements OnInit {
   }
 
   sendEmail(e) {
-    location.href = 'mailto:' + e + '?subject=WiG+ speaker';
+    location.href = 'mailto:' + e + '?subject=WiT Professional';
   }
 
 }

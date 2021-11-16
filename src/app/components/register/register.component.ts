@@ -269,19 +269,20 @@ export class RegisterComponent implements OnInit {
             }
             if (!this.model.domain) {
               this.model.domain = {
-                public: false,
-                defence: false,
-                emergency: false,
-                climate: false,
-                smart: false,
-                citizen: false,
-                transportation: false,
-                energy: false,
-                manufacturing: false,
-                environment: false,
-                food: false,
-                sustainable: false,
-                policy: false,
+                publicTransport: false,
+                onlineTaxi: false,
+                courierService: false,
+                research: false,
+                roads: false,
+                safety: false,
+                skills: false,
+                advocacy: false,
+                mentorship: false,
+                speaker: false,
+                academia: false,
+                manufacturer: false,
+                software: false,
+                innovation: false,
                 other: false
               };
             }
@@ -308,6 +309,7 @@ export class RegisterComponent implements OnInit {
       this.fFire.collection('speakers').doc<Speaker>(this.user.uid).set(Object.assign({}, this.model));
       this.errorGDPR = '';
       this.savedTxt = 'Your data has been saved!';
+      
     } else {
       this.errorGDPR = 'You need to accept our WiT Database statement and Terms and Conditions.';
       this.savedTxt = '';

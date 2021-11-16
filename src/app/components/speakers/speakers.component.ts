@@ -46,19 +46,20 @@ export class SpeakersComponent implements OnInit {
   textLevel = '';
 
   searchDomain = {
-    public: false,
-    defence: false,
-    emergency: false,
-    climate: false,
-    smart: false,
-    citizen: false,
-    transportation: false,
-    energy: false,
-    manufacturing: false,
-    environment: false,
-    food: false,
-    sustainable: false,
-    policy: false,
+    publicTransport: false,
+    onlineTaxi: false,
+    courierService: false,
+    research: false,
+    roads: false,
+    safety: false,
+    skills: false,
+    advocacy: false,
+    mentorship: false,
+    speaker: false,
+    academia: false,
+    manufacturer: false,
+    software: false,
+    innovation: false,
     // other: false,
   };
   
@@ -165,19 +166,20 @@ export class SpeakersComponent implements OnInit {
   
 
   domainText = {
-    public: 'Public Health',
-    defence: 'Defence and Security',
-    emergency: 'Emergency Service / Public Safety',
-    climate: 'Climate',
-    smart: 'Smart Cities',
-    citizen: 'Citizen Science',
-    transportation: 'Transportation',
-    energy: 'Energy',
-    manufacturing: 'Manufacturing',
-    environment: 'Environment',
-    food: 'Food, Forestry, Agriculture',
-    sustainable: 'Sustainable Development',
-    policy: 'Policy'
+    publicTransport: ' Public Transport Operator',
+    onlineTaxi: 'Online Taxis',
+    courierService: 'Courier services',
+    research: 'Policy & Research',
+    roads: 'Roads Construction',
+    safety: 'Public Safety & Security',
+    skills: 'Capacity/Skills Building',
+    advocacy: 'Advocacy',
+    mentorship: 'Leadership mentorship',
+    speaker: 'Conference Speaker',
+    academia: 'Academia',
+    manufacturer: 'Manufacturer',
+    software: 'IT & Software',
+    innovation: 'Innovation'
   };
 
   searchLanguages = '';

@@ -108,15 +108,52 @@ export class SpeakerService {
 
   filterSpeakersBySector(sectors) {
     // at least one sector checked
-    if (sectors.private || sectors.public || sectors.ngo || sectors.self || sectors.university || sectors.internationa) {
+    if (sectors.professionalDriver || 
+      sectors.professionalRider || 
+      sectors.plantOperator || 
+      sectors.conductor || 
+      sectors.captain || 
+      sectors.saccoManager ||
+      sectors.stageManager|| 
+      sectors.clerk || 
+      sectors.courierProvider || 
+      sectors.driverInstructor || 
+      sectors.conductorInstructor || 
+      sectors.mechanic || 
+      sectors.civilEng || 
+      sectors.urban || 
+      sectors.trainer || 
+      sectors.leadandMentor || 
+      sectors.confSpeaker ||
+      sectors.policy ||
+      sectors.telphoneDev ||
+      sectors.autoManufacture ) {
+
+        
+        
       this.filteredSpeakersList = this.filteredSpeakersList.filter(
         it =>
-          it.sector.professionalDriver && sectors.private ||
-          it.sector.professionalRider && sectors.public ||
-          it.sector.plantOperator && sectors.ngo ||
-          it.sector.conductor&& sectors.self ||
-          it.sector.captain && sectors.university ||
-          it.sector.saccoManager && sectors.international
+          it.sector.professionalDriver && sectors.professionalDriver ||
+          it.sector.professionalRider && sectors.professionalRider ||
+          it.sector.plantOperator && sectors.plantOperator||
+          it.sector.conductor&& sectors.conductor||
+          it.sector.captain && sectors.captain ||
+          it.sector.saccoManager && sectors.saccoManager ||
+          it.sector.stageManager && sectors.stageManager ||
+          it.sector.clerk && sectors.clerk ||
+          it.sector.courierProvider && sectors.courierProvider ||
+          it.sector.driverInstructor && sectors.driverInstructor ||
+          it.sector.conductorInstructor && sectors.conductorInstructor ||
+          it.sector.mechanic && sectors.mechanic ||
+          it.sector.civilEng && sectors.civilEng ||
+          it.sector.urban && sectors.urban ||
+          it.sector.trainer && sectors.trainer ||
+          it.sector.leadandMentor && sectors.leadandMentor ||
+          it.sector.confSpeaker && sectors.confSpeaker ||
+          it.sector.policy && sectors.policy||
+          it.sector.telphoneDev && sectors.telphoneDev ||
+          it.sector.autoManufacture && sectors.autoManufacture 
+         
       );
     }
   }
@@ -142,62 +179,25 @@ export class SpeakerService {
     if (filter) {
       this.filteredSpeakersList = this.filteredSpeakersList.filter(
         it =>
-          it.domain.citizen && domain.citizen ||
-          it.domain.climate && domain.climate ||
-          it.domain.defence && domain.defence ||
-          it.domain.emergency && domain.emergency ||
-          it.domain.energy && domain.energy ||
-          it.domain.environment && domain.environment ||
-          it.domain.food && domain.food ||
-          it.domain.manufacturing && domain.manufacturing ||
-          it.domain.policy && domain.policy ||
-          it.domain.public && domain.public ||
-          it.domain.smart && domain.smart ||
-          it.domain.sustainable && domain.sustainable ||
-          it.domain.transportation && domain.transportation
+          it.domain. publicTransport && domain. publicTransport||
+          it.domain.onlineTaxi&& domain.onlineTaxi ||
+          it.domain.courierService && domain.courierService ||
+          it.domain.research && domain.research||
+          it.domain.roads && domain.roads||
+          it.domain.safety && domain.safety ||
+          it.domain.skills && domain.skills||
+          it.domain.advocacy && domain.advocacy ||
+          it.domain.mentorship && domain.mentorship ||
+          it.domain.speaker && domain.speaker||
+          it.domain.academia && domain.academia ||
+          it.domain.manufacturer && domain.manufacturer ||
+          it.domain.software && domain.software ||
+          it.domain.innovation && domain.innovation
 
       );
     }
   }
-  filterSpeakersByArea(area) {
-
-    let filter = false;
-    for (const d in area) {
-      if (area[d] === true) {
-        filter = true;
-        break;
-      }
-    }
-
-    this.filteredSpeakersList.forEach(sk => {
-      if (!sk.newareas) {
-        console.log('No areas');
-        console.log(sk);
-      }
-    });
-
-    if (filter) {
-      this.filteredSpeakersList = this.filteredSpeakersList.filter(
-        it =>
-          it.newareas.research && area.research ||
-          it.newareas.geosoft && area.geosoft ||
-          it.newareas.webmapping && area.webmapping ||
-          it.newareas.geoopendata && area.geoopendata ||
-          it.newareas.remote && area.remote ||
-          it.newareas.gis && area.gis ||
-          it.newareas.ethical && area.ethical ||
-          it.newareas.geocloud && area.geocloud ||
-          it.newareas.geoprogramming && area.geoprogramming ||
-          it.newareas.datavis && area.datavis ||
-          it.newareas.dataJournalism && area.dataJournalism ||
-          it.newareas.strategic && area.strategic ||
-          it.newareas.geodata && area.geodata ||
-          it.newareas.entrepreneurship && area.entrepreneurship ||
-          it.newareas.innovation && area.innovation
-      );
-    }
-  }
-
+  
   filterSpeakersByYears(years) {
     // at least one sector checked
     if (years && years !== '' && years !== ' ') {
