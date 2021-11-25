@@ -33,7 +33,7 @@ export class SpeakerService {
             const country = sp.country;
             const city = sp.city;
             let textQuery = '';
-            if (country || city) {
+            if (country !== "" || city !== "") {
               textQuery = city + ',' + country;
 
               console.log('--- Text query');
@@ -68,6 +68,8 @@ export class SpeakerService {
       spSubs.unsubscribe();
       console.log('Speakers ready');
       this.featureCollection = this.featureCollection + ']}';
+
+      this.featureCollection = this.featureCollection.replace('},]}', '}]}');
     });
   }
 
