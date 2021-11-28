@@ -293,7 +293,7 @@
             <div class="tab-content tab-space">
                 <div class="tab-pane active" id="mapPane">
 
-                    <div style="height: 600px;">
+                    <div  *ngIf="this.spService.featureCollection" style="height: 600px;">
 
                         <mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[1]" [center]="[0, 0]">
                             <!-- Zoom controls -->
@@ -311,11 +311,55 @@
                                 types="address"></mgl-control> -->
 
                             <mgl-geojson-source id="wigs-source" [cluster]="true" [clusterMaxZoom]="14"
-                                [clusterRadius]="50">
-                                <!-- [data]="this.spService.featureCollection" -->
+                                [clusterRadius]="50" [data]="this.spService.featureCollection" >
+                                <!-- -->
 
 
-                                <!--  <mgl-layer
+
+                                <!-- <mgl-feature *ngFor="let geometry of spService.filteredSpeakersList" [geometry]="geometry"></mgl-feature> -->
+
+
+<!--     <mgl-layer id="clusters" type="circle" source="wigs-source" [filter]="['has', 'point_count']" [paint]="{
+                'circle-color': {
+                  property: 'point_count',
+                  type: 'interval',
+                  stops: [
+                    [0, '#51bbd6'],
+                    [100, '#f1f075'],
+                    [750, '#f28cb1']
+                  ]
+                },
+                'circle-radius': {
+                  property: 'point_count',
+                  type: 'interval',
+                  stops: [
+                    [0, 20],
+                    [100, 30],
+                    [750, 40]
+                  ]
+                }
+              }">
+    </mgl-layer>
+    <mgl-layer id="cluster-count" type="symbol" source="wigs-source" [filter]="['has', 'point_count']" [layout]="{
+                'text-field': '{point_count_abbreviated}',
+                'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                'text-size': 12
+              }">
+    </mgl-layer>
+    <mgl-layer id="unclustered-point" type="circle" source="wigs-source" [filter]="['!has', 'point_count']" [paint]="{
+                'circle-color': '#11b4da',
+                'circle-radius': 4,
+                'circle-stroke-width': 1,
+                'circle-stroke-color': '#fff'
+              }">
+    </mgl-layer>
+
+ -->
+
+
+
+<!-- 
+                          <mgl-layer
                             id="clusters"
                             type="circle"
                             source="wigs-source"
@@ -366,9 +410,9 @@
                               'circle-stroke-color': '#fff'
                             }"
                           >
-                          </mgl-layer>  -->
+                          </mgl-layer>   -->
 
-                                <mgl-feature *ngFor="let sp of spService.filteredSpeakersList">
+                           <!--      <mgl-feature *ngFor="let sp of spService.filteredSpeakersList">
                                     <div
                                         *ngIf="sp.geoFeature && sp.geoFeature.geometry && sp.geoFeature.geometry.coordinates">
                                         <mgl-marker #myMarker
@@ -417,7 +461,7 @@
                                             </div>
                                         </mgl-popup>
                                     </div>
-                                </mgl-feature>
+                                </mgl-feature> -->
 
                             </mgl-geojson-source>
                         </mgl-map>
